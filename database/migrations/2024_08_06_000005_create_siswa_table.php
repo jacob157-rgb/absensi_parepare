@@ -16,12 +16,13 @@ return new class extends Migration
             $table->rememberToken();
             $table->unsignedBigInteger('sekolah_id');
             $table->unsignedBigInteger('kelas_id');
-            $table->string('nisn');
+            $table->string('nisn')->unique();
             $table->string('nama');
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
-            $table->enum('jenis_kelamin', ['laki-laki', 'perempuan']);
+            $table->enum('jenis_kelamin', ['LAKI-LAKI', 'PEREMPUAN']);
             $table->string('password');
+            $table->string('password_view');
             $table->timestamps();
 
             $table->foreign('sekolah_id')->references('id')->on('sekolah')->onDelete('cascade');

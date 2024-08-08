@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('no_hp')->unique();
             $table->string('alamat');
             $table->string('password');
+            $table->string('password_view');
             $table->timestamps();
 
             $table->foreign('siswa_id')->references('id')->on('siswa')->onDelete('cascade');

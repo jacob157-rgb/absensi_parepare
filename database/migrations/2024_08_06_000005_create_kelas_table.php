@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('kelas',function(Blueprint $table){
             $table->id();
-            $table->enum('tingkat', ['sd', 'smp', 'sma']);
-            $table->enum('jurusan', ['ipa', 'ips']);
+            $table->enum('tingkat_kelas', ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII']);
+            $table->enum('jurusan', ['IPA', 'IPS', 'UMUM', 'TIDAK_ADA']);
             $table->string('urusan_kelas');
-            $table->string('kelompok');
-            $table->string('live');
+            $table->string('kelompok')->nullable();
+            $table->text('live')->nullable();
             $table->timestamps();
         });
     }

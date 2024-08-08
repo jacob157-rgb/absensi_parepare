@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('nama');
             $table->string('nik_nip')->unique();
             $table->string('password');
+            $table->string('password_view');
             $table->timestamps();
 
             $table->foreign('sekolah_id')->references('id')->on('sekolah')->onDelete('cascade');

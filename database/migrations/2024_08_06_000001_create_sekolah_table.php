@@ -16,23 +16,24 @@ return new class extends Migration
             $table->string('instansi');
             $table->string('sub_instansi');
             $table->string('nama');
-            $table->enum('level', ['sd', 'smp', 'sma']);
-            $table->enum('status', ['aktif', 'tidakaktif']);
-            $table->string('npsn');
-            $table->string('nsm');
+            $table->enum('level', ['TK/RA', 'SD/MI', 'SMP/MTS', 'SMA/MA', 'PERGURUAN TINGGI']);
+            $table->enum('status', ['ACTIVE', 'NON ACTIVE']);
+            $table->string('nsm', 12);
+            $table->string('npsn', 8);
             $table->string('provinsi');
             $table->string('kabupaten');
             $table->string('kelurahan');
             $table->string('alamat');
-            $table->string('kalendar_akademik');
-            $table->string('no');
+            $table->string('no_telp');
             $table->decimal('latitude', 10, 8);
             $table->decimal('longitude', 11, 8);
-            $table->string('logo_kanan');
-            $table->string('logo_kiri');
-            $table->string('nama_kamad');
-            $table->enum('status_kamad', ['aktif','tidakaktif']);
-            $table->string('nip_kamad');
+
+            $table->string('logo_kanan')->nullable();
+            $table->string('logo_kiri')->nullable();
+            $table->string('nama_kamad')->nullable();
+            $table->enum('status_kamad', ['PNS','NON PNS'])->nullable();
+            $table->string('nip_kamad')->nullable();
+            
             $table->string('tempat_cetak');
             $table->timestamps();
         });

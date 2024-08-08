@@ -19,8 +19,8 @@ return new class extends Migration
             $table->date('tanggal_mulai');
             $table->date('tanggal_selesai');
             $table->string('surat_keterangan');
-            $table->enum('status', ['menunggu', 'disetujui', 'tidak disetujui']);
-            $table->longText('alasan_penolakan');
+            $table->enum('status', ['MENUNGGU', 'DISETUJUI', 'DITOLAK']);
+            $table->longText('alasan_penolakan')->nullable();
             $table->timestamps();
 
             $table->foreign('kelas_id')->references('id')->on('kelas')->onDelete('cascade');

@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('jam_absen',function(Blueprint $table){
             $table->id();
+            $table->unsignedBigInteger('sekolah_id');
             $table->string('hari');
             $table->time('jam_masuk');
             $table->time('jam_terlambat');
             $table->timestamps();
+            $table->foreign('sekolah_id')->references('id')->on('sekolah')->onDelete('cascade');
         });
     }
 
