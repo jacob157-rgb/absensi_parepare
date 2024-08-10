@@ -10,4 +10,10 @@ class Sekolah extends Model
     use HasFactory;
     protected $table = 'sekolah';
     protected $guarded = ['id'];
+
+    static function isLembaga()
+    {
+        $metaData = metaData();
+        return static::where('nsm', $metaData['username'])->first();
+    }
 }

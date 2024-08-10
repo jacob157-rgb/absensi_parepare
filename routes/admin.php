@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\isAdmin;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,8 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('admin')->group(function () {
-    Route::get('/beranda', function () {
-        return view('admin.beranda');
+Route::middleware(isAdmin::class)->group(function () {
+    Route::prefix('admin')->group(function () {
+        Route::get('/beranda', function () {
+            return view('admin.beranda');
+        });
     });
 });

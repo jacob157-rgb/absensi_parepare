@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('username')->unique();
             $table->string('password');
+            $table->text('meta')->nullable();
             $table->enum('roles', ['MASTER', 'LEMBAGA']);
             $table->timestamps();
         });
