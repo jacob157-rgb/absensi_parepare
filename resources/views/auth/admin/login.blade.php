@@ -5,7 +5,8 @@
         <div class="z-20 rounded-2xl bg-white px-12 py-12 shadow-xl">
             <div>
                 <h1 class="mb-4 cursor-pointer text-center text-3xl font-bold">Masuk</h1>
-                <p class="mb-8 w-80 cursor-pointer text-center text-sm font-semibold tracking-wide text-gray-700">Silahkan Masuk menggunakan NISN/NIP.</p>
+                <p class="mb-8 w-80 cursor-pointer text-center text-sm font-semibold tracking-wide text-gray-700">Silahkan
+                    Masuk menggunakan username.</p>
             </div>
 
             <form method="POST" action="{{ route('admin.post') }}">
@@ -23,7 +24,7 @@
                     <p class="mt-2 text-xs text-red-500">{{ $message }}</p>
                 @enderror
 
-                <div class="mt-4 flex items-center hidden">
+                <div class="mt-4 hidden items-center">
                     <input type="checkbox" name="remember" id="remember" class="mr-2" checked>
                     <label for="remember" class="text-sm text-gray-700">Remember me</label>
                 </div>

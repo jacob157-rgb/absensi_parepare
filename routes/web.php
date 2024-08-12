@@ -20,7 +20,8 @@ Route::get('/', function () {
 
 // component
 Route::get('/template', function () {
-    return view('components.template');
+    $pages = 'template';
+    return view('components.template', compact('pages'));
 });
 
 // laravolt

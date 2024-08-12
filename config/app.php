@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Facade;
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -138,6 +137,9 @@ return [
     |
     */
 
+    // pagination
+    'pagination' => 'tailwind',
+
     'maintenance' => [
         'driver' => 'file',
         // 'store'  => 'redis',
@@ -155,7 +157,6 @@ return [
     */
 
     'providers' => [
-
         /*
          * Laravel Framework Service Providers...
          */
@@ -196,7 +197,6 @@ return [
         App\Providers\RouteServiceProvider::class,
         Laravolt\Indonesia\ServiceProvider::class,
         Jenssegers\Agent\AgentServiceProvider::class,
-
     ],
 
     /*
@@ -210,10 +210,11 @@ return [
     |
     */
 
-    'aliases' => Facade::defaultAliases()->merge([
-        // 'ExampleClass' => App\Example\ExampleClass::class,
-        'Indonesia' => Laravolt\Indonesia\Facade::class,
-        'Agent' => Jenssegers\Agent\Facades\Agent::class,
-    ])->toArray(),
-
+    'aliases' => Facade::defaultAliases()
+        ->merge([
+            // 'ExampleClass' => App\Example\ExampleClass::class,
+            'Indonesia' => Laravolt\Indonesia\Facade::class,
+            'Agent' => Jenssegers\Agent\Facades\Agent::class,
+        ])
+        ->toArray(),
 ];
