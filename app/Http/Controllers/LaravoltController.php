@@ -14,7 +14,7 @@ class LaravoltController extends Controller
             'provinsi' => Provinsi::all(),
         ]);
     }
-    
+
     public function kabupaten(Request $request)
     {
         return response()->json([

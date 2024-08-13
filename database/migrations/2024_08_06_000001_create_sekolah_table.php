@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('npsn', 8);
             $table->string('provinsi');
             $table->string('kabupaten');
+            $table->string('kecamatan');
             $table->string('kelurahan');
             $table->string('alamat');
             $table->string('no_telp');
@@ -33,7 +34,7 @@ return new class extends Migration
             $table->string('nama_kamad')->nullable();
             $table->enum('status_kamad', ['PNS','NON PNS'])->nullable();
             $table->string('nip_kamad')->nullable();
-            
+
             $table->string('tempat_cetak');
             $table->timestamps();
         });

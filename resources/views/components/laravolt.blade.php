@@ -1,6 +1,5 @@
 <script>
     $(document).ready(function() {
-        $('.select2').select2();
 
         // Fetch provinsi
         $.ajax({
@@ -11,7 +10,7 @@
                 data.provinsi.forEach(prov => {
                     options += `<option value="${prov.name}">${prov.name}</option>`;
                 });
-                $('#provinsi').html(options);
+                $('#provinsi').html(options).trigger('change');
             }
         });
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\LembagaController;
 use App\Http\Controllers\Admin\SemesterController;
 use App\Http\Controllers\Admin\TahunAjaranController;
 use App\Http\Middleware\isAdmin;
@@ -35,6 +36,14 @@ Route::middleware(isAdmin::class)->group(function () {
             Route::get('/semester/{id}', 'edit')->name('semester.edit');
             Route::post('/semester/{id}', 'update')->name('semester.update');
             Route::delete('/semester/{id}/destroy', 'destroy')->name('semester.destroy');
+        });
+        Route::controller(LembagaController::class)->group(function () {
+            Route::get('/lembaga', 'index')->name('lembaga.index');
+            Route::get('/lembaga/create', 'create')->name('lembaga.create');
+            Route::post('/lembaga', 'store')->name('lembaga.store');
+            Route::get('/lembaga/{id}', 'edit')->name('lembaga.edit');
+            Route::post('/lembaga/{id}', 'update')->name('lembaga.update');
+            Route::delete('/lembaga/{id}/destroy', 'destroy')->name('lembaga.destroy');
         });
     });
 });

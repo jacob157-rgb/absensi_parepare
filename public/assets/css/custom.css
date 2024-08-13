@@ -1,0 +1,15 @@
+/* Menghilangkan ikon dropdown default */
+select {
+    appearance: none; /* Menghilangkan ikon pada browser modern */
+    -webkit-appearance: none; /* Untuk Safari dan Chrome */
+    -moz-appearance: none; /* Untuk Firefox */
+    background: none; /* Hapus background default */
+    border: 1px solid #ccc; /* Sesuaikan border sesuai kebutuhan */
+    padding: 10px; /* Sesuaikan padding sesuai kebutuhan */
+    border-radius: 5px; /* Sesuaikan border-radius sesuai kebutuhan */
+}
+
+/* Jika Anda ingin menghilangkan ikon dropdown dari semua elemen <select> */
+select::-ms-expand {
+    display: none; /* Menghilangkan ikon dropdown pada IE */
+}

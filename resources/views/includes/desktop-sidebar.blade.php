@@ -70,6 +70,26 @@
                     <span class="ml-4">Semester</span>
                 </a>
             </li>
+            <li class="relative flex items-center px-6 py-3">
+                @if (request()->routeIs('lembaga.*'))
+                    <span class="absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg"
+                        aria-hidden="true"></span>
+                @endif
+                <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 dark:text-gray-100 dark:hover:text-gray-200 hover:text-gray-800"
+                    href="/admin/lembaga">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="w-5 h-5 lucide lucide-school">
+                        <path d="M14 22v-4a2 2 0 1 0-4 0v4" />
+                        <path d="m18 10 4 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-8l4-2" />
+                        <path d="M18 5v17" />
+                        <path d="m4 6 8-4 8 4" />
+                        <path d="M6 5v17" />
+                        <circle cx="12" cy="9" r="2" />
+                    </svg>
+                    <span class="ml-4">Lembaga</span>
+                </a>
+            </li>
         </ul>
     </div>
 </aside>
