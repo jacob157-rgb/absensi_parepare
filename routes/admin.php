@@ -19,8 +19,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(isAdmin::class)->group(function () {
     Route::prefix('admin')->group(function () {
         Route::get('/beranda', function () {
-            return view('admin.beranda');
-        });
+            $pages = 'Beranda';
+            return view('admin.beranda', compact('pages'));
+        })->name('beranda');
         Route::controller(TahunAjaranController::class)->group(function () {
             Route::get('/tahun_ajaran', 'index')->name('tahun_ajaran.index');
             Route::post('/tahun_ajaran', 'store')->name('tahun_ajaran.store');

@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    darkMode: "selector",
+    darkMode: 'selector',
     content: [
         "node_modules/preline/dist/*.js",
         "./resources/**/*.blade.php",

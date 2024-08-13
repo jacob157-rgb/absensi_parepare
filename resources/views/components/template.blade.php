@@ -233,7 +233,7 @@
                     <ul class="inline-flex items-center">
                         <li>
                             <button
-                                class="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-purple"
+                                class="px-3 py-1 rounded-md rounded-l-lg focus:outline-none focus:shadow-outline-blue"
                                 aria-label="Previous">
                                 <svg aria-hidden="true" class="w-4 h-4 fill-current" viewBox="0 0 20 20">
                                     <path
@@ -243,23 +243,23 @@
                             </button>
                         </li>
                         <li>
-                            <button class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">
+                            <button class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-blue">
                                 1
                             </button>
                         </li>
                         <li>
-                            <button class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">
+                            <button class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-blue">
                                 2
                             </button>
                         </li>
                         <li>
                             <button
-                                class="px-3 py-1 text-white transition-colors duration-150 bg-purple-600 border border-r-0 border-purple-600 rounded-md focus:outline-none focus:shadow-outline-purple">
+                                class="px-3 py-1 text-white transition-colors duration-150 bg-blue-600 border border-r-0 border-blue-600 rounded-md focus:outline-none focus:shadow-outline-blue">
                                 3
                             </button>
                         </li>
                         <li>
-                            <button class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">
+                            <button class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-blue">
                                 4
                             </button>
                         </li>
@@ -267,18 +267,18 @@
                             <span class="px-3 py-1">...</span>
                         </li>
                         <li>
-                            <button class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">
+                            <button class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-blue">
                                 8
                             </button>
                         </li>
                         <li>
-                            <button class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-purple">
+                            <button class="px-3 py-1 rounded-md focus:outline-none focus:shadow-outline-blue">
                                 9
                             </button>
                         </li>
                         <li>
                             <button
-                                class="px-3 py-1 rounded-md rounded-r-lg focus:outline-none focus:shadow-outline-purple"
+                                class="px-3 py-1 rounded-md rounded-r-lg focus:outline-none focus:shadow-outline-blue"
                                 aria-label="Next">
                                 <svg class="w-4 h-4 fill-current" aria-hidden="true" viewBox="0 0 20 20">
                                     <path
@@ -294,14 +294,14 @@
     </div>
 
     <!-- General elements -->
-    <h4 class="mb-4 mt-6 text-lg font-semibold text-gray-600 dark:text-gray-300">
+    <h4 class="mt-6 mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">
         Elements
     </h4>
     <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
         <label class="block text-sm">
             <span class="text-gray-700 dark:text-gray-400">Name</span>
             <input
-                class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-blue-400 focus:outline-none focus:shadow-outline-blue dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                 placeholder="Jane Doe" />
         </label>
 
@@ -312,13 +312,13 @@
             <div class="mt-2">
                 <label class="inline-flex items-center text-gray-600 dark:text-gray-400">
                     <input type="radio"
-                        class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+                        class="text-blue-600 form-radio focus:border-blue-400 focus:outline-none focus:shadow-outline-blue dark:focus:shadow-outline-gray"
                         name="accountType" value="personal" />
                     <span class="ml-2">Personal</span>
                 </label>
                 <label class="inline-flex items-center ml-6 text-gray-600 dark:text-gray-400">
                     <input type="radio"
-                        class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+                        class="text-blue-600 form-radio focus:border-blue-400 focus:outline-none focus:shadow-outline-blue dark:focus:shadow-outline-gray"
                         name="accountType" value="busines" />
                     <span class="ml-2">Business</span>
                 </label>
@@ -330,7 +330,7 @@
                 Requested Limit
             </span>
             <select
-                class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
+                class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-blue-400 focus:outline-none focus:shadow-outline-blue dark:focus:shadow-outline-gray">
                 <option>$1,000</option>
                 <option>$5,000</option>
                 <option>$10,000</option>
@@ -343,7 +343,7 @@
                 Multiselect
             </span>
             <select
-                class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-multiselect focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+                class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-multiselect focus:border-blue-400 focus:outline-none focus:shadow-outline-blue dark:focus:shadow-outline-gray"
                 multiple>
                 <option>Option 1</option>
                 <option>Option 2</option>
@@ -356,14 +356,14 @@
         <label class="block mt-4 text-sm">
             <span class="text-gray-700 dark:text-gray-400">Message</span>
             <textarea
-                class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+                class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-blue-400 focus:outline-none focus:shadow-outline-blue dark:focus:shadow-outline-gray"
                 rows="3" placeholder="Enter some long form content."></textarea>
         </label>
 
         <div class="flex mt-6 text-sm">
             <label class="flex items-center dark:text-gray-400">
                 <input type="checkbox"
-                    class="text-purple-600 form-checkbox focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray" />
+                    class="text-blue-600 form-checkbox focus:border-blue-400 focus:outline-none focus:shadow-outline-blue dark:focus:shadow-outline-gray" />
                 <span class="ml-2">
                     I agree to the
                     <span class="underline">privacy policy</span>
@@ -409,7 +409,7 @@
                 Helper text
             </span>
             <input
-                class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input"
+                class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:border-blue-400 focus:outline-none focus:shadow-outline-blue dark:focus:shadow-outline-gray form-input"
                 placeholder="Jane Doe" />
             <span class="text-xs text-gray-600 dark:text-gray-400">
                 Your password must be at least 6 characters long.
@@ -425,9 +425,9 @@
         <label class="block text-sm">
             <span class="text-gray-700 dark:text-gray-400">Icon left</span>
             <!-- focus-within sets the color for the icon when input is focused -->
-            <div class="relative text-gray-500 focus-within:text-purple-600 dark:focus-within:text-purple-400">
+            <div class="relative text-gray-500 focus-within:text-blue-600 dark:focus-within:text-blue-400">
                 <input
-                    class="block w-full pl-10 mt-1 text-sm text-black dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input"
+                    class="block w-full pl-10 mt-1 text-sm text-black dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:border-blue-400 focus:outline-none focus:shadow-outline-blue dark:focus:shadow-outline-gray form-input"
                     placeholder="Jane Doe" />
                 <div class="absolute inset-y-0 flex items-center ml-3 pointer-events-none">
                     <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
@@ -443,9 +443,9 @@
         <label class="block mt-4 text-sm">
             <span class="text-gray-700 dark:text-gray-400">Icon right</span>
             <!-- focus-within sets the color for the icon when input is focused -->
-            <div class="relative text-gray-500 focus-within:text-purple-600 dark:focus-within:text-purple-400">
+            <div class="relative text-gray-500 focus-within:text-blue-600 dark:focus-within:text-blue-400">
                 <input
-                    class="block w-full pr-10 mt-1 text-sm text-black dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input"
+                    class="block w-full pr-10 mt-1 text-sm text-black dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:border-blue-400 focus:outline-none focus:shadow-outline-blue dark:focus:shadow-outline-gray form-input"
                     placeholder="Jane Doe" />
                 <div class="absolute inset-y-0 right-0 flex items-center mr-3 pointer-events-none">
                     <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
@@ -470,10 +470,10 @@
             </span>
             <div class="relative">
                 <input
-                    class="block w-full pl-20 mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input"
+                    class="block w-full pl-20 mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:border-blue-400 focus:outline-none focus:shadow-outline-blue dark:focus:shadow-outline-gray form-input"
                     placeholder="Jane Doe" />
                 <button
-                    class="absolute inset-y-0 px-4 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-l-md active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
+                    class="absolute inset-y-0 px-4 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-l-md active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue dark:focus:shadow-outline-gray">
                     Click
                 </button>
             </div>
@@ -483,12 +483,12 @@
             <span class="text-gray-700 dark:text-gray-400">
                 Button right
             </span>
-            <div class="relative text-gray-500 focus-within:text-purple-600">
+            <div class="relative text-gray-500 focus-within:text-blue-600">
                 <input
-                    class="block w-full pr-20 mt-1 text-sm text-black dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input"
+                    class="block w-full pr-20 mt-1 text-sm text-black dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:border-blue-400 focus:outline-none focus:shadow-outline-blue dark:focus:shadow-outline-gray form-input"
                     placeholder="Jane Doe" />
                 <button
-                    class="absolute inset-y-0 right-0 px-4 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-r-md active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                    class="absolute inset-y-0 right-0 px-4 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-r-md active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue">
                     Click
                 </button>
             </div>
@@ -497,14 +497,14 @@
 
 
     <!-- Button sizes -->
-    <h4 class="mb-4 mt-7 text-lg font-semibold text-gray-600 dark:text-gray-300">
+    <h4 class="mb-4 text-lg font-semibold text-gray-600 mt-7 dark:text-gray-300">
         Sizes
     </h4>
     <div class="flex flex-col flex-wrap mb-4 space-y-4 md:flex-row md:items-end md:space-x-4">
         <!-- Divs are used just to display the examples.  only the button. -->
         <div>
             <button
-                class="px-10 py-4 font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                class="px-10 py-4 font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue">
                 Larger button
             </button>
         </div>
@@ -512,7 +512,7 @@
         <!-- Divs are used just to display the examples. Use only the button. -->
         <div>
             <button
-                class="px-5 py-3 font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                class="px-5 py-3 font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue">
                 Large button
             </button>
         </div>
@@ -520,7 +520,7 @@
         <!-- Divs are used just to display the examples. Use only the button. -->
         <div>
             <button
-                class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue">
                 Regular
             </button>
         </div>
@@ -531,10 +531,10 @@
                               opacity-50 cursor-not-allowed
 
                               And REMOVE these classes:
-                              active:bg-purple-600 hover:bg-purple-700 focus:shadow-outline-purple
+                              active:bg-blue-600 hover:bg-blue-700 focus:shadow-outline-blue
                             -->
             <button
-                class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg opacity-50 cursor-not-allowed focus:outline-none">
+                class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg opacity-50 cursor-not-allowed focus:outline-none">
                 Disabled
             </button>
         </div>
@@ -542,7 +542,7 @@
         <!-- Divs are used just to display the examples. Use only the button. -->
         <div>
             <button
-                class="px-3 py-1 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-md active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                class="px-3 py-1 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-md active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue">
                 Small
             </button>
         </div>
@@ -561,7 +561,7 @@
         <!-- Divs are used just to display the examples. Use only the button. -->
         <div>
             <button
-                class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue">
                 <span>Icon right</span>
                 <svg class="w-4 h-4 ml-2 -mr-1" fill="currentColor" aria-hidden="true" viewBox="0 0 20 20">
                     <path
@@ -574,7 +574,7 @@
         <!-- Divs are used just to display the examples. Use only the button. -->
         <div>
             <button
-                class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue">
                 <svg class="w-4 h-4 mr-2 -ml-1" fill="currentColor" aria-hidden="true" viewBox="0 0 20 20">
                     <path
                         d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
@@ -587,7 +587,7 @@
         <!-- Divs are used just to display the examples. Use only the button. -->
         <div>
             <button
-                class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
+                class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue"
                 aria-label="Like">
                 <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
                     <path
@@ -600,7 +600,7 @@
         <!-- Divs are used just to display the examples. Use only the button. -->
         <div>
             <button
-                class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-full active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
+                class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-full active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue"
                 aria-label="Edit">
                 <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
                     <path
@@ -660,7 +660,7 @@
                         <td class="px-4 py-3">
                             <div class="flex items-center space-x-4 text-sm">
                                 <button
-                                    class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
+                                    class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
                                     aria-label="Edit">
                                     <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
                                         <path
@@ -669,7 +669,7 @@
                                     </svg>
                                 </button>
                                 <button
-                                    class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
+                                    class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
                                     aria-label="Delete">
                                     <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd"
@@ -714,7 +714,7 @@
                         <td class="px-4 py-3">
                             <div class="flex items-center space-x-4 text-sm">
                                 <button
-                                    class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
+                                    class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
                                     aria-label="Edit">
                                     <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
                                         <path
@@ -723,7 +723,7 @@
                                     </svg>
                                 </button>
                                 <button
-                                    class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
+                                    class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
                                     aria-label="Delete">
                                     <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd"
@@ -768,7 +768,7 @@
                         <td class="px-4 py-3">
                             <div class="flex items-center space-x-4 text-sm">
                                 <button
-                                    class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
+                                    class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
                                     aria-label="Edit">
                                     <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
                                         <path
@@ -777,7 +777,7 @@
                                     </svg>
                                 </button>
                                 <button
-                                    class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
+                                    class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
                                     aria-label="Delete">
                                     <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd"
