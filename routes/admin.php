@@ -42,6 +42,7 @@ Route::middleware(isAdmin::class)->group(function () {
             Route::get('/lembaga/create', 'create')->name('lembaga.create');
             Route::post('/lembaga', 'store')->name('lembaga.store');
             Route::get('/lembaga/{id}', 'edit')->name('lembaga.edit');
+            Route::get('/lembaga/{id}/show', 'show')->name('lembaga.show');
             Route::post('/lembaga/{id}', 'update')->name('lembaga.update');
             Route::delete('/lembaga/{id}/destroy', 'destroy')->name('lembaga.destroy');
         });

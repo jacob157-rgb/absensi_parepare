@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-    <div class="shadow-xs w-full overflow-hidden rounded-lg">
+    <div class="shadow-inner w-full overflow-hidden rounded-lg">
         <div class="flex flex-col items-start justify-between border-b px-4 py-3 md:flex-row md:items-center">
             <button type="button"
                 class="tambahBtn mb-2 inline-flex flex-none items-center rounded border border-transparent bg-blue-600 p-2 text-sm font-medium text-white hover:bg-blue-700 focus:bg-blue-700 focus:outline-none disabled:pointer-events-none disabled:opacity-50 md:mb-0">
@@ -40,14 +40,14 @@
                 <tbody class="dark:divide-gray-700 dark:bg-gray-800 divide-y bg-white">
                     @foreach ($semester as $row)
                         <tr class="dark:text-gray-400 text-gray-700">
-                            <td class="px-4 py-3 text-sm">
+                            <td class="px-4 py-3 text-sm font-medium">
                                 {{ $loop->iteration }}.
                             </td>
-                            <td class="px-4 py-3 text-sm capitalize">
+                            <td class="px-4 py-3 text-sm font-medium capitalize">
                                 {{ $row->nama }}
                             </td>
                             <td class="px-4 py-3">
-                                <div class="flex items-center space-x-4 text-sm">
+                                <div class="flex items-center space-x-4 text-sm font-medium">
                                     <button data-id="{{ $row->id }}"
                                         class="dark:text-gray-400 editBtn focus:shadow-outline-gray flex items-center justify-between rounded-lg px-2 py-2 text-sm font-medium leading-5 text-blue-600 focus:outline-none"
                                         aria-label="Edit">
@@ -92,7 +92,7 @@
                 let postUrl = `{{ route('semester.store') }}`;
                 let modalContent = `
                     <label class="block text-sm">
-                        <span class="text-gray-700 dark:text-gray-400">
+                        <span class="text-gray-700 dark:text-gray-400 font-semibold mb-1">
                             Semester
                         </span>
                         <select name="semester" class="{{ $errors->has('semester') ? 'border-red-600' : 'border-gray-200' }}py-3 px-4 pe-9 block w-full rounded text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
@@ -127,7 +127,7 @@
                         let postUrl = `/admin/semester/${semester_id}`;
                         let modalContent = `
                     <label class="block text-sm">
-                        <span class="text-gray-700 dark:text-gray-400">
+                        <span class="text-gray-700 dark:text-gray-400 font-semibold mb-1">
                             Semester
                         </span>
                         <select id="semester" name="semester" class="{{ $errors->has('semester') ? 'border-red-600' : 'border-gray-200' }}py-3 px-4 pe-9 block w-full rounded text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">

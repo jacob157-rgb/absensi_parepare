@@ -2,17 +2,17 @@
 
 @section('content')
     <h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">
-        Tambah {{ $pages }}
+        Edit {{ $pages }}
     </h4>
     <div class="px-4 py-3 mb-8 bg-white rounded shadow-md dark:bg-gray-800">
-        <form action="{{ route('lembaga.store') }}" method="POST">
+        <form action="{{ route('lembaga.update', $edit->id) }}" method="POST">
             @csrf
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <!-- Instansi -->
                 <div>
                     <label class="block text-sm">
                         <span class="text-gray-700 font-semibold dark:text-gray-400">Instansi</span>
-                        <input type="text" name="instansi" value="{{ old('instansi') }}"
+                        <input type="text" name="instansi" value="{{ $edit->instansi }}"
                             class="block w-full mt-1 rounded text-sm border-gray-300 dark:text-gray-300 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red form-input"
                             placeholder="Instansi" />
                         @error('instansi')
@@ -25,7 +25,7 @@
                 <div>
                     <label class="block text-sm">
                         <span class="text-gray-700 font-semibold dark:text-gray-400">Sub Instansi</span>
-                        <input type="text" name="sub_instansi" value="{{ old('sub_instansi') }}"
+                        <input type="text" name="sub_instansi" value="{{ $edit->sub_instansi }}"
                             class="block w-full mt-1 rounded text-sm border-gray-300 dark:text-gray-300 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red form-input"
                             placeholder="Sub Instansi" />
                         @error('sub_instansi')
@@ -38,7 +38,7 @@
                 <div>
                     <label class="block text-sm">
                         <span class="text-gray-700 font-semibold dark:text-gray-400">Nama Lembaga</span>
-                        <input type="text" name="nama" value="{{ old('nama') }}"
+                        <input type="text" name="nama" value="{{ $edit->nama }}"
                             class="block w-full mt-1 rounded text-sm border-gray-300 dark:text-gray-300 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red form-input"
                             placeholder="Nama Sekolah" />
                         @error('nama')
@@ -54,11 +54,11 @@
                         <select name="level" data-placeholder="Level/Tingkat"
                             class="mt-1 block w-full border-gray-200 rounded text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
                             <option value="">Pilih Level</option>
-                            <option value="TK/RA" {{ old('level') == 'TK/RA' ? 'selected' : '' }}>TK/RA</option>
-                            <option value="SD/MI" {{ old('level') == 'SD/MI' ? 'selected' : '' }}>SD/MI</option>
-                            <option value="SMP/MTS" {{ old('level') == 'SMP/MTS' ? 'selected' : '' }}>SMP/MTS</option>
-                            <option value="SMA/MA" {{ old('level') == 'SMA/MA' ? 'selected' : '' }}>SMA/MA</option>
-                            <option value="PERGURUAN TINGGI" {{ old('level') == 'PERGURUAN TINGGI' ? 'selected' : '' }}>
+                            <option value="TK/RA" {{ $edit->level == 'TK/RA' ? 'selected' : '' }}>TK/RA</option>
+                            <option value="SD/MI" {{ $edit->level == 'SD/MI' ? 'selected' : '' }}>SD/MI</option>
+                            <option value="SMP/MTS" {{ $edit->level == 'SMP/MTS' ? 'selected' : '' }}>SMP/MTS</option>
+                            <option value="SMA/MA" {{ $edit->level == 'SMA/MA' ? 'selected' : '' }}>SMA/MA</option>
+                            <option value="PERGURUAN TINGGI" {{ $edit->level == 'PERGURUAN TINGGI' ? 'selected' : '' }}>
                                 PERGURUAN TINGGI</option>
                         </select>
                         @error('level')
@@ -71,7 +71,7 @@
                 <div>
                     <label class="block text-sm">
                         <span class="text-gray-700 font-semibold dark:text-gray-400">NSM</span>
-                        <input type="number" name="nsm" value="{{ old('nsm') }}"
+                        <input type="number" name="nsm" value="{{ $edit->nsm }}"
                             class="block w-full mt-1 rounded text-sm border-gray-300 dark:text-gray-300 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red form-input"
                             placeholder="NSM" />
                         @error('nsm')
@@ -84,7 +84,7 @@
                 <div>
                     <label class="block text-sm">
                         <span class="text-gray-700 font-semibold dark:text-gray-400">NPSN</span>
-                        <input type="number" name="npsn" value="{{ old('npsn') }}"
+                        <input type="number" name="npsn" value="{{ $edit->npsn }}"
                             class="block w-full mt-1 rounded text-sm border-gray-300 dark:text-gray-300 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red form-input"
                             placeholder="NPSN" />
                         @error('npsn')
@@ -99,7 +99,7 @@
                         <select id="provinsi" name="provinsi"
                             class="mt-1 block w-full border-gray-200 rounded text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                             data-placeholder="Provinsi">
-                            <option value="">Choose</option>
+                            <option value="" selected>{{ $edit->provinsi }}</option>
                         </select>
                         @error('provinsi')
                             <span class="text-xs text-red-600 dark:text-red-400">{{ $message }}</span>
@@ -154,7 +154,7 @@
                 <div>
                     <label class="block text-sm">
                         <span class="text-gray-700 font-semibold dark:text-gray-400">Alamat</span>
-                        <input type="text" name="alamat" value="{{ old('alamat') }}"
+                        <input type="text" name="alamat" value="{{ $edit->alamat }}"
                             class="block w-full mt-1 rounded text-sm border-gray-300 dark:text-gray-300 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red form-input"
                             placeholder="Alamat" />
                         @error('alamat')
@@ -167,7 +167,7 @@
                 <div>
                     <label class="block text-sm">
                         <span class="text-gray-700 font-semibold dark:text-gray-400">No Telp</span>
-                        <input type="number" name="no_telp" value="{{ old('no_telp') }}"
+                        <input type="number" name="no_telp" value="{{ $edit->no_telp }}"
                             class="block w-full mt-1 rounded text-sm border-gray-300 dark:text-gray-300 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red form-input"
                             placeholder="No Telp" />
                         @error('no_telp')
@@ -180,7 +180,7 @@
                 <div>
                     <label class="block text-sm">
                         <span class="text-gray-700 font-semibold dark:text-gray-400">Tempat Cetak</span>
-                        <input type="text" name="tempat_cetak" value="{{ old('tempat_cetak') }}"
+                        <input type="text" name="tempat_cetak" value="{{ $edit->tempat_cetak }}"
                             class="block w-full mt-1 rounded text-sm border-gray-300 dark:text-gray-300 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red form-input"
                             placeholder="Tempat cetak" />
                         @error('tempat_cetak')
@@ -196,8 +196,8 @@
                         <select name="status" data-placeholder="Status"
                             class="mt-1 block w-full border-gray-200 rounded text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
                             <option value="">Pilih Status</option>
-                            <option value="ACTIVE" {{ old('status') == 'ACTIVE' ? 'selected' : '' }}>ACTIVE</option>
-                            <option value="NON ACTIVE" {{ old('status') == 'NON ACTIVE' ? 'selected' : '' }}>NON ACTIVE
+                            <option value="ACTIVE" {{ $edit->status == 'ACTIVE' ? 'selected' : '' }}>ACTIVE</option>
+                            <option value="NON ACTIVE" {{ $edit->status == 'NON ACTIVE' ? 'selected' : '' }}>NON ACTIVE
                             </option>
                         </select>
                         @error('status')
@@ -210,7 +210,7 @@
                 <div>
                     <label class="block text-sm">
                         <span class="text-gray-700 font-semibold dark:text-gray-400">Latitude</span>
-                        <input type="text" name="latitude" value="{{ old('latitude') }}"
+                        <input type="text" name="latitude" value="{{ $edit->latitude }}"
                             class="block w-full mt-1 rounded text-sm border-gray-300 dark:text-gray-300 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red form-input"
                             placeholder="Latitude" />
                         @error('latitude')
@@ -223,7 +223,7 @@
                 <div>
                     <label class="block text-sm">
                         <span class="text-gray-700 font-semibold dark:text-gray-400">Longitude</span>
-                        <input type="text" name="longitude" value="{{ old('longitude') }}"
+                        <input type="text" name="longitude" value="{{ $edit->longitude }}"
                             class="block w-full mt-1 rounded text-sm border-gray-300 dark:text-gray-300 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red form-input"
                             placeholder="longitude" />
                         @error('longitude')
@@ -274,8 +274,11 @@
         document.addEventListener('DOMContentLoaded', function() {
             initMap();
 
+            updateMap();
+
             document.querySelector('input[name="latitude"]').addEventListener('input', updateMap);
             document.querySelector('input[name="longitude"]').addEventListener('input', updateMap);
         });
     </script>
+
 @endpush

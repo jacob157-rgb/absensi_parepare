@@ -26,10 +26,10 @@ Route::get('/template', function () {
 
 // laravolt
 Route::controller(LaravoltController::class)->group(function () {
-    Route::get('/provinsi', 'provinsi');
-    Route::get('/kabupaten', 'kabupaten');
-    Route::get('/kecamatan', 'kecamatan');
-    Route::get('/kelurahan', 'kelurahan');
+    Route::get('/provinsi', 'provinsi')->name('provinsi');
+    Route::get('/kabupaten', 'kabupaten')->name('kabupaten');
+    Route::get('/kecamatan', 'kecamatan')->name('kecamatan');
+    Route::get('/kelurahan', 'kelurahan')->name('kelurahan');
 });
 
 require __DIR__ . '/admin.php';
