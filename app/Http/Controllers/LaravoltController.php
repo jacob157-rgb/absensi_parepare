@@ -10,31 +10,23 @@ class LaravoltController extends Controller
 {
     public function provinsi()
     {
-        return response()->json([
-            'provinsi' => Provinsi::all(),
-        ]);
+        return response()->json(Provinsi::all());
     }
 
     public function kabupaten(Request $request)
     {
-        return response()->json([
-            'kabupaten' => Indonesia::search($request->provinsi)->allCities(),
-        ]);
+        return response()->json(Indonesia::search($request->provinsi)->allCities());
     }
 
     # Kecamatan
     public function kecamatan(Request $request)
     {
-        return response()->json([
-            'kecamatan' => Indonesia::search($request->kabupaten)->allDistricts(),
-        ]);
+        return response()->json(Indonesia::search($request->kabupaten)->allDistricts());
     }
 
     # Kelurahan
     public function kelurahan(Request $request)
     {
-        return response()->json([
-            'kelurahan' => Indonesia::search($request->kecamatan)->allVillages(),
-        ]);
+        return response()->json(Indonesia::search($request->kecamatan)->allVillages());
     }
 }

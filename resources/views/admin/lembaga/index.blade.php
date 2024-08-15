@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-    <div class="shadow-inner w-full overflow-hidden rounded-lg">
+    <div class="w-full overflow-hidden rounded-lg shadow-inner">
         <div class="flex flex-col items-start justify-between border-b px-4 py-3 md:flex-row md:items-center">
             <a href="{{ route('lembaga.create') }}"
                 class="tambahBtn mb-2 inline-flex flex-none items-center rounded border border-transparent bg-blue-600 p-2 text-sm font-medium text-white hover:bg-blue-700 focus:bg-blue-700 focus:outline-none disabled:pointer-events-none disabled:opacity-50 md:mb-0">
@@ -65,7 +65,7 @@
                             </td>
                             <td class="px-4 py-3 text-sm font-medium">
                                 <span
-                                    class="px-2 font-mono py-1 font-semibold leading-tight {{ $row->status == 'ACTIVE' ? 'text-green-700 bg-green-100' : 'text-red-700 bg-red-100' }}  rounded-full dark:bg-green-700 dark:text-green-100">
+                                    class="{{ $row->status == 'ACTIVE' ? 'text-green-700 bg-green-100' : 'text-red-700 bg-red-100' }} dark:bg-green-700 dark:text-green-100 rounded-full px-2 py-1 font-mono font-semibold leading-tight">
                                     {{ $row->status }}
                                 </span>
                             </td>
@@ -73,10 +73,10 @@
                             <td class="px-4 py-3">
                                 <div class="hs-dropdown relative inline-flex">
                                     <button id="hs-dropdown-with-icons" type="button"
-                                        class="hs-dropdown-toggle py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
+                                        class="hs-dropdown-toggle dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 inline-flex items-center gap-x-2 rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-800 shadow-sm hover:bg-gray-50 focus:bg-gray-50 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                                         aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
                                         Action
-                                        <svg class="hs-dropdown-open:rotate-180 size-4" xmlns="http://www.w3.org/2000/svg"
+                                        <svg class="size-4 hs-dropdown-open:rotate-180" xmlns="http://www.w3.org/2000/svg"
                                             width="24" height="24" viewBox="0 0 24 24" fill="none"
                                             stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                             stroke-linejoin="round">
@@ -84,10 +84,10 @@
                                         </svg>
                                     </button>
 
-                                    <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-lg p-1 space-y-0.5 mt-2 divide-y divide-gray-200 dark:bg-neutral-800 dark:border dark:border-neutral-700 dark:divide-neutral-700"
+                                    <div class="hs-dropdown-menu duration min-w-60 dark:bg-neutral-800 dark:border dark:border-neutral-700 dark:divide-neutral-700 z-10 mt-2 hidden space-y-0.5 divide-y divide-gray-200 rounded-lg bg-white p-1 opacity-0 shadow-md transition-[opacity,margin] hs-dropdown-open:opacity-100"
                                         role="menu" aria-orientation="vertical" aria-labelledby="hs-dropdown-with-icons">
                                         <!-- Edit Button -->
-                                        <a class="flex font-medium items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
+                                        <a class="dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 flex items-center gap-x-3.5 rounded-lg px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
                                             href="{{ route('lembaga.edit', $row->id) }}">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -100,7 +100,7 @@
                                         </a>
 
                                         <!-- Show Button -->
-                                        <a class="flex font-medium items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
+                                        <a class="dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 flex items-center gap-x-3.5 rounded-lg px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
                                             href="{{ route('lembaga.show', $row->id) }}">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -118,7 +118,7 @@
                                             @csrf
                                             @method('DELETE')
                                             <button type="button"
-                                                class="flex font-medium show_confirm items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 w-full text-left">
+                                                class="show_confirm dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 flex w-full items-center gap-x-3.5 rounded-lg px-3 py-2 text-left text-sm font-medium text-gray-800 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
                                                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"

@@ -7,13 +7,13 @@
     <div class="px-4 py-3 mb-8 bg-white rounded shadow-md dark:bg-gray-800">
         <form action="{{ route('lembaga.store') }}" method="POST">
             @csrf
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
                 <!-- Instansi -->
                 <div>
                     <label class="block text-sm">
-                        <span class="text-gray-700 font-semibold dark:text-gray-400">Instansi</span>
+                        <span class="font-semibold text-gray-700 dark:text-gray-400">Instansi</span>
                         <input type="text" name="instansi" value="{{ old('instansi') }}"
-                            class="block w-full mt-1 rounded text-sm border-gray-300 dark:text-gray-300 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red form-input"
+                            class="block w-full mt-1 text-sm border-gray-300 rounded dark:text-gray-300 dark:bg-gray-700 focus:shadow-outline-red form-input focus:border-red-400 focus:outline-none"
                             placeholder="Instansi" />
                         @error('instansi')
                             <span class="text-xs text-red-600 dark:text-red-400">{{ $message }}</span>
@@ -24,9 +24,9 @@
                 <!-- Sub Instansi -->
                 <div>
                     <label class="block text-sm">
-                        <span class="text-gray-700 font-semibold dark:text-gray-400">Sub Instansi</span>
+                        <span class="font-semibold text-gray-700 dark:text-gray-400">Sub Instansi</span>
                         <input type="text" name="sub_instansi" value="{{ old('sub_instansi') }}"
-                            class="block w-full mt-1 rounded text-sm border-gray-300 dark:text-gray-300 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red form-input"
+                            class="block w-full mt-1 text-sm border-gray-300 rounded dark:text-gray-300 dark:bg-gray-700 focus:shadow-outline-red form-input focus:border-red-400 focus:outline-none"
                             placeholder="Sub Instansi" />
                         @error('sub_instansi')
                             <span class="text-xs text-red-600 dark:text-red-400">{{ $message }}</span>
@@ -37,9 +37,9 @@
                 <!-- Nama -->
                 <div>
                     <label class="block text-sm">
-                        <span class="text-gray-700 font-semibold dark:text-gray-400">Nama Lembaga</span>
+                        <span class="font-semibold text-gray-700 dark:text-gray-400">Nama Lembaga</span>
                         <input type="text" name="nama" value="{{ old('nama') }}"
-                            class="block w-full mt-1 rounded text-sm border-gray-300 dark:text-gray-300 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red form-input"
+                            class="block w-full mt-1 text-sm border-gray-300 rounded dark:text-gray-300 dark:bg-gray-700 focus:shadow-outline-red form-input focus:border-red-400 focus:outline-none"
                             placeholder="Nama Sekolah" />
                         @error('nama')
                             <span class="text-xs text-red-600 dark:text-red-400">{{ $message }}</span>
@@ -50,9 +50,9 @@
                 <!-- Level -->
                 <div>
                     <label class="block text-sm">
-                        <span class="text-gray-700 font-semibold dark:text-gray-400">Level/Tingkat</span>
+                        <span class="font-semibold text-gray-700 dark:text-gray-400">Level/Tingkat</span>
                         <select name="level" data-placeholder="Level/Tingkat"
-                            class="mt-1 block w-full border-gray-200 rounded text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
+                            class="block w-full mt-1 text-sm border-gray-200 rounded dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50">
                             <option value="">Pilih Level</option>
                             <option value="TK/RA" {{ old('level') == 'TK/RA' ? 'selected' : '' }}>TK/RA</option>
                             <option value="SD/MI" {{ old('level') == 'SD/MI' ? 'selected' : '' }}>SD/MI</option>
@@ -70,9 +70,9 @@
                 <!-- NSM -->
                 <div>
                     <label class="block text-sm">
-                        <span class="text-gray-700 font-semibold dark:text-gray-400">NSM</span>
+                        <span class="font-semibold text-gray-700 dark:text-gray-400">NSM</span>
                         <input type="number" name="nsm" value="{{ old('nsm') }}"
-                            class="block w-full mt-1 rounded text-sm border-gray-300 dark:text-gray-300 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red form-input"
+                            class="block w-full mt-1 text-sm border-gray-300 rounded dark:text-gray-300 dark:bg-gray-700 focus:shadow-outline-red form-input focus:border-red-400 focus:outline-none"
                             placeholder="NSM" />
                         @error('nsm')
                             <span class="text-xs text-red-600 dark:text-red-400">{{ $message }}</span>
@@ -83,9 +83,9 @@
                 <!-- NPSN -->
                 <div>
                     <label class="block text-sm">
-                        <span class="text-gray-700 font-semibold dark:text-gray-400">NPSN</span>
+                        <span class="font-semibold text-gray-700 dark:text-gray-400">NPSN</span>
                         <input type="number" name="npsn" value="{{ old('npsn') }}"
-                            class="block w-full mt-1 rounded text-sm border-gray-300 dark:text-gray-300 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red form-input"
+                            class="block w-full mt-1 text-sm border-gray-300 rounded dark:text-gray-300 dark:bg-gray-700 focus:shadow-outline-red form-input focus:border-red-400 focus:outline-none"
                             placeholder="NPSN" />
                         @error('npsn')
                             <span class="text-xs text-red-600 dark:text-red-400">{{ $message }}</span>
@@ -95,12 +95,47 @@
 
                 <div>
                     <label class="block text-sm">
-                        <span class="text-gray-700 font-semibold dark:text-gray-400">Provinsi</span>
-                        <select id="provinsi" name="provinsi"
-                            class="mt-1 block w-full border-gray-200 rounded text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
-                            data-placeholder="Provinsi">
-                            <option value="">Choose</option>
-                        </select>
+                        <span class="font-semibold text-gray-700 dark:text-gray-400">Provinsi</span>
+                        <div class="relative mt-1"
+                            data-hs-combo-box='{
+                            "apiUrl": "http://localhost:8000/provinsi",
+                            "outputItemTemplate": "<div class=\"cursor-pointer py-2 px-4 w-full text-sm text-gray-800 hover:bg-gray-100 rounded focus:outline-none focus:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-200 dark:focus:bg-neutral-800\" data-hs-combo-box-output-item><div class=\"flex justify-between items-center w-full\"><div><div data-hs-combo-box-output-item-field=\"name\" data-hs-combo-box-search-text data-hs-combo-box-value></div></div><span class=\"hidden hs-combo-box-selected:block\"><svg class=\"shrink-0 size-3.5 text-blue-600 dark:text-blue-500\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"></polyline></svg></span></div></div>",
+                            "outputEmptyTemplate": "<div class=\"w-full px-4 py-2 text-sm text-gray-800 rounded dark:bg-neutral-900 dark:text-neutral-200\">Tidak Ditemukan</div>",
+                            "outputLoaderTemplate": "<div class=\"flex items-center justify-center px-4 py-2 text-sm text-gray-800 bg-white rounded dark:bg-neutral-900 dark:text-neutral-200\"><div class=\"size-6 dark:text-blue-500 inline-block animate-spin rounded-full border-[3px] border-current border-t-transparent text-blue-600\" role=\"status\" aria-label=\"loading\"><span class=\"sr-only\">Memuat...</span></div></div>"
+                        }'>
+                            <div class="relative">
+                                <input
+                                    class="block w-full py-2 text-sm border-gray-200 rounded dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 pe-9 ps-4 focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50"
+                                    type="text" role="combobox" aria-expanded="false" value="" name="provinsi"
+                                    id="provinsi" data-hs-combo-box-input="" placeholder="Provinsi">
+                                <div class="absolute inset-y-0 z-20 items-center hidden end-8 hs-combo-box-active:flex">
+                                    <button type="button"
+                                        class="inline-flex items-center justify-center text-gray-500 rounded-full size-6 dark:text-neutral-500 dark:hover:text-blue-500 dark:focus:text-blue-500 shrink-0 hover:text-blue-600 focus:text-blue-600 focus:outline-none"
+                                        aria-label="Close" data-hs-combo-box-close="">
+                                        <span class="sr-only">Close</span>
+                                        <svg class="size-4 shrink-0" xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <path d="m15 9-6 6"></path>
+                                            <path d="m9 9 6 6"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="absolute -translate-y-1/2 end-3 top-1/2" aria-expanded="false"
+                                    data-hs-combo-box-toggle="">
+                                    <svg class="size-3.5 dark:text-neutral-500 shrink-0 text-gray-500"
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="m7 15 5 5 5-5"></path>
+                                        <path d="m7 9 5-5 5 5"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="dark:[&::-webkit-scrollbar-track]:bg-neutral-700 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500 dark:bg-neutral-900 dark:border-neutral-700 absolute z-50 max-h-72 w-full overflow-hidden overflow-y-auto rounded border border-gray-200 bg-white p-1 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300 [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar]:w-2"
+                                style="display: none;" data-hs-combo-box-output=""></div>
+                        </div>
                         @error('provinsi')
                             <span class="text-xs text-red-600 dark:text-red-400">{{ $message }}</span>
                         @enderror
@@ -109,12 +144,41 @@
 
                 <div>
                     <label class="block text-sm">
-                        <span class="text-gray-700 font-semibold dark:text-gray-400">Kabupaten</span>
-                        <select id="kabupaten" name="kabupaten"
-                            class="mt-1 block w-full border-gray-200 rounded text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
-                            data-placeholder="Kabupaten">
-                            <option value="">Choose</option>
-                        </select>
+                        <span class="font-semibold text-gray-700 dark:text-gray-400">Kabupaten</span>
+                        <div id="dataKabupaten" class="relative mt-1" data-hs-combo-box="">
+                            <div class="relative">
+                                <input
+                                    class="block w-full py-2 text-sm border-gray-200 rounded dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 pe-9 ps-4 focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50"
+                                    type="text" role="combobox" aria-expanded="false" value=""
+                                    name="kabupaten" id="kabupaten" data-hs-combo-box-input="" placeholder="Kabupaten">
+                                <div class="absolute inset-y-0 z-20 items-center hidden end-8 hs-combo-box-active:flex">
+                                    <button type="button"
+                                        class="inline-flex items-center justify-center text-gray-500 rounded-full size-6 dark:text-neutral-500 dark:hover:text-blue-500 dark:focus:text-blue-500 shrink-0 hover:text-blue-600 focus:text-blue-600 focus:outline-none"
+                                        aria-label="Close" data-hs-combo-box-close="">
+                                        <span class="sr-only">Close</span>
+                                        <svg class="size-4 shrink-0" xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <path d="m15 9-6 6"></path>
+                                            <path d="m9 9 6 6"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="absolute -translate-y-1/2 end-3 top-1/2" aria-expanded="false"
+                                    data-hs-combo-box-toggle="">
+                                    <svg class="size-3.5 dark:text-neutral-500 shrink-0 text-gray-500"
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="m7 15 5 5 5-5"></path>
+                                        <path d="m7 9 5-5 5 5"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="dark:[&::-webkit-scrollbar-track]:bg-neutral-700 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500 dark:bg-neutral-900 dark:border-neutral-700 absolute z-50 max-h-72 w-full overflow-hidden overflow-y-auto rounded border border-gray-200 bg-white p-1 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300 [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar]:w-2"
+                                style="display: none;" data-hs-combo-box-output=""></div>
+                        </div>
                         @error('kabupaten')
                             <span class="text-xs text-red-600 dark:text-red-400">{{ $message }}</span>
                         @enderror
@@ -123,12 +187,45 @@
 
                 <div>
                     <label class="block text-sm">
-                        <span class="text-gray-700 font-semibold dark:text-gray-400">Kecamatan</span>
-                        <select id="kecamatan" name="kecamatan"
-                            class="mt-1 block w-full border-gray-200 rounded text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
-                            data-placeholder="Kecamatan">
-                            <option value="">Choose</option>
-                        </select>
+                        <span class="font-semibold text-gray-700 dark:text-gray-400">Kecamatan</span>
+                        <div class="relative mt-1"
+                            data-hs-combo-box='{
+                            "apiUrl": "http://localhost:8000/kecamatan",
+                            "outputItemTemplate": "<div class=\"cursor-pointer py-2 px-4 w-full text-sm text-gray-800 hover:bg-gray-100 rounded focus:outline-none focus:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-200 dark:focus:bg-neutral-800\" data-hs-combo-box-output-item><div class=\"flex justify-between items-center w-full\"><div><div data-hs-combo-box-output-item-field=\"name\" data-hs-combo-box-search-text data-hs-combo-box-value></div></div><span class=\"hidden hs-combo-box-selected:block\"><svg class=\"shrink-0 size-3.5 text-blue-600 dark:text-blue-500\" xmlns=\"http:.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"></polyline></svg></span></div></div>"
+                          }'>
+                            <div class="relative">
+                                <input
+                                    class="block w-full py-2 text-sm border-gray-200 rounded dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 pe-9 ps-4 focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50"
+                                    type="text" role="combobox" aria-expanded="false" value=""
+                                    name="kecamatan" id="kecamatan" data-hs-combo-box-input="" placeholder="Kecamatan">
+                                <div class="absolute inset-y-0 z-20 items-center hidden end-8 hs-combo-box-active:flex">
+                                    <button type="button"
+                                        class="inline-flex items-center justify-center text-gray-500 rounded-full size-6 dark:text-neutral-500 dark:hover:text-blue-500 dark:focus:text-blue-500 shrink-0 hover:text-blue-600 focus:text-blue-600 focus:outline-none"
+                                        aria-label="Close" data-hs-combo-box-close="">
+                                        <span class="sr-only">Close</span>
+                                        <svg class="size-4 shrink-0" xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <path d="m15 9-6 6"></path>
+                                            <path d="m9 9 6 6"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="absolute -translate-y-1/2 end-3 top-1/2" aria-expanded="false"
+                                    data-hs-combo-box-toggle="">
+                                    <svg class="size-3.5 dark:text-neutral-500 shrink-0 text-gray-500"
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="m7 15 5 5 5-5"></path>
+                                        <path d="m7 9 5-5 5 5"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="dark:[&::-webkit-scrollbar-track]:bg-neutral-700 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500 dark:bg-neutral-900 dark:border-neutral-700 absolute z-50 max-h-72 w-full overflow-hidden overflow-y-auto rounded border border-gray-200 bg-white p-1 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300 [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar]:w-2"
+                                style="display: none;" data-hs-combo-box-output=""></div>
+                        </div>
                         @error('kecamatan')
                             <span class="text-xs text-red-600 dark:text-red-400">{{ $message }}</span>
                         @enderror
@@ -137,12 +234,48 @@
 
                 <div>
                     <label class="block text-sm">
-                        <span class="text-gray-700 font-semibold dark:text-gray-400">Kelurahan</span>
-                        <select id="kelurahan" name="kelurahan"
-                            class="mt-1 block w-full border-gray-200 rounded text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
-                            data-placeholder="Kelurahan">
-                            <option value="">Choose</option>
-                        </select>
+                        <span class="font-semibold text-gray-700 dark:text-gray-400">Desa/Kelurahan</span>
+                        <div class="relative mt-1"
+                            data-hs-combo-box='{
+                            "apiUrl": "http://localhost:8000/kelurahan",
+                            "outputItemTemplate": "<div class=\"cursor-pointer py-2 px-4 w-full text-sm text-gray-800 hover:bg-gray-100 rounded focus:outline-none focus:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-200 dark:focus:bg-neutral-800\" data-hs-combo-box-output-item><div class=\"flex justify-between items-center w-full\"><div><div data-hs-combo-box-output-item-field=\"name\" data-hs-combo-box-search-text data-hs-combo-box-value></div></div><span class=\"hidden hs-combo-box-selected:block\"><svg class=\"shrink-0 size-3.5 text-blue-600 dark:text-blue-500\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"></polyline></svg></span></div></div>",
+                            "outputEmptyTemplate": "<div class=\"w-full px-4 py-2 text-sm text-gray-800 rounded dark:bg-neutral-900 dark:text-neutral-200\">Tidak Ditemukan</div>",
+                            "outputLoaderTemplate": "<div class=\"flex items-center justify-center px-4 py-2 text-sm text-gray-800 bg-white rounded dark:bg-neutral-900 dark:text-neutral-200\"><div class=\"size-6 dark:text-blue-500 inline-block animate-spin rounded-full border-[3px] border-current border-t-transparent text-blue-600\" role=\"status\" aria-label=\"loading\"><span class=\"sr-only\">Memuat...</span></div></div>"
+                        }'>
+                            <div class="relative">
+                                <input
+                                    class="block w-full py-2 text-sm border-gray-200 rounded dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 pe-9 ps-4 focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50"
+                                    type="text" role="combobox" aria-expanded="false" value=""
+                                    name="kelurahan" id="kelurahan" data-hs-combo-box-input=""
+                                    placeholder="Desa/Kelurahan">
+                                <div class="absolute inset-y-0 z-20 items-center hidden end-8 hs-combo-box-active:flex">
+                                    <button type="button"
+                                        class="inline-flex items-center justify-center text-gray-500 rounded-full size-6 dark:text-neutral-500 dark:hover:text-blue-500 dark:focus:text-blue-500 shrink-0 hover:text-blue-600 focus:text-blue-600 focus:outline-none"
+                                        aria-label="Close" data-hs-combo-box-close="">
+                                        <span class="sr-only">Close</span>
+                                        <svg class="size-4 shrink-0" xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <path d="m15 9-6 6"></path>
+                                            <path d="m9 9 6 6"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="absolute -translate-y-1/2 end-3 top-1/2" aria-expanded="false"
+                                    data-hs-combo-box-toggle="">
+                                    <svg class="size-3.5 dark:text-neutral-500 shrink-0 text-gray-500"
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="m7 15 5 5 5-5"></path>
+                                        <path d="m7 9 5-5 5 5"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="dark:[&::-webkit-scrollbar-track]:bg-neutral-700 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500 dark:bg-neutral-900 dark:border-neutral-700 absolute z-50 max-h-72 w-full overflow-hidden overflow-y-auto rounded border border-gray-200 bg-white p-1 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300 [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar]:w-2"
+                                style="display: none;" data-hs-combo-box-output=""></div>
+                        </div>
                         @error('kelurahan')
                             <span class="text-xs text-red-600 dark:text-red-400">{{ $message }}</span>
                         @enderror
@@ -153,9 +286,9 @@
                 <!-- Alamat -->
                 <div>
                     <label class="block text-sm">
-                        <span class="text-gray-700 font-semibold dark:text-gray-400">Alamat</span>
+                        <span class="font-semibold text-gray-700 dark:text-gray-400">Alamat</span>
                         <input type="text" name="alamat" value="{{ old('alamat') }}"
-                            class="block w-full mt-1 rounded text-sm border-gray-300 dark:text-gray-300 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red form-input"
+                            class="block w-full mt-1 text-sm border-gray-300 rounded dark:text-gray-300 dark:bg-gray-700 focus:shadow-outline-red form-input focus:border-red-400 focus:outline-none"
                             placeholder="Alamat" />
                         @error('alamat')
                             <span class="text-xs text-red-600 dark:text-red-400">{{ $message }}</span>
@@ -166,9 +299,9 @@
                 <!-- No Telp -->
                 <div>
                     <label class="block text-sm">
-                        <span class="text-gray-700 font-semibold dark:text-gray-400">No Telp</span>
+                        <span class="font-semibold text-gray-700 dark:text-gray-400">No Telp</span>
                         <input type="number" name="no_telp" value="{{ old('no_telp') }}"
-                            class="block w-full mt-1 rounded text-sm border-gray-300 dark:text-gray-300 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red form-input"
+                            class="block w-full mt-1 text-sm border-gray-300 rounded dark:text-gray-300 dark:bg-gray-700 focus:shadow-outline-red form-input focus:border-red-400 focus:outline-none"
                             placeholder="No Telp" />
                         @error('no_telp')
                             <span class="text-xs text-red-600 dark:text-red-400">{{ $message }}</span>
@@ -179,9 +312,9 @@
                 <!-- tempat_cetak -->
                 <div>
                     <label class="block text-sm">
-                        <span class="text-gray-700 font-semibold dark:text-gray-400">Tempat Cetak</span>
+                        <span class="font-semibold text-gray-700 dark:text-gray-400">Tempat Cetak</span>
                         <input type="text" name="tempat_cetak" value="{{ old('tempat_cetak') }}"
-                            class="block w-full mt-1 rounded text-sm border-gray-300 dark:text-gray-300 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red form-input"
+                            class="block w-full mt-1 text-sm border-gray-300 rounded dark:text-gray-300 dark:bg-gray-700 focus:shadow-outline-red form-input focus:border-red-400 focus:outline-none"
                             placeholder="Tempat cetak" />
                         @error('tempat_cetak')
                             <span class="text-xs text-red-600 dark:text-red-400">{{ $message }}</span>
@@ -192,9 +325,9 @@
                 <!-- Level -->
                 <div>
                     <label class="block text-sm">
-                        <span class="text-gray-700 font-semibold dark:text-gray-400">Status</span>
+                        <span class="font-semibold text-gray-700 dark:text-gray-400">Status</span>
                         <select name="status" data-placeholder="Status"
-                            class="mt-1 block w-full border-gray-200 rounded text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
+                            class="block w-full mt-1 text-sm border-gray-200 rounded dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50">
                             <option value="">Pilih Status</option>
                             <option value="ACTIVE" {{ old('status') == 'ACTIVE' ? 'selected' : '' }}>ACTIVE</option>
                             <option value="NON ACTIVE" {{ old('status') == 'NON ACTIVE' ? 'selected' : '' }}>NON ACTIVE
@@ -209,9 +342,9 @@
                 <!-- Latitude -->
                 <div>
                     <label class="block text-sm">
-                        <span class="text-gray-700 font-semibold dark:text-gray-400">Latitude</span>
+                        <span class="font-semibold text-gray-700 dark:text-gray-400">Latitude</span>
                         <input type="text" name="latitude" value="{{ old('latitude') }}"
-                            class="block w-full mt-1 rounded text-sm border-gray-300 dark:text-gray-300 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red form-input"
+                            class="block w-full mt-1 text-sm border-gray-300 rounded dark:text-gray-300 dark:bg-gray-700 focus:shadow-outline-red form-input focus:border-red-400 focus:outline-none"
                             placeholder="Latitude" />
                         @error('latitude')
                             <span class="text-xs text-red-600 dark:text-red-400">{{ $message }}</span>
@@ -222,9 +355,9 @@
                 <!-- longitude -->
                 <div>
                     <label class="block text-sm">
-                        <span class="text-gray-700 font-semibold dark:text-gray-400">Longitude</span>
+                        <span class="font-semibold text-gray-700 dark:text-gray-400">Longitude</span>
                         <input type="text" name="longitude" value="{{ old('longitude') }}"
-                            class="block w-full mt-1 rounded text-sm border-gray-300 dark:text-gray-300 dark:bg-gray-700 focus:border-red-400 focus:outline-none focus:shadow-outline-red form-input"
+                            class="block w-full mt-1 text-sm border-gray-300 rounded dark:text-gray-300 dark:bg-gray-700 focus:shadow-outline-red form-input focus:border-red-400 focus:outline-none"
                             placeholder="longitude" />
                         @error('longitude')
                             <span class="text-xs text-red-600 dark:text-red-400">{{ $message }}</span>
@@ -246,6 +379,40 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 @endpush
 @push('addon-script')
+    <script>
+        function updateKabupatenComboBox() {
+            let provinsiTerpilih = document.getElementById('provinsi').value;
+            let kabupatenComboBox = document.getElementById('dataKabupaten');
+
+            // Update apiUrl dengan provinsi yang terpilih
+            let apiUrl = `http://localhost:8000/kabupaten?provinsi=${encodeURIComponent(JAWA TENGAH)}`;
+
+            // Membuat objek konfigurasi baru
+            let config = {
+                apiUrl: apiUrl,
+                outputItemTemplate: "<div class=\"cursor-pointer py-2 px-4 w-full text-sm text-gray-800 hover:bg-gray-100 rounded focus:outline-none focus:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-200 dark:focus:bg-neutral-800\" data-hs-combo-box-output-item><div class=\"flex justify-between items-center w-full\"><div><div data-hs-combo-box-output-item-field=\"name\" data-hs-combo-box-search-text data-hs-combo-box-value></div></div><span class=\"hidden hs-combo-box-selected:block\"><svg class=\"shrink-0 size-3.5 text-blue-600 dark:text-blue-500\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"></polyline></svg></span></div></div>",
+                outputEmptyTemplate: "<div class=\"w-full px-4 py-2 text-sm text-gray-800 rounded dark:bg-neutral-900 dark:text-neutral-200\">Tidak Ditemukan</div>",
+                outputLoaderTemplate: "<div class=\"flex items-center justify-center px-4 py-2 text-sm text-gray-800 bg-white rounded dark:bg-neutral-900 dark:text-neutral-200\"><div class=\"size-6 dark:text-blue-500 inline-block animate-spin rounded-full border-[3px] border-current border-t-transparent text-blue-600\" role=\"status\" aria-label=\"loading\"><span class=\"sr-only\">Memuat...</span></div></div>"
+            };
+
+            console.log(config)
+            // Set data-hs-combo-box dengan string JSON yang valid
+            kabupatenComboBox.setAttribute('data-hs-combo-box', JSON.stringify(config));
+
+            // Dapatkan instance HSComboBox dan lakukan reinitialisasi
+            const comboBoxInstance = HSComboBox.getInstance(kabupatenComboBox.querySelector('[data-hs-combo-box-input]'),
+                true);
+            if (comboBoxInstance) {
+                comboBoxInstance.close(); // Tutup combobox jika sedang terbuka
+            }
+
+            // Inisialisasi ulang combobox
+            HSComboBox.autoInit();
+        }
+    </script>
+
+
+
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
         let map;
@@ -276,6 +443,6 @@
 
             document.querySelector('input[name="latitude"]').addEventListener('input', updateMap);
             document.querySelector('input[name="longitude"]').addEventListener('input', updateMap);
-        });
-    </script>
-@endpush
+        }); <
+        />
+    @endpush
