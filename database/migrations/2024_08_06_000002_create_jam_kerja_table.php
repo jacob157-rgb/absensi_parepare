@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('sekolah_id');
             $table->string('nama');
-            $table->string('hari_libur'); // ex : ['SENIN', 'SELASA', 'ETC..']
+            $table->string('hari_libur'); // ex : 'SENIN'
             $table->timestamps();
 
             $table->foreign('sekolah_id')->references('id')->on('sekolah')->onDelete('cascade');

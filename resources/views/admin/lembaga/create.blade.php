@@ -98,7 +98,7 @@
                         <span class="font-semibold text-gray-700 dark:text-gray-400">Provinsi</span>
                         <div class="relative mt-1"
                             data-hs-combo-box='{
-                            "apiUrl": "http://localhost:8000/provinsi",
+                            "apiUrl": "{{ url('/provinsi') }}",
                             "outputItemTemplate": "<div class=\"cursor-pointer py-2 px-4 w-full text-sm text-gray-800 hover:bg-gray-100 rounded focus:outline-none focus:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-200 dark:focus:bg-neutral-800\" data-hs-combo-box-output-item><div class=\"flex justify-between items-center w-full\"><div><div data-hs-combo-box-output-item-field=\"name\" data-hs-combo-box-search-text data-hs-combo-box-value></div></div><span class=\"hidden hs-combo-box-selected:block\"><svg class=\"shrink-0 size-3.5 text-blue-600 dark:text-blue-500\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"></polyline></svg></span></div></div>",
                             "outputEmptyTemplate": "<div class=\"w-full px-4 py-2 text-sm text-gray-800 rounded dark:bg-neutral-900 dark:text-neutral-200\">Tidak Ditemukan</div>",
                             "outputLoaderTemplate": "<div class=\"flex items-center justify-center px-4 py-2 text-sm text-gray-800 bg-white rounded dark:bg-neutral-900 dark:text-neutral-200\"><div class=\"size-6 dark:text-blue-500 inline-block animate-spin rounded-full border-[3px] border-current border-t-transparent text-blue-600\" role=\"status\" aria-label=\"loading\"><span class=\"sr-only\">Memuat...</span></div></div>"
@@ -145,12 +145,20 @@
                 <div>
                     <label class="block text-sm">
                         <span class="font-semibold text-gray-700 dark:text-gray-400">Kabupaten</span>
-                        <div id="dataKabupaten" class="relative mt-1" data-hs-combo-box="">
+                        
+                        <div id="dataKabupaten" class="relative mt-1 --prevent-on-load-init"
+                            data-hs-combo-box='{
+                            "apiUrl": "{{ url('/kabupaten') }}",
+                            "apiQuery": "provinsi=",
+                            "outputItemTemplate": "<div class=\"cursor-pointer py-2 px-4 w-full text-sm text-gray-800 hover:bg-gray-100 rounded focus:outline-none focus:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-200 dark:focus:bg-neutral-800\" data-hs-combo-box-output-item><div class=\"flex justify-between items-center w-full\"><div><div data-hs-combo-box-output-item-field=\"name\" data-hs-combo-box-search-text data-hs-combo-box-value></div></div><span class=\"hidden hs-combo-box-selected:block\"><svg class=\"shrink-0 size-3.5 text-blue-600 dark:text-blue-500\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"></polyline></svg></span></div></div>",
+                            "outputEmptyTemplate": "<div class=\"w-full px-4 py-2 text-sm text-gray-800 rounded dark:bg-neutral-900 dark:text-neutral-200\">Tidak Ditemukan</div>",
+                            "outputLoaderTemplate": "<div class=\"flex items-center justify-center px-4 py-2 text-sm text-gray-800 bg-white rounded dark:bg-neutral-900 dark:text-neutral-200\"><div class=\"size-6 dark:text-blue-500 inline-block animate-spin rounded-full border-[3px] border-current border-t-transparent text-blue-600\" role=\"status\" aria-label=\"loading\"><span class=\"sr-only\">Memuat...</span></div></div>"
+                        }'>
                             <div class="relative">
                                 <input
                                     class="block w-full py-2 text-sm border-gray-200 rounded dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 pe-9 ps-4 focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50"
                                     type="text" role="combobox" aria-expanded="false" value=""
-                                    name="kabupaten" id="kabupaten" data-hs-combo-box-input="" placeholder="Kabupaten">
+                                    name="Kabupaten" id="kabupaten" data-hs-combo-box-input="" placeholder="kabupaten">
                                 <div class="absolute inset-y-0 z-20 items-center hidden end-8 hs-combo-box-active:flex">
                                     <button type="button"
                                         class="inline-flex items-center justify-center text-gray-500 rounded-full size-6 dark:text-neutral-500 dark:hover:text-blue-500 dark:focus:text-blue-500 shrink-0 hover:text-blue-600 focus:text-blue-600 focus:outline-none"
@@ -188,11 +196,7 @@
                 <div>
                     <label class="block text-sm">
                         <span class="font-semibold text-gray-700 dark:text-gray-400">Kecamatan</span>
-                        <div class="relative mt-1"
-                            data-hs-combo-box='{
-                            "apiUrl": "http://localhost:8000/kecamatan",
-                            "outputItemTemplate": "<div class=\"cursor-pointer py-2 px-4 w-full text-sm text-gray-800 hover:bg-gray-100 rounded focus:outline-none focus:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-200 dark:focus:bg-neutral-800\" data-hs-combo-box-output-item><div class=\"flex justify-between items-center w-full\"><div><div data-hs-combo-box-output-item-field=\"name\" data-hs-combo-box-search-text data-hs-combo-box-value></div></div><span class=\"hidden hs-combo-box-selected:block\"><svg class=\"shrink-0 size-3.5 text-blue-600 dark:text-blue-500\" xmlns=\"http:.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"></polyline></svg></span></div></div>"
-                          }'>
+                        <div id="dataKecamatan" class="relative mt-1">
                             <div class="relative">
                                 <input
                                     class="block w-full py-2 text-sm border-gray-200 rounded dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 pe-9 ps-4 focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50"
@@ -234,20 +238,14 @@
 
                 <div>
                     <label class="block text-sm">
-                        <span class="font-semibold text-gray-700 dark:text-gray-400">Desa/Kelurahan</span>
-                        <div class="relative mt-1"
-                            data-hs-combo-box='{
-                            "apiUrl": "http://localhost:8000/kelurahan",
-                            "outputItemTemplate": "<div class=\"cursor-pointer py-2 px-4 w-full text-sm text-gray-800 hover:bg-gray-100 rounded focus:outline-none focus:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-200 dark:focus:bg-neutral-800\" data-hs-combo-box-output-item><div class=\"flex justify-between items-center w-full\"><div><div data-hs-combo-box-output-item-field=\"name\" data-hs-combo-box-search-text data-hs-combo-box-value></div></div><span class=\"hidden hs-combo-box-selected:block\"><svg class=\"shrink-0 size-3.5 text-blue-600 dark:text-blue-500\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"></polyline></svg></span></div></div>",
-                            "outputEmptyTemplate": "<div class=\"w-full px-4 py-2 text-sm text-gray-800 rounded dark:bg-neutral-900 dark:text-neutral-200\">Tidak Ditemukan</div>",
-                            "outputLoaderTemplate": "<div class=\"flex items-center justify-center px-4 py-2 text-sm text-gray-800 bg-white rounded dark:bg-neutral-900 dark:text-neutral-200\"><div class=\"size-6 dark:text-blue-500 inline-block animate-spin rounded-full border-[3px] border-current border-t-transparent text-blue-600\" role=\"status\" aria-label=\"loading\"><span class=\"sr-only\">Memuat...</span></div></div>"
-                        }'>
+                        <span class="font-semibold text-gray-700 dark:text-gray-400">Kelurahan / Desa</span>
+                        <div id="dataKelurahan" class="relative mt-1">
                             <div class="relative">
                                 <input
                                     class="block w-full py-2 text-sm border-gray-200 rounded dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 pe-9 ps-4 focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50"
                                     type="text" role="combobox" aria-expanded="false" value=""
                                     name="kelurahan" id="kelurahan" data-hs-combo-box-input=""
-                                    placeholder="Desa/Kelurahan">
+                                    placeholder="Kelurahan / Desa">
                                 <div class="absolute inset-y-0 z-20 items-center hidden end-8 hs-combo-box-active:flex">
                                     <button type="button"
                                         class="inline-flex items-center justify-center text-gray-500 rounded-full size-6 dark:text-neutral-500 dark:hover:text-blue-500 dark:focus:text-blue-500 shrink-0 hover:text-blue-600 focus:text-blue-600 focus:outline-none"
@@ -380,38 +378,41 @@
 @endpush
 @push('addon-script')
     <script>
-        function updateKabupatenComboBox() {
-            let provinsiTerpilih = document.getElementById('provinsi').value;
-            let kabupatenComboBox = document.getElementById('dataKabupaten');
+        document.getElementById('provinsi').addEventListener('blur', function() {
+            updateComboBox('kabupaten', 'provinsi');
+        });
 
-            // Update apiUrl dengan provinsi yang terpilih
-            let apiUrl = `http://localhost:8000/kabupaten?provinsi=${encodeURIComponent(JAWA TENGAH)}`;
+        function updateComboBox(dataType, queryString) {
+            const comboBox = `#data${dataType.charAt(0).toUpperCase() + dataType.slice(1)}`;
+            const element = HSComboBox.getInstance(comboBox, false);
 
-            // Membuat objek konfigurasi baru
-            let config = {
-                apiUrl: apiUrl,
-                outputItemTemplate: "<div class=\"cursor-pointer py-2 px-4 w-full text-sm text-gray-800 hover:bg-gray-100 rounded focus:outline-none focus:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-200 dark:focus:bg-neutral-800\" data-hs-combo-box-output-item><div class=\"flex justify-between items-center w-full\"><div><div data-hs-combo-box-output-item-field=\"name\" data-hs-combo-box-search-text data-hs-combo-box-value></div></div><span class=\"hidden hs-combo-box-selected:block\"><svg class=\"shrink-0 size-3.5 text-blue-600 dark:text-blue-500\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"></polyline></svg></span></div></div>",
-                outputEmptyTemplate: "<div class=\"w-full px-4 py-2 text-sm text-gray-800 rounded dark:bg-neutral-900 dark:text-neutral-200\">Tidak Ditemukan</div>",
-                outputLoaderTemplate: "<div class=\"flex items-center justify-center px-4 py-2 text-sm text-gray-800 bg-white rounded dark:bg-neutral-900 dark:text-neutral-200\"><div class=\"size-6 dark:text-blue-500 inline-block animate-spin rounded-full border-[3px] border-current border-t-transparent text-blue-600\" role=\"status\" aria-label=\"loading\"><span class=\"sr-only\">Memuat...</span></div></div>"
-            };
+            let query = document.getElementById(queryString).value;
+            let apiUrl = `{{ url('/${dataType.toLowerCase()}') }}`;
 
-            console.log(config)
-            // Set data-hs-combo-box dengan string JSON yang valid
-            kabupatenComboBox.setAttribute('data-hs-combo-box', JSON.stringify(config));
+            let configString = `
+    {
+        "apiUrl": "${apiUrl}",
+        "apiQuery": "${queryString}=${query}",
+        "outputItemTemplate": "<div class=\\"cursor-pointer py-2 px-4 w-full text-sm text-gray-800 hover:bg-gray-100 rounded focus:outline-none focus:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-200 dark:focus:bg-neutral-800\\" data-hs-combo-box-output-item><div class=\\"flex justify-between items-center w-full\\"><div><div data-hs-combo-box-output-item-field=\\"name\\" data-hs-combo-box-search-text data-hs-combo-box-value></div></div><span class=\\"hidden hs-combo-box-selected:block\\"><svg class=\\"shrink-0 size-3.5 text-blue-600 dark:text-blue-500\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\"><polyline points=\\"20 6 9 17 4 12\\"></polyline></svg></span></div></div>",
+        "outputEmptyTemplate": "<div class=\\"w-full px-4 py-2 text-sm text-gray-800 rounded dark:bg-neutral-900 dark:text-neutral-200\\">Tidak Ditemukan</div>",
+        "outputLoaderTemplate": "<div class=\\"flex items-center justify-center px-4 py-2 text-sm text-gray-800 bg-white rounded dark:bg-neutral-900 dark:text-neutral-200\\"><div class=\\"size-6 dark:text-blue-500 inline-block animate-spin rounded-full border-[3px] border-current border-t-transparent text-blue-600\\" role=\\"status\\" aria-label=\\"loading\\"><span class=\\"sr-only\\">Memuat...</span></div></div>"
+    }`;
 
-            // Dapatkan instance HSComboBox dan lakukan reinitialisasi
-            const comboBoxInstance = HSComboBox.getInstance(kabupatenComboBox.querySelector('[data-hs-combo-box-input]'),
-                true);
-            if (comboBoxInstance) {
-                comboBoxInstance.close(); // Tutup combobox jika sedang terbuka
-            }
+            // Debugging Logs
+            console.log('ComboBox:', comboBox);
+            console.log('Query:', query);
+            console.log('API URL:', apiUrl);
+            console.log('Config:', configString);
 
-            // Inisialisasi ulang combobox
-            HSComboBox.autoInit();
+            document.querySelectorAll(comboBox).forEach(node => {
+                node.setAttribute("data-hs-combo-box", configString);
+            });
+
+            // Ensure HSComboBox is correctly initialized
+            new HSComboBox(document.querySelector(comboBox));
+            window.HSStaticMethods.autoInit();
         }
     </script>
-
-
 
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
@@ -443,6 +444,6 @@
 
             document.querySelector('input[name="latitude"]').addEventListener('input', updateMap);
             document.querySelector('input[name="longitude"]').addEventListener('input', updateMap);
-        }); <
-        />
-    @endpush
+        });
+    </script>
+@endpush

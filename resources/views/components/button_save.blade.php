@@ -1,4 +1,4 @@
-<div class="mt-4 flex justify-end">
+<div class="flex justify-end mt-4">
     <button type="submit"
         class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded shadow-inner active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue">
         <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"

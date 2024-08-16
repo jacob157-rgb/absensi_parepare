@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\JamKerjaController;
 use App\Http\Controllers\Admin\LembagaController;
 use App\Http\Controllers\Admin\SemesterController;
 use App\Http\Controllers\Admin\TahunAjaranController;
@@ -45,6 +46,14 @@ Route::middleware(isAdmin::class)->group(function () {
             Route::get('/lembaga/{id}/show', 'show')->name('lembaga.show');
             Route::post('/lembaga/{id}', 'update')->name('lembaga.update');
             Route::delete('/lembaga/{id}/destroy', 'destroy')->name('lembaga.destroy');
+        });
+        Route::controller(JamKerjaController::class)->group(function () {
+            Route::get('/jam_kerja', 'index')->name('jam_kerja.index');
+            Route::get('/jam_kerja/create', 'create')->name('jam_kerja.create');
+            Route::post('/jam_kerja', 'store')->name('jam_kerja.store');
+            Route::get('/jam_kerja/{id}', 'edit')->name('jam_kerja.edit');
+            Route::post('/jam_kerja/{id}', 'update')->name('jam_kerja.update');
+            Route::delete('/jam_kerja/{id}/destroy', 'destroy')->name('jam_kerja.destroy');
         });
     });
 });
