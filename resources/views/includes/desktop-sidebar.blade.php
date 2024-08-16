@@ -99,15 +99,31 @@
                     href="/admin/jam_kerja">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="lucide lucide-school h-5 w-5">
-                        <path d="M14 22v-4a2 2 0 1 0-4 0v4" />
-                        <path d="m18 10 4 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-8l4-2" />
-                        <path d="M18 5v17" />
-                        <path d="m4 6 8-4 8 4" />
-                        <path d="M6 5v17" />
-                        <circle cx="12" cy="9" r="2" />
+                        stroke-linejoin="round" class="lucide lucide-clock h-5 w-5">
+                        <circle cx="12" cy="12" r="10" />
+                        <polyline points="12 6 12 12 16 14" />
                     </svg>
                     <span class="ml-4">Jam Kerja</span>
+                </a>
+            </li>
+            <li class="relative flex items-center px-6 py-3">
+                @if (request()->routeIs('kalender_akademik.*'))
+                    <span class="absolute inset-y-0 left-0 w-1 rounded-br-lg rounded-tr-lg bg-blue-600"
+                        aria-hidden="true"></span>
+                @endif
+                <a class="dark:text-gray-100 dark:hover:text-gray-200 inline-flex w-full items-center text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800"
+                    href="/admin/kalender_akademik">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-calendar-x  h-5 w-5">
+                        <path d="M8 2v4" />
+                        <path d="M16 2v4" />
+                        <rect width="18" height="18" x="3" y="4" rx="2" />
+                        <path d="M3 10h18" />
+                        <path d="m14 14-4 4" />
+                        <path d="m10 14 4 4" />
+                    </svg>
+                    <span class="ml-4">Kalender Akademik</span>
                 </a>
             </li>
         </ul>

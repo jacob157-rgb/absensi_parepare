@@ -2,15 +2,15 @@
 @section('content')
     <div class="w-full overflow-hidden rounded shadow-inner">
         <div class="flex flex-col items-start justify-between border-b px-4 py-3 md:flex-row md:items-center">
-            <button {{-- href="{{ route('jam_kerja.create') }}" --}}
-                class="tambahBtn tambahBtn mb-2 inline-flex flex-none items-center rounded border border-transparent bg-blue-600 p-2 text-sm font-medium text-white hover:bg-blue-700 focus:bg-blue-700 focus:outline-none disabled:pointer-events-none disabled:opacity-50 md:mb-0">
+            <a href="{{ route('kalender_akademik.create') }}"
+                class="  mb-2 inline-flex flex-none items-center rounded border border-transparent bg-blue-600 p-2 text-sm font-medium text-white hover:bg-blue-700 focus:bg-blue-700 focus:outline-none disabled:pointer-events-none disabled:opacity-50 md:mb-0">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                     class="lucide lucide-plus">
                     <path d="M5 12h14" />
                     <path d="M12 5v14" />
                 </svg>Tambah Data
-            </button>
+            </a>
 
 
             <div class="relative max-w-xs">
@@ -38,10 +38,10 @@
                 </span>
                 <select id="lembaga-select" name="lembaga"
                     class="mt-1 block w-64 rounded border-gray-300 bg-white py-2 px-3 text-sm shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 dark:focus:border-blue-500 dark:focus:ring-blue-500">
-                    <option value="" disabled selected>- Pilih Lembaga -</option>
+                    <option value="" disabled selected> - Pilih Lembaga -</option>
                     @foreach ($lembaga as $row)
                         <option value="{{ $row->id }}" {{ request('lembaga') == $row->id ? 'selected' : '' }}>
-                           - {{ $row->nama }} -</option>
+                            - {{ $row->nama }} -</option>
                     @endforeach
                 </select>
             </label>
@@ -54,25 +54,29 @@
                         class="dark:border-gray-700 dark:text-gray-400 dark:bg-gray-800 border-b bg-gray-50 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">
                         <th class="px-4 py-3">No.</th>
                         <th class="px-4 py-3">Nama</th>
-                        <th class="px-4 py-3">Hari</th>
+                        <th class="px-4 py-3">Tanggal</th>
+                        <th class="px-4 py-3">Keterangan</th>
                         <th class="px-4 py-3">Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="dark:divide-gray-700 dark:bg-gray-800 divide-y bg-white">
-                    @foreach ($jam_kerja as $row)
+                    @foreach ($kalender_akademik as $row)
                         <tr class="dark:text-gray-400 text-gray-700">
                             <td class="px-4 py-3 text-sm font-medium">
                                 {{ $loop->iteration }}.
                             </td>
                             <td class="px-4 py-3 text-sm font-medium capitalize">
-                                {{ $row->hari_libur }}
+                                {{ $row->nama }}
                             </td>
                             <td class="px-4 py-3 text-sm font-medium capitalize">
-                                {{ $row->nama }}
+                                {{ formatTanggalLengkap($row->tanggal) }}
+                            </td>
+                            <td class="px-4 py-3 text-sm font-medium capitalize">
+                                {{ $row->keterangan }}
                             </td>
                             <td class="px-4 py-3">
                                 <div class="flex items-center space-x-4 text-sm font-medium">
-                                    <a href="{{ route('jam_kerja.edit', $row->id) }}"
+                                    <a href="{{ route('kalender_akademik.edit', $row->id) }}"
                                         class="dark:text-gray-400 editBtn focus:shadow-outline-gray flex items-center justify-between rounded px-2 py-2 text-sm font-medium leading-5 text-blue-600 focus:outline-none">
                                         <svg class="h-5 w-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
                                             <path
@@ -80,7 +84,7 @@
                                             </path>
                                         </svg>
                                     </a>
-                                    <form action="{{ route('jam_kerja.destroy', $row->id) }}" method="post"
+                                    <form action="{{ route('kalender_akademik.destroy', $row->id) }}" method="post"
                                         id="delete_{{ $row->id }}">
                                         @csrf
                                         @method('DELETE')
@@ -100,7 +104,7 @@
                     @endforeach
                 </tbody>
             </table>
-            {{ $jam_kerja->links('vendor.pagination.tailwind') }}
+            {{ $kalender_akademik->links('vendor.pagination.tailwind') }}
         </div>
     </div>
 
@@ -158,7 +162,7 @@
                 e.preventDefault();
 
                 let modalLabel = 'Tambah {{ $pages }}';
-                let postUrl = `{{ route('jam_kerja.store') }}`;
+                let postUrl = `{{ route('kalender_akademik.store') }}`;
                 let modalContent = `
                     <label class="block text-sm">
                         <span class="text-gray-700 dark:text-gray-400 font-semibold mb-1">

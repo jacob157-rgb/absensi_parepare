@@ -2,7 +2,7 @@
 
 @section('content')
     <h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">
-        Create {{ $pages }}
+        Tambah {{ $pages }}
     </h4>
     <div class="px-4 py-3 mb-8 bg-white rounded shadow-md dark:bg-gray-800">
         <form action="{{ route('jam_kerja.store') }}" method="POST">

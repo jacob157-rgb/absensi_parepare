@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\JamKerjaController;
+use App\Http\Controllers\Admin\KalenderAkademikConttroller;
 use App\Http\Controllers\Admin\LembagaController;
 use App\Http\Controllers\Admin\SemesterController;
 use App\Http\Controllers\Admin\TahunAjaranController;
@@ -54,6 +55,14 @@ Route::middleware(isAdmin::class)->group(function () {
             Route::get('/jam_kerja/{id}', 'edit')->name('jam_kerja.edit');
             Route::post('/jam_kerja/{id}', 'update')->name('jam_kerja.update');
             Route::delete('/jam_kerja/{id}/destroy', 'destroy')->name('jam_kerja.destroy');
+        });
+        Route::controller(KalenderAkademikConttroller::class)->group(function () {
+            Route::get('/kalender_akademik', 'index')->name('kalender_akademik.index');
+            Route::get('/kalender_akademik/create', 'create')->name('kalender_akademik.create');
+            Route::post('/kalender_akademik', 'store')->name('kalender_akademik.store');
+            Route::get('/kalender_akademik/{id}', 'edit')->name('kalender_akademik.edit');
+            Route::post('/kalender_akademik/{id}', 'update')->name('kalender_akademik.update');
+            Route::delete('/kalender_akademik/{id}/destroy', 'destroy')->name('kalender_akademik.destroy');
         });
     });
 });
