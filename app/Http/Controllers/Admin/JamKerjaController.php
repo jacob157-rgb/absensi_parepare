@@ -68,12 +68,24 @@ class JamKerjaController extends Controller
      */
     public function edit(string $id)
     {
+        // Retrieve the JamKerja record by ID
+        $jamKerja = JamKerja::find($id);
+
+        // Check if the record exists
+        if (!$jamKerja) {
+            return response()->json(['error' => 'Data not found'], 404);
+        }
+
+        // Prepare the data
         $data = [
             'pages' => 'Data Jam Kerja',
-            'jam_kerja' => JamKerja::find($id),
+            'jam_kerja' => $jamKerja,
         ];
-        return view('admin.jam_kerja.edit', $data);
+
+        // Return JSON response
+        return response()->json($data);
     }
+
 
     /**
      * Update the specified resource in storage.

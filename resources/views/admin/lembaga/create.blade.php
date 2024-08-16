@@ -96,46 +96,25 @@
                 <div>
                     <label class="block text-sm">
                         <span class="font-semibold text-gray-700 dark:text-gray-400">Provinsi</span>
-                        <div class="relative mt-1"
-                            data-hs-combo-box='{
-                            "apiUrl": "{{ url('/provinsi') }}",
-                            "outputItemTemplate": "<div class=\"cursor-pointer py-2 px-4 w-full text-sm text-gray-800 hover:bg-gray-100 rounded focus:outline-none focus:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-200 dark:focus:bg-neutral-800\" data-hs-combo-box-output-item><div class=\"flex justify-between items-center w-full\"><div><div data-hs-combo-box-output-item-field=\"name\" data-hs-combo-box-search-text data-hs-combo-box-value></div></div><span class=\"hidden hs-combo-box-selected:block\"><svg class=\"shrink-0 size-3.5 text-blue-600 dark:text-blue-500\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"></polyline></svg></span></div></div>",
-                            "outputEmptyTemplate": "<div class=\"w-full px-4 py-2 text-sm text-gray-800 rounded dark:bg-neutral-900 dark:text-neutral-200\">Tidak Ditemukan</div>",
-                            "outputLoaderTemplate": "<div class=\"flex items-center justify-center px-4 py-2 text-sm text-gray-800 bg-white rounded dark:bg-neutral-900 dark:text-neutral-200\"><div class=\"size-6 dark:text-blue-500 inline-block animate-spin rounded-full border-[3px] border-current border-t-transparent text-blue-600\" role=\"status\" aria-label=\"loading\"><span class=\"sr-only\">Memuat...</span></div></div>"
-                        }'>
-                            <div class="relative">
-                                <input
-                                    class="block w-full py-2 text-sm border-gray-200 rounded dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 pe-9 ps-4 focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50"
-                                    type="text" role="combobox" aria-expanded="false" value="" name="provinsi"
-                                    id="provinsi" data-hs-combo-box-input="" placeholder="Provinsi">
-                                <div class="absolute inset-y-0 z-20 items-center hidden end-8 hs-combo-box-active:flex">
-                                    <button type="button"
-                                        class="inline-flex items-center justify-center text-gray-500 rounded-full size-6 dark:text-neutral-500 dark:hover:text-blue-500 dark:focus:text-blue-500 shrink-0 hover:text-blue-600 focus:text-blue-600 focus:outline-none"
-                                        aria-label="Close" data-hs-combo-box-close="">
-                                        <span class="sr-only">Close</span>
-                                        <svg class="size-4 shrink-0" xmlns="http://www.w3.org/2000/svg" width="24"
-                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <circle cx="12" cy="12" r="10"></circle>
-                                            <path d="m15 9-6 6"></path>
-                                            <path d="m9 9 6 6"></path>
-                                        </svg>
-                                    </button>
-                                </div>
-                                <div class="absolute -translate-y-1/2 end-3 top-1/2" aria-expanded="false"
-                                    data-hs-combo-box-toggle="">
-                                    <svg class="size-3.5 dark:text-neutral-500 shrink-0 text-gray-500"
-                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path d="m7 15 5 5 5-5"></path>
-                                        <path d="m7 9 5-5 5 5"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="dark:[&::-webkit-scrollbar-track]:bg-neutral-700 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500 dark:bg-neutral-900 dark:border-neutral-700 absolute z-50 max-h-72 w-full overflow-hidden overflow-y-auto rounded border border-gray-200 bg-white p-1 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300 [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar]:w-2"
-                                style="display: none;" data-hs-combo-box-output=""></div>
-                        </div>
+                        <!-- Select -->
+                        <select id="provinsi" name="provinsi"
+                            data-hs-select='{
+                                "hasSearch": true,
+                                "searchPlaceholder": "Search...",
+                                "searchClasses": "block w-full text-sm border-gray-200 rounded focus:border-blue-500 focus:ring-blue-500 before:absolute before:inset-0 before:z-[1] dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 py-2 px-3",
+                                "searchWrapperClasses": "bg-white p-2 -mx-1 sticky top-0 dark:bg-neutral-900",
+                                "placeholder": "Pilih Provinsi...",
+                                "toggleTag": "<button type=\"button\" aria-expanded=\"false\"><span class=\"me-2\" data-icon></span><span class=\"text-gray-800 dark:text-neutral-200 \" data-title></span></button>",
+                                "toggleClasses": "hs-select-disabled:pointer-events-none hs-select-disabled:opacity-50 relative py-2 mt-1 ps-4 pe-9 flex gap-x-2 text-nowrap w-full cursor-pointer bg-white border border-gray-200 rounded text-start text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-neutral-600",
+                                "dropdownClasses": "mt-2 max-h-72 pb-1 px-1 space-y-0.5 z-20 w-full bg-white border border-gray-200 rounded overflow-hidden overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-neutral-700 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500 dark:bg-neutral-900 dark:border-neutral-700",
+                                "optionClasses": "py-2 px-4 w-full text-sm text-gray-800 cursor-pointer hover:bg-gray-100 rounded focus:outline-none focus:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-200 dark:focus:bg-neutral-800",
+                                "optionTemplate": "<div><div class=\"flex items-center\"><div class=\"me-2\" data-icon></div><div class=\"text-gray-800 dark:text-neutral-200 \" data-title></div></div></div>",
+                                "extraMarkup": "<div class=\"absolute top-1/2 end-3 -translate-y-1/2\"><svg class=\"shrink-0 size-3.5 text-gray-500 dark:text-neutral-500 \" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"m7 15 5 5 5-5\"/><path d=\"m7 9 5-5 5 5\"/></svg></div>"
+                            }'
+                            class="hidden">
+                            <option value="">Pilih Provinsi</option>
+                        </select>
+                        <!-- End Select -->
                         @error('provinsi')
                             <span class="text-xs text-red-600 dark:text-red-400">{{ $message }}</span>
                         @enderror
@@ -145,48 +124,25 @@
                 <div>
                     <label class="block text-sm">
                         <span class="font-semibold text-gray-700 dark:text-gray-400">Kabupaten</span>
-                        
-                        <div id="dataKabupaten" class="relative mt-1 --prevent-on-load-init"
-                            data-hs-combo-box='{
-                            "apiUrl": "{{ url('/kabupaten') }}",
-                            "apiQuery": "provinsi=",
-                            "outputItemTemplate": "<div class=\"cursor-pointer py-2 px-4 w-full text-sm text-gray-800 hover:bg-gray-100 rounded focus:outline-none focus:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-200 dark:focus:bg-neutral-800\" data-hs-combo-box-output-item><div class=\"flex justify-between items-center w-full\"><div><div data-hs-combo-box-output-item-field=\"name\" data-hs-combo-box-search-text data-hs-combo-box-value></div></div><span class=\"hidden hs-combo-box-selected:block\"><svg class=\"shrink-0 size-3.5 text-blue-600 dark:text-blue-500\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"></polyline></svg></span></div></div>",
-                            "outputEmptyTemplate": "<div class=\"w-full px-4 py-2 text-sm text-gray-800 rounded dark:bg-neutral-900 dark:text-neutral-200\">Tidak Ditemukan</div>",
-                            "outputLoaderTemplate": "<div class=\"flex items-center justify-center px-4 py-2 text-sm text-gray-800 bg-white rounded dark:bg-neutral-900 dark:text-neutral-200\"><div class=\"size-6 dark:text-blue-500 inline-block animate-spin rounded-full border-[3px] border-current border-t-transparent text-blue-600\" role=\"status\" aria-label=\"loading\"><span class=\"sr-only\">Memuat...</span></div></div>"
-                        }'>
-                            <div class="relative">
-                                <input
-                                    class="block w-full py-2 text-sm border-gray-200 rounded dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 pe-9 ps-4 focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50"
-                                    type="text" role="combobox" aria-expanded="false" value=""
-                                    name="Kabupaten" id="kabupaten" data-hs-combo-box-input="" placeholder="kabupaten">
-                                <div class="absolute inset-y-0 z-20 items-center hidden end-8 hs-combo-box-active:flex">
-                                    <button type="button"
-                                        class="inline-flex items-center justify-center text-gray-500 rounded-full size-6 dark:text-neutral-500 dark:hover:text-blue-500 dark:focus:text-blue-500 shrink-0 hover:text-blue-600 focus:text-blue-600 focus:outline-none"
-                                        aria-label="Close" data-hs-combo-box-close="">
-                                        <span class="sr-only">Close</span>
-                                        <svg class="size-4 shrink-0" xmlns="http://www.w3.org/2000/svg" width="24"
-                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <circle cx="12" cy="12" r="10"></circle>
-                                            <path d="m15 9-6 6"></path>
-                                            <path d="m9 9 6 6"></path>
-                                        </svg>
-                                    </button>
-                                </div>
-                                <div class="absolute -translate-y-1/2 end-3 top-1/2" aria-expanded="false"
-                                    data-hs-combo-box-toggle="">
-                                    <svg class="size-3.5 dark:text-neutral-500 shrink-0 text-gray-500"
-                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="m7 15 5 5 5-5"></path>
-                                        <path d="m7 9 5-5 5 5"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="dark:[&::-webkit-scrollbar-track]:bg-neutral-700 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500 dark:bg-neutral-900 dark:border-neutral-700 absolute z-50 max-h-72 w-full overflow-hidden overflow-y-auto rounded border border-gray-200 bg-white p-1 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300 [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar]:w-2"
-                                style="display: none;" data-hs-combo-box-output=""></div>
-                        </div>
+                        <!-- Select -->
+                        <select id="kabupaten" name="kabupaten"
+                            data-hs-select='{
+                                "hasSearch": true,
+                                "searchPlaceholder": "Search...",
+                                "searchClasses": "block w-full text-sm border-gray-200 rounded focus:border-blue-500 focus:ring-blue-500 before:absolute before:inset-0 before:z-[1] dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 py-2 px-3",
+                                "searchWrapperClasses": "bg-white p-2 -mx-1 sticky top-0 dark:bg-neutral-900",
+                                "placeholder": "Pilih Kabupaten...",
+                                "toggleTag": "<button type=\"button\" aria-expanded=\"false\"><span class=\"me-2\" data-icon></span><span class=\"text-gray-800 dark:text-neutral-200 \" data-title></span></button>",
+                                "toggleClasses": "hs-select-disabled:pointer-events-none hs-select-disabled:opacity-50 relative py-2 mt-1 ps-4 pe-9 flex gap-x-2 text-nowrap w-full cursor-pointer bg-white border border-gray-200 rounded text-start text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-neutral-600",
+                                "dropdownClasses": "mt-2 max-h-72 pb-1 px-1 space-y-0.5 z-20 w-full bg-white border border-gray-200 rounded overflow-hidden overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-neutral-700 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500 dark:bg-neutral-900 dark:border-neutral-700",
+                                "optionClasses": "py-2 px-4 w-full text-sm text-gray-800 cursor-pointer hover:bg-gray-100 rounded focus:outline-none focus:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-200 dark:focus:bg-neutral-800",
+                                "optionTemplate": "<div><div class=\"flex items-center\"><div class=\"me-2\" data-icon></div><div class=\"text-gray-800 dark:text-neutral-200 \" data-title></div></div></div>",
+                                "extraMarkup": "<div class=\"absolute top-1/2 end-3 -translate-y-1/2\"><svg class=\"shrink-0 size-3.5 text-gray-500 dark:text-neutral-500 \" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"m7 15 5 5 5-5\"/><path d=\"m7 9 5-5 5 5\"/></svg></div>"
+                            }'
+                            class="hidden">
+                            <option value="">Pilih Kabupaten</option>
+                        </select>
+                        <!-- End Select -->
                         @error('kabupaten')
                             <span class="text-xs text-red-600 dark:text-red-400">{{ $message }}</span>
                         @enderror
@@ -196,40 +152,25 @@
                 <div>
                     <label class="block text-sm">
                         <span class="font-semibold text-gray-700 dark:text-gray-400">Kecamatan</span>
-                        <div id="dataKecamatan" class="relative mt-1">
-                            <div class="relative">
-                                <input
-                                    class="block w-full py-2 text-sm border-gray-200 rounded dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 pe-9 ps-4 focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50"
-                                    type="text" role="combobox" aria-expanded="false" value=""
-                                    name="kecamatan" id="kecamatan" data-hs-combo-box-input="" placeholder="Kecamatan">
-                                <div class="absolute inset-y-0 z-20 items-center hidden end-8 hs-combo-box-active:flex">
-                                    <button type="button"
-                                        class="inline-flex items-center justify-center text-gray-500 rounded-full size-6 dark:text-neutral-500 dark:hover:text-blue-500 dark:focus:text-blue-500 shrink-0 hover:text-blue-600 focus:text-blue-600 focus:outline-none"
-                                        aria-label="Close" data-hs-combo-box-close="">
-                                        <span class="sr-only">Close</span>
-                                        <svg class="size-4 shrink-0" xmlns="http://www.w3.org/2000/svg" width="24"
-                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <circle cx="12" cy="12" r="10"></circle>
-                                            <path d="m15 9-6 6"></path>
-                                            <path d="m9 9 6 6"></path>
-                                        </svg>
-                                    </button>
-                                </div>
-                                <div class="absolute -translate-y-1/2 end-3 top-1/2" aria-expanded="false"
-                                    data-hs-combo-box-toggle="">
-                                    <svg class="size-3.5 dark:text-neutral-500 shrink-0 text-gray-500"
-                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="m7 15 5 5 5-5"></path>
-                                        <path d="m7 9 5-5 5 5"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="dark:[&::-webkit-scrollbar-track]:bg-neutral-700 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500 dark:bg-neutral-900 dark:border-neutral-700 absolute z-50 max-h-72 w-full overflow-hidden overflow-y-auto rounded border border-gray-200 bg-white p-1 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300 [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar]:w-2"
-                                style="display: none;" data-hs-combo-box-output=""></div>
-                        </div>
+                        <!-- Select -->
+                        <select id="kecamatan" name="kecamatan"
+                            data-hs-select='{
+                                "hasSearch": true,
+                                "searchPlaceholder": "Search...",
+                                "searchClasses": "block w-full text-sm border-gray-200 rounded focus:border-blue-500 focus:ring-blue-500 before:absolute before:inset-0 before:z-[1] dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 py-2 px-3",
+                                "searchWrapperClasses": "bg-white p-2 -mx-1 sticky top-0 dark:bg-neutral-900",
+                                "placeholder": "Pilih Kecamatan...",
+                                "toggleTag": "<button type=\"button\" aria-expanded=\"false\"><span class=\"me-2\" data-icon></span><span class=\"text-gray-800 dark:text-neutral-200 \" data-title></span></button>",
+                                "toggleClasses": "hs-select-disabled:pointer-events-none hs-select-disabled:opacity-50 relative py-2 mt-1 ps-4 pe-9 flex gap-x-2 text-nowrap w-full cursor-pointer bg-white border border-gray-200 rounded text-start text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-neutral-600",
+                                "dropdownClasses": "mt-2 max-h-72 pb-1 px-1 space-y-0.5 z-20 w-full bg-white border border-gray-200 rounded overflow-hidden overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-neutral-700 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500 dark:bg-neutral-900 dark:border-neutral-700",
+                                "optionClasses": "py-2 px-4 w-full text-sm text-gray-800 cursor-pointer hover:bg-gray-100 rounded focus:outline-none focus:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-200 dark:focus:bg-neutral-800",
+                                "optionTemplate": "<div><div class=\"flex items-center\"><div class=\"me-2\" data-icon></div><div class=\"text-gray-800 dark:text-neutral-200 \" data-title></div></div></div>",
+                                "extraMarkup": "<div class=\"absolute top-1/2 end-3 -translate-y-1/2\"><svg class=\"shrink-0 size-3.5 text-gray-500 dark:text-neutral-500 \" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"m7 15 5 5 5-5\"/><path d=\"m7 9 5-5 5 5\"/></svg></div>"
+                            }'
+                            class="hidden">
+                            <option value="">Pilih Kecamatan</option>
+                        </select>
+                        <!-- End Select -->
                         @error('kecamatan')
                             <span class="text-xs text-red-600 dark:text-red-400">{{ $message }}</span>
                         @enderror
@@ -238,42 +179,26 @@
 
                 <div>
                     <label class="block text-sm">
-                        <span class="font-semibold text-gray-700 dark:text-gray-400">Kelurahan / Desa</span>
-                        <div id="dataKelurahan" class="relative mt-1">
-                            <div class="relative">
-                                <input
-                                    class="block w-full py-2 text-sm border-gray-200 rounded dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 pe-9 ps-4 focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50"
-                                    type="text" role="combobox" aria-expanded="false" value=""
-                                    name="kelurahan" id="kelurahan" data-hs-combo-box-input=""
-                                    placeholder="Kelurahan / Desa">
-                                <div class="absolute inset-y-0 z-20 items-center hidden end-8 hs-combo-box-active:flex">
-                                    <button type="button"
-                                        class="inline-flex items-center justify-center text-gray-500 rounded-full size-6 dark:text-neutral-500 dark:hover:text-blue-500 dark:focus:text-blue-500 shrink-0 hover:text-blue-600 focus:text-blue-600 focus:outline-none"
-                                        aria-label="Close" data-hs-combo-box-close="">
-                                        <span class="sr-only">Close</span>
-                                        <svg class="size-4 shrink-0" xmlns="http://www.w3.org/2000/svg" width="24"
-                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <circle cx="12" cy="12" r="10"></circle>
-                                            <path d="m15 9-6 6"></path>
-                                            <path d="m9 9 6 6"></path>
-                                        </svg>
-                                    </button>
-                                </div>
-                                <div class="absolute -translate-y-1/2 end-3 top-1/2" aria-expanded="false"
-                                    data-hs-combo-box-toggle="">
-                                    <svg class="size-3.5 dark:text-neutral-500 shrink-0 text-gray-500"
-                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="m7 15 5 5 5-5"></path>
-                                        <path d="m7 9 5-5 5 5"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="dark:[&::-webkit-scrollbar-track]:bg-neutral-700 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500 dark:bg-neutral-900 dark:border-neutral-700 absolute z-50 max-h-72 w-full overflow-hidden overflow-y-auto rounded border border-gray-200 bg-white p-1 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300 [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar]:w-2"
-                                style="display: none;" data-hs-combo-box-output=""></div>
-                        </div>
+                        <span class="font-semibold text-gray-700 dark:text-gray-400">Desa / Kelurahan</span>
+                        <!-- Select -->
+                        <select id="kelurahan" name="kelurahan"
+                            data-hs-select='{
+                                "hasSearch": true,
+                                "searchPlaceholder": "Search...",
+                                "searchClasses": "block w-full text-sm border-gray-200 rounded focus:border-blue-500 focus:ring-blue-500 before:absolute before:inset-0 before:z-[1] dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 py-2 px-3",
+                                "searchWrapperClasses": "bg-white p-2 -mx-1 sticky top-0 dark:bg-neutral-900",
+                                "placeholder": "Pilih Desa / Kelurahan...",
+                                "toggleTag": "<button type=\"button\" aria-expanded=\"false\"><span class=\"me-2\" data-icon></span><span class=\"text-gray-800 dark:text-neutral-200 \" data-title></span></button>",
+                                "toggleClasses": "hs-select-disabled:pointer-events-none hs-select-disabled:opacity-50 relative py-2 mt-1 ps-4 pe-9 flex gap-x-2 text-nowrap w-full cursor-pointer bg-white border border-gray-200 rounded text-start text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-neutral-600",
+                                "dropdownClasses": "mt-2 max-h-72 pb-1 px-1 space-y-0.5 z-20 w-full bg-white border border-gray-200 rounded overflow-hidden overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-neutral-700 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500 dark:bg-neutral-900 dark:border-neutral-700",
+                                "optionClasses": "py-2 px-4 w-full text-sm text-gray-800 cursor-pointer hover:bg-gray-100 rounded focus:outline-none focus:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-200 dark:focus:bg-neutral-800",
+                                "optionTemplate": "<div><div class=\"flex items-center\"><div class=\"me-2\" data-icon></div><div class=\"text-gray-800 dark:text-neutral-200 \" data-title></div></div></div>",
+                                "extraMarkup": "<div class=\"absolute top-1/2 end-3 -translate-y-1/2\"><svg class=\"shrink-0 size-3.5 text-gray-500 dark:text-neutral-500 \" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"m7 15 5 5 5-5\"/><path d=\"m7 9 5-5 5 5\"/></svg></div>"
+                            }'
+                            class="hidden">
+                            <option value="">Pilih Desa / Kelurahan</option>
+                        </select>
+                        <!-- End Select -->
                         @error('kelurahan')
                             <span class="text-xs text-red-600 dark:text-red-400">{{ $message }}</span>
                         @enderror
@@ -371,8 +296,46 @@
 
         </form>
     </div>
-@endsection
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetchSelect('provinsi', '/provinsi');
+        });
+        document.getElementById('provinsi').addEventListener('change', function() {
+            fetchSelect('kabupaten', `/kabupaten?provinsi=${this.value}`);
+        });
+        document.getElementById('kabupaten').addEventListener('change', function() {
+            fetchSelect('kecamatan', `/kecamatan?kabupaten=${this.value}`);
+        });
+        document.getElementById('kecamatan').addEventListener('change', function() {
+            fetchSelect('kelurahan', `/kelurahan?kecamatan=${this.value}`);
+        });
+
+        function fetchSelect(params, url) {
+            fetch(url)
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(data) {
+                    const select = HSSelect.getInstance(`#${params}`);
+
+                    data.forEach(function(item) {
+                        select.addOption({
+                            title: item.name,
+                            val: item.name,
+                            options: {
+                                description: item.description || '',
+                                icon: item.icon || ''
+                            }
+                        });
+                    });
+                })
+                .catch(function(error) {
+                    console.error(`Error fetching ${params}:`, error);
+                });
+        }
+    </script>
+@endsection
 @push('addon-style')
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 @endpush

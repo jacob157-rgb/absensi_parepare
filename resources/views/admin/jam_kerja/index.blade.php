@@ -1,9 +1,9 @@
 @extends('layouts.admin')
 @section('content')
     <div class="w-full overflow-hidden rounded shadow-inner">
-        <div class="flex flex-col items-start justify-between border-b px-4 py-3 md:flex-row md:items-center">
+        <div class="flex flex-col items-start justify-between px-4 py-3 border-b md:flex-row md:items-center">
             <button {{-- href="{{ route('jam_kerja.create') }}" --}}
-                class="tambahBtn tambahBtn mb-2 inline-flex flex-none items-center rounded border border-transparent bg-blue-600 p-2 text-sm font-medium text-white hover:bg-blue-700 focus:bg-blue-700 focus:outline-none disabled:pointer-events-none disabled:opacity-50 md:mb-0">
+                class="inline-flex items-center flex-none p-2 mb-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded tambahBtn hover:bg-blue-700 focus:bg-blue-700 focus:outline-none disabled:pointer-events-none disabled:opacity-50 md:mb-0">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                     class="lucide lucide-plus">
@@ -16,10 +16,10 @@
             <div class="relative max-w-xs">
                 <label for="hs-table-search" class="sr-only">Search</label>
                 <input type="text" name="hs-table-search" id="global-search"
-                    class="dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 block w-full rounded border-gray-200 px-3 py-2 ps-9 text-sm shadow-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50"
+                    class="block w-full px-3 py-2 text-sm border-gray-200 rounded shadow-sm dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 ps-9 focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50"
                     placeholder="Search for items">
-                <div class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3">
-                    <svg class="size-4 dark:text-neutral-500 text-gray-400" xmlns="http://www.w3.org/2000/svg"
+                <div class="absolute inset-y-0 flex items-center pointer-events-none start-0 ps-3">
+                    <svg class="text-gray-400 size-4 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg"
                         width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="11" cy="11" r="8"></circle>
@@ -32,62 +32,62 @@
 
         {{--  select lembaga  --}}
         <form id="lembaga-form" action="" method="get" class="mx-4 mb-3">
-            <label class="mt-4 block text-sm">
-                <span class="text-gray-700 dark:text-gray-400 font-medium">
+            <label class="block mt-4 text-sm">
+                <span class="font-medium text-gray-700 dark:text-gray-400">
                     Pilih Lembaga
                 </span>
                 <select id="lembaga-select" name="lembaga"
-                    class="mt-1 block w-64 rounded border-gray-300 bg-white py-2 px-3 text-sm shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 dark:focus:border-blue-500 dark:focus:ring-blue-500">
+                    class="block w-64 px-3 py-2 mt-1 text-sm bg-white border-gray-300 rounded shadow-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 dark:focus:border-blue-500 dark:focus:ring-blue-500 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">
                     <option value="" disabled selected>- Pilih Lembaga -</option>
                     @foreach ($lembaga as $row)
                         <option value="{{ $row->id }}" {{ request('lembaga') == $row->id ? 'selected' : '' }}>
-                           - {{ $row->nama }} -</option>
+                            - {{ $row->nama }} -</option>
                     @endforeach
                 </select>
             </label>
         </form>
 
         <div class="w-full overflow-x-auto">
-            <table class="whitespace-no-wrap search-table w-full">
+            <table class="w-full whitespace-no-wrap search-table">
                 <thead>
                     <tr
-                        class="dark:border-gray-700 dark:text-gray-400 dark:bg-gray-800 border-b bg-gray-50 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">
+                        class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 dark:text-gray-400 dark:bg-gray-800 bg-gray-50">
                         <th class="px-4 py-3">No.</th>
                         <th class="px-4 py-3">Nama</th>
                         <th class="px-4 py-3">Hari</th>
                         <th class="px-4 py-3">Aksi</th>
                     </tr>
                 </thead>
-                <tbody class="dark:divide-gray-700 dark:bg-gray-800 divide-y bg-white">
+                <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                     @foreach ($jam_kerja as $row)
-                        <tr class="dark:text-gray-400 text-gray-700">
+                        <tr class="text-gray-700 dark:text-gray-400">
                             <td class="px-4 py-3 text-sm font-medium">
                                 {{ $loop->iteration }}.
                             </td>
                             <td class="px-4 py-3 text-sm font-medium capitalize">
-                                {{ $row->hari_libur }}
+                                {{ $row->nama }}
                             </td>
                             <td class="px-4 py-3 text-sm font-medium capitalize">
-                                {{ $row->nama }}
+                                {{ $row->hari_libur }}
                             </td>
                             <td class="px-4 py-3">
                                 <div class="flex items-center space-x-4 text-sm font-medium">
-                                    <a href="{{ route('jam_kerja.edit', $row->id) }}"
-                                        class="dark:text-gray-400 editBtn focus:shadow-outline-gray flex items-center justify-between rounded px-2 py-2 text-sm font-medium leading-5 text-blue-600 focus:outline-none">
-                                        <svg class="h-5 w-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                                    <button {{-- href="{{ route('jam_kerja.edit', $row->id) }}" --}} data-id="{{ $row->id }}"
+                                        class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-blue-600 rounded editBtn dark:text-gray-400 focus:shadow-outline-gray focus:outline-none">
+                                        <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
                                             <path
                                                 d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z">
                                             </path>
                                         </svg>
-                                    </a>
+                                    </button>
                                     <form action="{{ route('jam_kerja.destroy', $row->id) }}" method="post"
                                         id="delete_{{ $row->id }}">
                                         @csrf
                                         @method('DELETE')
                                         <button
-                                            class="dark:text-gray-400 show_confirm focus:shadow-outline-gray flex items-center justify-between rounded px-2 py-2 text-sm font-medium leading-5 text-red-600 focus:outline-none"
+                                            class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-red-600 rounded dark:text-gray-400 show_confirm focus:shadow-outline-gray focus:outline-none"
                                             aria-label="Delete">
-                                            <svg class="h-5 w-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                                            <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
                                                 <path fill-rule="evenodd"
                                                     d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
                                                     clip-rule="evenodd"></path>
@@ -161,10 +161,10 @@
                 let postUrl = `{{ route('jam_kerja.store') }}`;
                 let modalContent = `
                     <label class="block text-sm">
-                        <span class="text-gray-700 dark:text-gray-400 font-semibold mb-1">
+                        <span class="mb-1 font-semibold text-gray-700 dark:text-gray-400">
                              Lembaga
                         </span>
-                        <select name="lembaga" class="{{ $errors->has('lembaga') ? 'border-red-600' : 'border-gray-200' }} py-3 px-4 pe-9 block w-full rounded text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
+                        <select name="lembaga" class="{{ $errors->has('lembaga') ? 'border-red-600' : 'border-gray-200' }} py-2 px-4 pe-9 block w-full rounded text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
                             <option selected="" value="">Pilih Lembaga</option>
                             @foreach ($lembaga as $row)
                             <option value="{{ $row->id }}">{{ $row->nama }}</option>
@@ -176,7 +176,7 @@
                             </span>
                         @enderror
                     </label>
-                    <label class="block text-sm mt-2">
+                    <label class="block mt-2 text-sm">
                         <span class="font-semibold text-gray-700 dark:text-gray-400">Nama Hari Libur</span>
                         <input type="text" name="nama" value="{{ old('nama') }}"
                             class="block w-full mt-1 text-sm border-gray-300 rounded dark:text-gray-300 dark:bg-gray-700 focus:shadow-outline-red form-input focus:border-red-400 focus:outline-none"
@@ -185,7 +185,7 @@
                             <span class="text-xs text-red-600 dark:text-red-400">{{ $message }}</span>
                         @enderror
                     </label>
-                    <label class="block text-sm mt-2">
+                    <label class="block mt-2 text-sm">
                         <span class="font-semibold text-gray-700 dark:text-gray-400">Pilih Hari</span>
                         <!-- Select -->
                         <select multiple="" id="selectHari" name="hari_libur[]" data-hs-select='{
@@ -214,6 +214,82 @@
                 // Buka modal
                 HSOverlay.open('#modal');
             });
+
+            $(document).on('click', '.editBtn', function(e) {
+                e.preventDefault();
+                let jamKerjaId = $(this).data('id');
+                let getUrl = `{{ route('jam_kerja.edit', '') }}/${jamKerjaId}`;
+
+                $.ajax({
+                    url: getUrl,
+                    method: 'GET',
+                    success: function(response) {
+                        // Use the response directly since it matches the expected structure
+                        let data = response.jam_kerja;
+
+                        let modalLabel = `Edit ${response.pages}`;
+                        let postUrl = `{{ route('jam_kerja.update', '') }}/${jamKerjaId}`;
+                        let modalContent = `
+                <!-- Lembaga -->
+                <div>
+                    <label class="block text-sm">
+                        <span class="font-semibold text-gray-700 dark:text-gray-400">Lembaga</span>
+                        <input type="text" value="${data.nama}"
+                            class="block w-full mt-1 text-sm bg-gray-300 border-gray-300 rounded dark:text-gray-300 focus:shadow-outline-red form-input focus:border-red-400 focus:outline-none"
+                            placeholder="Masukkan Lembaga" disabled />
+                    </label>
+                </div>
+
+                <!-- Nama Hari Libur -->
+                <div>
+                    <label class="block text-sm">
+                        <span class="font-semibold text-gray-700 dark:text-gray-400">Nama Hari Libur</span>
+                        <input type="text" name="nama" value="${data.nama}"
+                            class="block w-full mt-1 text-sm border-gray-300 rounded dark:text-gray-300 dark:bg-gray-700 focus:shadow-outline-red form-input focus:border-red-400 focus:outline-none"
+                            placeholder="Masukkan Nama Hari Libur" />
+                        @error('nama')
+                            <span class="text-xs text-red-600 dark:text-red-400">{{ $message }}</span>
+                        @enderror
+                    </label>
+                </div>
+
+                <!-- Hari Libur -->
+                <div>
+                    <label class="block text-sm">
+                        <span class="font-semibold text-gray-700 dark:text-gray-400">Hari Libur</span>
+                        <select name="hari_libur" data-placeholder="Hari Libur"
+                            class="block w-full mt-1 text-sm border-gray-200 rounded dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50">
+                            <option value="">Pilih Hari Libur</option>
+                            <option value="SENIN" ${data.hari_libur === 'SENIN' ? 'selected' : ''}>SENIN</option>
+                            <option value="SELASA" ${data.hari_libur === 'SELASA' ? 'selected' : ''}>SELASA</option>
+                            <option value="RABU" ${data.hari_libur === 'RABU' ? 'selected' : ''}>RABU</option>
+                            <option value="KAMIS" ${data.hari_libur === 'KAMIS' ? 'selected' : ''}>KAMIS</option>
+                            <option value="JUMAT" ${data.hari_libur === 'JUMAT' ? 'selected' : ''}>JUMAT</option>
+                            <option value="SABTU" ${data.hari_libur === 'SABTU' ? 'selected' : ''}>SABTU</option>
+                            <option value="MINGGU" ${data.hari_libur === 'MINGGU' ? 'selected' : ''}>MINGGU</option>
+                        </select>
+                        @error('hari_libur')
+                            <span class="text-xs text-red-600 dark:text-red-400">{{ $message }}</span>
+                        @enderror
+                    </label>
+                </div>
+            `;
+
+                        // Update modal label and content
+                        $('#modal-label').text(modalLabel);
+                        $('#modal-form').attr('action', postUrl);
+                        $('#modal-content').html(modalContent);
+
+                        // Open the modal
+                        HSOverlay.open('#modal');
+                    },
+                    error: function(xhr) {
+                        console.error('Error fetching data:', xhr.responseText);
+                        // Handle error accordingly
+                    }
+                });
+            });
+
         });
     </script>
 
