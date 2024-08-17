@@ -197,6 +197,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Laravolt\Indonesia\ServiceProvider::class,
         Jenssegers\Agent\AgentServiceProvider::class,
+
     ],
 
     /*

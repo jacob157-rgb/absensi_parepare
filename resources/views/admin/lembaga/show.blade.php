@@ -74,13 +74,6 @@
                             class="block w-full mt-1 text-sm border-gray-300 rounded dark:text-gray-300 dark:bg-gray-700 focus:shadow-outline-red form-input focus:border-red-400 focus:outline-none"
                             placeholder="Level" disabled />
                     </label>
-
-                    <!-- Logo Kiri -->
-                    <label class="hidden text-sm md:block">
-                        <span class="font-semibold text-gray-700 dark:text-gray-400">Logo Kiri</span>
-                        <img src="{{ $lembaga->logo_kiri }}" alt="Logo Kiri"
-                            class="block w-full mt-1 text-sm border-gray-300 rounded dark:text-gray-300 dark:bg-gray-700 focus:shadow-outline-red form-input focus:border-red-400 focus:outline-none" />
-                    </label>
                 </div>
 
                 <div class="space-y-2">
@@ -114,20 +107,6 @@
                         <input type="text" name="status" value="{{ $lembaga->status }}"
                             class="block w-full mt-1 text-sm border-gray-300 rounded dark:text-gray-300 dark:bg-gray-700 focus:shadow-outline-red form-input focus:border-red-400 focus:outline-none"
                             placeholder="Status" disabled />
-                    </label>
-
-                    <!-- Logo Kiri -->
-                    <label class="block text-sm md:hidden">
-                        <span class="font-semibold text-gray-700 dark:text-gray-400">Logo Kiri</span>
-                        <img src="{{ $lembaga->logo_kiri }}" alt="Logo Kiri"
-                            class="block w-full mt-1 text-sm border-gray-300 rounded dark:text-gray-300 dark:bg-gray-700 focus:shadow-outline-red form-input focus:border-red-400 focus:outline-none" />
-                    </label>
-
-                    <!-- Logo Kanan -->
-                    <label class="block text-sm">
-                        <span class="font-semibold text-gray-700 dark:text-gray-400">Logo Kanan</span>
-                        <img src="{{ $lembaga->logo_kanan }}" alt="Logo Kanan"
-                            class="block w-full mt-1 text-sm border-gray-300 rounded dark:text-gray-300 dark:bg-gray-700 focus:shadow-outline-red form-input focus:border-red-400 focus:outline-none" />
                     </label>
                 </div>
             </div>
@@ -251,7 +230,7 @@
                                     $nameJamKerja = $item->nama;
                                 @endphp
                                 <span
-                                    class="text-blue-700 mr-1  bg-blue-100 dark:bg-blue-700 dark:text-blue-100 rounded-full px-2 py-1 font-mono font-semibold leading-tight">
+                                    class="px-2 py-1 mr-1 font-mono font-semibold leading-tight text-blue-700 bg-blue-100 rounded-full dark:bg-blue-700 dark:text-blue-100">
                                     {{ $item->hari_libur }}
                                 </span>
                             @endforeach
@@ -261,19 +240,19 @@
                     <!-- Kalender AKademik -->
                     <label class="hidden mt-3 text-sm md:block">
                         <span class="font-semibold text-gray-700 dark:text-gray-400">Kalender Akademik</span>
-                        <div class="hs-accordion-group mt-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div class="grid grid-cols-1 gap-4 mt-2 hs-accordion-group sm:grid-cols-2 lg:grid-cols-3">
                             @foreach ($kalenderAkademik as $item)
-                                <div class="hs-accordion hs-accordion-active:border-gray-200 bg-white border border-transparent rounded dark:hs-accordion-active:border-neutral-700 dark:bg-neutral-800 dark:border-transparent"
+                                <div class="bg-white border border-transparent rounded hs-accordion dark:hs-accordion-active:border-neutral-700 dark:bg-neutral-800 dark:border-transparent hs-accordion-active:border-gray-200"
                                     id="hs-active-bordered-heading-{{ $item->id }}">
                                     <button
-                                        class="hs-accordion-toggle hs-accordion-active:text-blue-600 inline-flex justify-between items-center gap-x-3 w-full font-semibold text-start text-gray-800 py-4 px-5 hover:text-gray-500 disabled:opacity-50 disabled:pointer-events-none dark:hs-accordion-active:text-blue-500 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:outline-none dark:focus:text-neutral-400"
+                                        class="inline-flex items-center justify-between w-full px-5 py-4 font-semibold text-gray-800 hs-accordion-toggle dark:hs-accordion-active:text-blue-500 dark:text-neutral-200 dark:hover:text-neutral-400 dark:focus:outline-none dark:focus:text-neutral-400 gap-x-3 text-start hover:text-gray-500 disabled:pointer-events-none disabled:opacity-50 hs-accordion-active:text-blue-600"
                                         aria-expanded="false"
                                         aria-controls="hs-basic-active-bordered-collapse-{{ $item->id }}">
                                         {{ formatTanggalLengkap($item->tanggal) }}
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                             stroke-linecap="round" stroke-linejoin="round"
-                                            class="lucide lucide-calendar-arrow-down text-blue-500 hs-accordion-active:hidden block size-3.5">
+                                            class="lucide lucide-calendar-arrow-down size-3.5 block text-blue-500 hs-accordion-active:hidden">
                                             <path d="m14 18 4 4 4-4" />
                                             <path d="M16 2v4" />
                                             <path d="M18 14v8" />
@@ -282,7 +261,7 @@
                                             <path d="M8 2v4" />
                                         </svg>
 
-                                        <svg class="hs-accordion-active:block hidden size-3.5"
+                                        <svg class="size-3.5 hidden hs-accordion-active:block"
                                             xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                             stroke-linecap="round" stroke-linejoin="round">
@@ -293,7 +272,7 @@
                                     <div id="hs-basic-active-bordered-collapse-{{ $item->id }}"
                                         class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300"
                                         role="region" aria-labelledby="hs-active-bordered-heading-{{ $item->id }}">
-                                        <div class="pb-4 px-5">
+                                        <div class="px-5 pb-4">
                                             <p class="text-gray-800 dark:text-neutral-200">
                                                 {{ $item->keterangan }}
                                             </p>
@@ -336,6 +315,7 @@
                             class="block w-full mt-1 text-sm border-gray-300 rounded dark:text-gray-300 dark:bg-gray-700 focus:shadow-outline-red form-input focus:border-red-400 focus:outline-none"
                             placeholder="Status Kamad" disabled />
                     </label>
+
                 </div>
             </div>
         </div>

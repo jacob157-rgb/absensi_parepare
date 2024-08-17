@@ -48,6 +48,7 @@ Route::middleware([isAdmin::class])->group(function () {
             Route::get('/lembaga/{id}', 'edit')->name('lembaga.edit')->middleware(['permission:MASTER']);
             Route::get('/lembaga/{id}/show', 'show')->name('lembaga.show')->middleware(['permission:MASTER']);
             Route::post('/lembaga/{id}', 'update')->name('lembaga.update')->middleware(['permission:MASTER']);
+            Route::post('/kamad/{id}', 'updateKamad')->name('kamad.update')->middleware(['permission:LEMBAGA']);
             Route::delete('/lembaga/{id}/destroy', 'destroy')->name('lembaga.destroy')->middleware(['permission:MASTER']);
         });
         Route::controller(JamKerjaController::class)->group(function () {
