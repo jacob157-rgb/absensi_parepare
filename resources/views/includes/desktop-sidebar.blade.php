@@ -33,43 +33,45 @@
                     <span class="ml-4">Dashboard</span>
                 </a>
             </li>
-            <li class="relative flex items-center px-6 py-3">
-                @if (request()->routeIs('tahun_ajaran.*'))
-                    <span class="absolute inset-y-0 left-0 w-1 rounded-br-lg rounded-tr-lg bg-blue-600"
-                        aria-hidden="true"></span>
-                @endif
-                <a class="dark:text-gray-100 dark:hover:text-gray-200 inline-flex w-full items-center text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800"
-                    href="/admin/tahun_ajaran">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="lucide lucide-calendar-check h-5 w-5">
-                        <path d="M8 2v4" />
-                        <path d="M16 2v4" />
-                        <rect width="18" height="18" x="3" y="4" rx="2" />
-                        <path d="M3 10h18" />
-                        <path d="m9 16 2 2 4-4" />
-                    </svg>
-                    <span class="ml-4">Tahun Ajaran</span>
-                </a>
-            </li>
-            <li class="relative flex items-center px-6 py-3">
-                @if (request()->routeIs('semester.*'))
-                    <span class="absolute inset-y-0 left-0 w-1 rounded-br-lg rounded-tr-lg bg-blue-600"
-                        aria-hidden="true"></span>
-                @endif
-                <a class="dark:text-gray-100 dark:hover:text-gray-200 inline-flex w-full items-center text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800"
-                    href="/admin/semester">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="lucide lucide-graduation-cap h-5 w-5">
-                        <path
-                            d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" />
-                        <path d="M22 10v6" />
-                        <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" />
-                    </svg>
-                    <span class="ml-4">Semester</span>
-                </a>
-            </li>
+            @if ($roles['roles'] == 'MASTER')
+                <li class="relative flex items-center px-6 py-3">
+                    @if (request()->routeIs('tahun_ajaran.*'))
+                        <span class="absolute inset-y-0 left-0 w-1 rounded-br-lg rounded-tr-lg bg-blue-600"
+                            aria-hidden="true"></span>
+                    @endif
+                    <a class="dark:text-gray-100 dark:hover:text-gray-200 inline-flex w-full items-center text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800"
+                        href="/admin/tahun_ajaran">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="lucide lucide-calendar-check h-5 w-5">
+                            <path d="M8 2v4" />
+                            <path d="M16 2v4" />
+                            <rect width="18" height="18" x="3" y="4" rx="2" />
+                            <path d="M3 10h18" />
+                            <path d="m9 16 2 2 4-4" />
+                        </svg>
+                        <span class="ml-4">Tahun Ajaran</span>
+                    </a>
+                </li>
+                <li class="relative flex items-center px-6 py-3">
+                    @if (request()->routeIs('semester.*'))
+                        <span class="absolute inset-y-0 left-0 w-1 rounded-br-lg rounded-tr-lg bg-blue-600"
+                            aria-hidden="true"></span>
+                    @endif
+                    <a class="dark:text-gray-100 dark:hover:text-gray-200 inline-flex w-full items-center text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800"
+                        href="/admin/semester">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="lucide lucide-graduation-cap h-5 w-5">
+                            <path
+                                d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" />
+                            <path d="M22 10v6" />
+                            <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" />
+                        </svg>
+                        <span class="ml-4">Semester</span>
+                    </a>
+                </li>
+            @endif
             <li class="relative flex items-center px-6 py-3">
                 @if (request()->routeIs('lembaga.*'))
                     <span class="absolute inset-y-0 left-0 w-1 rounded-br-lg rounded-tr-lg bg-blue-600"
@@ -90,42 +92,66 @@
                     <span class="ml-4">Lembaga</span>
                 </a>
             </li>
-            <li class="relative flex items-center px-6 py-3">
-                @if (request()->routeIs('jam_kerja.*'))
-                    <span class="absolute inset-y-0 left-0 w-1 rounded-br-lg rounded-tr-lg bg-blue-600"
-                        aria-hidden="true"></span>
-                @endif
-                <a class="dark:text-gray-100 dark:hover:text-gray-200 inline-flex w-full items-center text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800"
-                    href="/admin/jam_kerja">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="lucide lucide-clock h-5 w-5">
-                        <circle cx="12" cy="12" r="10" />
-                        <polyline points="12 6 12 12 16 14" />
-                    </svg>
-                    <span class="ml-4">Jam Kerja</span>
-                </a>
-            </li>
-            <li class="relative flex items-center px-6 py-3">
-                @if (request()->routeIs('kalender_akademik.*'))
-                    <span class="absolute inset-y-0 left-0 w-1 rounded-br-lg rounded-tr-lg bg-blue-600"
-                        aria-hidden="true"></span>
-                @endif
-                <a class="dark:text-gray-100 dark:hover:text-gray-200 inline-flex w-full items-center text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800"
-                    href="/admin/kalender_akademik">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="lucide lucide-calendar-x  h-5 w-5">
-                        <path d="M8 2v4" />
-                        <path d="M16 2v4" />
-                        <rect width="18" height="18" x="3" y="4" rx="2" />
-                        <path d="M3 10h18" />
-                        <path d="m14 14-4 4" />
-                        <path d="m10 14 4 4" />
-                    </svg>
-                    <span class="ml-4">Kalender Akademik</span>
-                </a>
-            </li>
+
+            @if ($roles['roles'] == 'MASTER')
+                <li class="relative flex items-center px-6 py-3">
+                    @if (request()->routeIs('jam_kerja.*'))
+                        <span class="absolute inset-y-0 left-0 w-1 rounded-br-lg rounded-tr-lg bg-blue-600"
+                            aria-hidden="true"></span>
+                    @endif
+                    <a class="dark:text-gray-100 dark:hover:text-gray-200 inline-flex w-full items-center text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800"
+                        href="/admin/jam_kerja">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="lucide lucide-clock h-5 w-5">
+                            <circle cx="12" cy="12" r="10" />
+                            <polyline points="12 6 12 12 16 14" />
+                        </svg>
+                        <span class="ml-4">Jam Kerja</span>
+                    </a>
+                </li>
+                <li class="relative flex items-center px-6 py-3">
+                    @if (request()->routeIs('kalender_akademik.*'))
+                        <span class="absolute inset-y-0 left-0 w-1 rounded-br-lg rounded-tr-lg bg-blue-600"
+                            aria-hidden="true"></span>
+                    @endif
+                    <a class="dark:text-gray-100 dark:hover:text-gray-200 inline-flex w-full items-center text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800"
+                        href="/admin/kalender_akademik">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="lucide lucide-calendar-x  h-5 w-5">
+                            <path d="M8 2v4" />
+                            <path d="M16 2v4" />
+                            <rect width="18" height="18" x="3" y="4" rx="2" />
+                            <path d="M3 10h18" />
+                            <path d="m14 14-4 4" />
+                            <path d="m10 14 4 4" />
+                        </svg>
+                        <span class="ml-4">Kalender Akademik</span>
+                    </a>
+                </li>
+            @endif
+
+            @if ($roles['roles'] == 'LEMBAGA')
+                <li class="relative flex items-center px-6 py-3">
+                    @if (request()->routeIs('kelas.*'))
+                        <span class="absolute inset-y-0 left-0 w-1 rounded-br-lg rounded-tr-lg bg-blue-600"
+                            aria-hidden="true"></span>
+                    @endif
+                    <a class="dark:text-gray-100 dark:hover:text-gray-200 inline-flex w-full items-center text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800"
+                        href="/admin/kelas">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="lucide lucide-shapes h-5 w-5">
+                            <path
+                                d="M8.3 10a.7.7 0 0 1-.626-1.079L11.4 3a.7.7 0 0 1 1.198-.043L16.3 8.9a.7.7 0 0 1-.572 1.1Z" />
+                            <rect x="3" y="14" width="7" height="7" rx="1" />
+                            <circle cx="17.5" cy="17.5" r="3.5" />
+                        </svg>
+                        <span class="ml-4">Kelas</span>
+                    </a>
+                </li>
+            @endif
         </ul>
     </div>
 </aside>

@@ -1,8 +1,40 @@
 @extends('layouts.admin')
 @section('content')
+    {{--  warning  --}}
+    <div class="bg-green-50 border mb-5 border-green-200 text-sm text-green-800 rounded-lg p-4 dark:bg-green-800/10 dark:border-green-900 dark:text-green-500"
+        role="alert" tabindex="-1" aria-labelledby="hs-with-list-label">
+        <div class="flex">
+            <div class="shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-info shrink-0 size-4 mt-0.5">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M12 16v-4" />
+                    <path d="M12 8h.01" />
+                </svg>
+            </div>
+            <div class="ms-4">
+                <h3 id="hs-with-list-label" class="text-sm font-semibold">
+                    Petunjuk
+                </h3>
+                <div class="mt-2 text-sm text-green-700 dark:text-green-400">
+                    <ul class="list-disc space-y-1 ps-5">
+                        <li>
+                            Pilih lembaga/sekolah terlebih dahulu untuk melihat daftar kalender akademik sesuai lembaganya.
+                        </li>
+                        <li>
+                            Kalender akademik adalah hari libur lembaga, maka bisa membuat lebih dari 1 (satu) tanggal.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <div class="w-full overflow-hidden rounded shadow-inner">
         <div class="flex flex-col items-start justify-between px-4 py-3 border-b md:flex-row md:items-center">
-            <button {{--href="{{ route('kalender_akademik.create') }}"--}}
+            <button {{-- href="{{ route('kalender_akademik.create') }}" --}}
                 class="inline-flex items-center flex-none p-2 mb-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded tambahBtn hover:bg-blue-700 focus:bg-blue-700 focus:outline-none disabled:pointer-events-none disabled:opacity-50 md:mb-0">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"

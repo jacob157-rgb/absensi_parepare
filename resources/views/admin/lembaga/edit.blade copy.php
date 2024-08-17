@@ -103,7 +103,7 @@
                                 "searchPlaceholder": "Search...",
                                 "searchClasses": "block w-full text-sm border-gray-200 rounded focus:border-blue-500 focus:ring-blue-500 before:absolute before:inset-0 before:z-[1] dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 py-2 px-3",
                                 "searchWrapperClasses": "bg-white p-2 -mx-1 sticky top-0 dark:bg-neutral-900",
-                                "placeholder": "{{ $edit->provinsi }} - selected",
+                                "placeholder": "Pilih Provinsi...",
                                 "toggleTag": "<button type=\"button\" aria-expanded=\"false\"><span class=\"me-2\" data-icon></span><span class=\"text-gray-800 dark:text-neutral-200 \" data-title></span></button>",
                                 "toggleClasses": "hs-select-disabled:pointer-events-none hs-select-disabled:opacity-50 relative py-2 mt-1 ps-4 pe-9 flex gap-x-2 text-nowrap w-full cursor-pointer bg-white border border-gray-200 rounded text-start text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-neutral-600",
                                 "dropdownClasses": "mt-2 max-h-72 pb-1 px-1 space-y-0.5 z-20 w-full bg-white border border-gray-200 rounded overflow-hidden overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-neutral-700 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500 dark:bg-neutral-900 dark:border-neutral-700",
@@ -131,7 +131,7 @@
                                 "searchPlaceholder": "Search...",
                                 "searchClasses": "block w-full text-sm border-gray-200 rounded focus:border-blue-500 focus:ring-blue-500 before:absolute before:inset-0 before:z-[1] dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 py-2 px-3",
                                 "searchWrapperClasses": "bg-white p-2 -mx-1 sticky top-0 dark:bg-neutral-900",
-                                "placeholder": "{{ $edit->kabupaten }} - selected",
+                                "placeholder": "Pilih Kabupaten...",
                                 "toggleTag": "<button type=\"button\" aria-expanded=\"false\"><span class=\"me-2\" data-icon></span><span class=\"text-gray-800 dark:text-neutral-200 \" data-title></span></button>",
                                 "toggleClasses": "hs-select-disabled:pointer-events-none hs-select-disabled:opacity-50 relative py-2 mt-1 ps-4 pe-9 flex gap-x-2 text-nowrap w-full cursor-pointer bg-white border border-gray-200 rounded text-start text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-neutral-600",
                                 "dropdownClasses": "mt-2 max-h-72 pb-1 px-1 space-y-0.5 z-20 w-full bg-white border border-gray-200 rounded overflow-hidden overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-neutral-700 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500 dark:bg-neutral-900 dark:border-neutral-700",
@@ -159,7 +159,7 @@
                                 "searchPlaceholder": "Search...",
                                 "searchClasses": "block w-full text-sm border-gray-200 rounded focus:border-blue-500 focus:ring-blue-500 before:absolute before:inset-0 before:z-[1] dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 py-2 px-3",
                                 "searchWrapperClasses": "bg-white p-2 -mx-1 sticky top-0 dark:bg-neutral-900",
-                                "placeholder": "{{ $edit->kecamatan }} - selected",
+                                "placeholder": "Pilih Kecamatan...",
                                 "toggleTag": "<button type=\"button\" aria-expanded=\"false\"><span class=\"me-2\" data-icon></span><span class=\"text-gray-800 dark:text-neutral-200 \" data-title></span></button>",
                                 "toggleClasses": "hs-select-disabled:pointer-events-none hs-select-disabled:opacity-50 relative py-2 mt-1 ps-4 pe-9 flex gap-x-2 text-nowrap w-full cursor-pointer bg-white border border-gray-200 rounded text-start text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-neutral-600",
                                 "dropdownClasses": "mt-2 max-h-72 pb-1 px-1 space-y-0.5 z-20 w-full bg-white border border-gray-200 rounded overflow-hidden overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-neutral-700 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500 dark:bg-neutral-900 dark:border-neutral-700",
@@ -187,7 +187,7 @@
                                 "searchPlaceholder": "Search...",
                                 "searchClasses": "block w-full text-sm border-gray-200 rounded focus:border-blue-500 focus:ring-blue-500 before:absolute before:inset-0 before:z-[1] dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 py-2 px-3",
                                 "searchWrapperClasses": "bg-white p-2 -mx-1 sticky top-0 dark:bg-neutral-900",
-                                "placeholder": "{{ $edit->kelurahan }} - selected",
+                                "placeholder": "Pilih Desa / Kelurahan...",
                                 "toggleTag": "<button type=\"button\" aria-expanded=\"false\"><span class=\"me-2\" data-icon></span><span class=\"text-gray-800 dark:text-neutral-200 \" data-title></span></button>",
                                 "toggleClasses": "hs-select-disabled:pointer-events-none hs-select-disabled:opacity-50 relative py-2 mt-1 ps-4 pe-9 flex gap-x-2 text-nowrap w-full cursor-pointer bg-white border border-gray-200 rounded text-start text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-neutral-600",
                                 "dropdownClasses": "mt-2 max-h-72 pb-1 px-1 space-y-0.5 z-20 w-full bg-white border border-gray-200 rounded overflow-hidden overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-neutral-700 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500 dark:bg-neutral-900 dark:border-neutral-700",
@@ -295,27 +295,64 @@
 
         </form>
     </div>
-@endsection
-
-@push('addon-style')
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-@endpush
-
-@push('addon-script')
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            fetchSelect('provinsi', '/provinsi');
+            // Fetch and set value for Provinsi
+            fetchSelectOld('provinsi', '/provinsi', '{{ $edit->provinsi }}');
+            fetchSelectOld('kabupaten', '/kabupaten?provinsi={{ $edit->provinsi }}', '{{ $edit->kabupaten }}');
+            fetchSelectOld('kecamatan', '/kecamatan?kabupaten={{ $edit->kabupaten }}', '{{ $edit->kecamatan }}');
+            fetchSelectOld('kelurahan', '/kelurahan?kecamatan={{ $edit->kecamatan }}', '{{ $edit->kelurahan }}');
         });
+
         document.getElementById('provinsi').addEventListener('change', function() {
             fetchSelect('kabupaten', `/kabupaten?provinsi=${this.value}`);
         });
+
         document.getElementById('kabupaten').addEventListener('change', function() {
             fetchSelect('kecamatan', `/kecamatan?kabupaten=${this.value}`);
         });
+
         document.getElementById('kecamatan').addEventListener('change', function() {
             fetchSelect('kelurahan', `/kelurahan?kecamatan=${this.value}`);
         });
+
+        function fetchSelectOld(params, url, selectedValue = null) {
+            fetch(url)
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(data) {
+                    const selectElement = document.getElementById(params);
+                    const select = HSSelect.getInstance(`#${params}`);
+
+                    selectElement.innerHTML = '';
+
+                    select.addOption({
+                        title: `Pilih ${params.charAt(0).toUpperCase() + params.slice(1)}`,
+                        val: ''
+                    });
+
+                    data.forEach(function(item) {
+                        select.addOption({
+                            title: item.name,
+                            val: item.name,
+                            options: {
+                                description: item.description || '',
+                                icon: item.icon || ''
+                            }
+                        });
+                    });
+
+                    if (selectedValue) {
+                        setTimeout(() => {
+                            select.setValue(selectedValue);
+                        }, 100);
+                    }
+                })
+                .catch(function(error) {
+                    console.error(`Error fetching ${params}:`, error);
+                });
+        }
 
         function fetchSelect(params, url) {
             fetch(url)
@@ -340,37 +377,15 @@
                     console.error(`Error fetching ${params}:`, error);
                 });
         }
+    </script>
+@endsection
 
-        document.getElementById('provinsi').addEventListener('blur', function() {
-            updateComboBox('kabupaten', 'provinsi');
-        });
-
-        function updateComboBox(dataType, queryString) {
-            const comboBox = `#data${dataType.charAt(0).toUpperCase() + dataType.slice(1)}`;
-            const element = HSComboBox.getInstance(comboBox, false);
-
-            let query = document.getElementById(queryString).value;
-            let apiUrl = `{{ url('/${dataType.toLowerCase()}') }}`;
-
-            let configString = `
-            {
-                "apiUrl": "${apiUrl}",
-                "apiQuery": "${queryString}=${query}",
-                "outputItemTemplate": "<div class=\\"cursor-pointer py-2 px-4 w-full text-sm text-gray-800 hover:bg-gray-100 rounded focus:outline-none focus:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:text-neutral-200 dark:focus:bg-neutral-800\\" data-hs-combo-box-output-item><div class=\\"flex justify-between items-center w-full\\"><div><div data-hs-combo-box-output-item-field=\\"name\\" data-hs-combo-box-search-text data-hs-combo-box-value></div></div><span class=\\"hidden hs-combo-box-selected:block\\"><svg class=\\"shrink-0 size-3.5 text-blue-600 dark:text-blue-500\\" xmlns=\\"http://www.w3.org/2000/svg\\" width=\\"24\\" height=\\"24\\" viewBox=\\"0 0 24 24\\" fill=\\"none\\" stroke=\\"currentColor\\" stroke-width=\\"2\\" stroke-linecap=\\"round\\" stroke-linejoin=\\"round\\"><polyline points=\\"20 6 9 17 4 12\\"></polyline></svg></span></div></div>",
-                "outputEmptyTemplate": "<div class=\\"w-full px-4 py-2 text-sm text-gray-800 rounded dark:bg-neutral-900 dark:text-neutral-200\\">Tidak Ditemukan</div>",
-                "outputLoaderTemplate": "<div class=\\"flex items-center justify-center px-4 py-2 text-sm text-gray-800 bg-white rounded dark:bg-neutral-900 dark:text-neutral-200\\"><div class=\\"size-6 dark:text-blue-500 inline-block animate-spin rounded-full border-[3px] border-current border-t-transparent text-blue-600\\" role=\\"status\\" aria-label=\\"loading\\"><span class=\\"sr-only\\">Memuat...</span></div></div>"
-            }`;
-
-            document.querySelectorAll(comboBox).forEach(node => {
-                node.setAttribute("data-hs-combo-box", configString);
-            });
-
-            // Ensure HSComboBox is correctly initialized
-            new HSComboBox(document.querySelector(comboBox));
-            window.HSStaticMethods.autoInit();
-        }
-
-        {{--  handle maps  --}}
+@push('addon-style')
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+@endpush
+@push('addon-script')
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
         let map;
         let marker;
 

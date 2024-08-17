@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Admin;
 use App\Models\Sekolah;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,11 +15,21 @@ class LembagaController extends Controller
      */
     public function index()
     {
-        $data = [
-            'pages' => 'Data Lembaga',
-            'lembaga' => Sekolah::orderBy('id', 'desc')->paginate(10),
-        ];
-        return view('admin.lembaga.index', $data);
+        $roles = metaData();
+        if ($roles['roles'] == 'MASTER') {
+            $data = [
+                'pages' => 'Data Lembaga',
+                'lembaga' => Sekolah::orderBy('id', 'desc')->paginate(10),
+            ];
+            return view('admin.lembaga.index', $data);
+        } else {
+            $lembaga = Sekolah::isLembaga();
+            $data = [
+                'pages' => Str::upper('Informasi '. $lembaga->nama),
+                'lembaga' => $lembaga,
+            ];
+            return view('admin.lembaga.show_by_lembaga', $data);
+        }
     }
 
     /**
@@ -146,9 +157,9 @@ class LembagaController extends Controller
             'nsm' => $request->nsm,
             'npsn' => $request->npsn,
             'provinsi' => $request->provinsi ?? $lembaga->provinsi,
-            'kabupaten' => $request->kabupaten ?? $lembaga->provinsi,
-            'kecamatan' => $request->kecamatan ?? $lembaga->provinsi,
-            'kelurahan' => $request->kelurahan ?? $lembaga->provinsi,
+            'kabupaten' => $request->kabupaten ?? $lembaga->kabupaten,
+            'kecamatan' => $request->kecamatan ?? $lembaga->kecamatan,
+            'kelurahan' => $request->kelurahan ?? $lembaga->kelurahan,
             'alamat' => $request->alamat,
             'no_telp' => $request->no_telp,
             'latitude' => $request->latitude,

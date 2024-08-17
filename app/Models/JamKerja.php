@@ -15,4 +15,8 @@ class JamKerja extends Model
     {
         return $this->belongsTo(Sekolah::class, 'sekolah_id');
     }
+
+    static function getByLembaga($lembaga) {
+        return static::where('sekolah_id', $lembaga)->get();
+    }
 }

@@ -80,6 +80,7 @@ class JamKerjaController extends Controller
         $data = [
             'pages' => 'Data Jam Kerja',
             'jam_kerja' => $jamKerja,
+            'lembaga' => $jamKerja->lembaga->nama,
         ];
 
         // Return JSON response
