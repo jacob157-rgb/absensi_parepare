@@ -145,7 +145,6 @@ class LembagaController extends Controller
         return redirect('/admin/lembaga')->with('success', 'Data lembaga berhasil didaftarkan');
     }
 
-
     /**
      * Display the specified resource.
      */
@@ -184,10 +183,10 @@ class LembagaController extends Controller
             'status' => 'required|in:ACTIVE,NON ACTIVE',
             'nsm' => 'required|string|max:12',
             'npsn' => 'required|string|max:8',
-            'provinsi' => 'required|string|exists:indonesia_provinces,name',
-            'kabupaten' => 'required|string|exists:indonesia_cities,name',
-            'kecamatan' => 'required|string|exists:indonesia_districts,name',
-            'kelurahan' => 'required|string|exists:indonesia_villages,name',
+            'provinsi' => 'nullable|string|exists:indonesia_provinces,name',
+            'kabupaten' => 'nullable|string|exists:indonesia_cities,name',
+            'kecamatan' => 'nullable|string|exists:indonesia_districts,name',
+            'kelurahan' => 'nullable|string|exists:indonesia_villages,name',
             'alamat' => 'required|string',
             'tempat_cetak' => 'required|string',
             'no_telp' => 'required|string',
@@ -302,10 +301,11 @@ class LembagaController extends Controller
 
             $logoKiri = Image::read($logoKiri->getRealPath());
             // Resize and save the image
-            $logoKiri->resize(300, 300, function ($constraint) {
-                $constraint->aspectRatio();
-            })->save($logoKiriPath . $logoKiriFilename);
-
+            $logoKiri
+                ->resize(300, 300, function ($constraint) {
+                    $constraint->aspectRatio();
+                })
+                ->save($logoKiriPath . $logoKiriFilename);
 
             // Delete the old logo if requested
             if ($request->input('remove_logo_kiri') == '1' && $lembaga->logo_kiri) {
@@ -328,9 +328,11 @@ class LembagaController extends Controller
 
             $logoKanan = Image::read($logoKanan->getRealPath());
             // Resize and save the image
-            $logoKanan->resize(300, 300, function ($constraint) {
-                $constraint->aspectRatio();
-            })->save($logoKananPath . $logoKananFilename);
+            $logoKanan
+                ->resize(300, 300, function ($constraint) {
+                    $constraint->aspectRatio();
+                })
+                ->save($logoKananPath . $logoKananFilename);
 
             // Delete the old logo if requested
             if ($request->input('remove_logo_kanan') == '1' && $lembaga->logo_kanan) {
@@ -352,16 +354,14 @@ class LembagaController extends Controller
             $user = Auth::guard('admin')->user();
             if ($user && Hash::check($request->password_old, $user->password)) {
                 $data = [
-                    'password' => Hash::make($request->password)
+                    'password' => Hash::make($request->password),
                 ];
-
-                if ($request->input('status_kamad') == 'PNS') {
-                    $data['username'] = $request->nip_kamad;
-                }
 
                 Admin::whereId($user->id)->update($data);
             } else {
-                return redirect()->back()->withErrors(['password_old' => 'Password lama tidak cocok.']);
+                return redirect()
+                    ->back()
+                    ->withErrors(['password_old' => 'Password lama tidak cocok.']);
             }
         }
 
@@ -376,9 +376,11 @@ class LembagaController extends Controller
     public function destroy(string $id)
     {
         $lembaga = Sekolah::find($id);
-        $account = Admin::where('username', $lembaga->nsm)->first();
+        $account = Admin::where('username', $lembaga?->nsm)->first();
+        if ($account) {
+            $account->delete();
+        }
         $lembaga->delete();
-        $account->delete();
         return redirect('/admin/lembaga')->with('success', 'Data lembaga berhasil dihapus');
     }
 }

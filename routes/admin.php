@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\GuruController;
 use App\Http\Controllers\Admin\JamKerjaController;
 use App\Http\Controllers\Admin\KalenderAkademikConttroller;
 use App\Http\Controllers\Admin\KelasController;
@@ -74,6 +75,14 @@ Route::middleware([isAdmin::class])->group(function () {
             Route::get('/kelas/{id}', 'edit')->name('kelas.edit')->middleware(['permission:LEMBAGA']);
             Route::post('/kelas/{id}', 'update')->name('kelas.update')->middleware(['permission:LEMBAGA']);
             Route::delete('/kelas/{id}/destroy', 'destroy')->name('kelas.destroy')->middleware(['permission:LEMBAGA']);
+        });
+        Route::controller(GuruController::class)->group(function () {
+            Route::get('/guru', 'index')->name('guru.index')->middleware(['permission:LEMBAGA']);
+            Route::post('/guru/importExcel', 'importExcel')->name('guru.importExcel')->middleware(['permission:LEMBAGA']);
+            Route::post('/guru', 'store')->name('guru.store')->middleware(['permission:LEMBAGA']);
+            Route::get('/guru/{id}', 'edit')->name('guru.edit')->middleware(['permission:LEMBAGA']);
+            Route::post('/guru/{id}', 'update')->name('guru.update')->middleware(['permission:LEMBAGA']);
+            Route::delete('/guru/{id}/destroy', 'destroy')->name('guru.destroy')->middleware(['permission:LEMBAGA']);
         });
     });
 });

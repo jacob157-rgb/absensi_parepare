@@ -21,7 +21,7 @@
                     </svg>
                 </button>
             </div>
-            <form id="modal-form" action="" method="POST">
+            <form id="modal-form" action="" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                 <div id="modal-content" class="overflow-y-visible p-4">
 

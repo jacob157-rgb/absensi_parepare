@@ -197,7 +197,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Laravolt\Indonesia\ServiceProvider::class,
         Jenssegers\Agent\AgentServiceProvider::class,
-
+        Maatwebsite\Excel\ExcelServiceProvider::class,
     ],
 
     /*
@@ -216,6 +216,7 @@ return [
             // 'ExampleClass' => App\Example\ExampleClass::class,
             'Indonesia' => Laravolt\Indonesia\Facade::class,
             'Agent' => Jenssegers\Agent\Facades\Agent::class,
+            'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         ])
         ->toArray(),
 ];

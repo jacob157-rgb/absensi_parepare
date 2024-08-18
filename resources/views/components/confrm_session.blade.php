@@ -53,4 +53,13 @@
                 }
             });
         });
+
+        @if (session('errorImportExcel'))
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops... ',
+                text: '{{ session('errorImportExcel') }}',
+                showConfirmButton: true
+            });
+        @endif
     </script>

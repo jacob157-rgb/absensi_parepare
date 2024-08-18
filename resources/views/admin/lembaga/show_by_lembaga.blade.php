@@ -449,7 +449,7 @@
                             <label class="block text-sm">
                                 <span class="font-semibold text-gray-700 dark:text-gray-400">Logo Kiri</span>
                                 <img id="logoKiriPreview" src="{{ asset($lembaga->logo_kiri) }}" alt="Logo Kiri"
-                                    class="dark:text-gray-300 dark:bg-gray-700 {{ $lembaga->logo_kiri ? '' : 'hidden' }} mt-1 block w-full rounded border-gray-300 text-sm" />
+                                    class="dark:text-gray-300 dark:bg-gray-700 {{ $lembaga->logo_kiri ? '' : 'hidden' }} mt-1 block w-52 h-auto rounded border-gray-300 text-sm" />
                                 <input type="file" name="logo_kiri" id="logoKiriInput"
                                     class="block w-full mt-1 text-sm border-gray-300 rounded dark:text-gray-300 dark:bg-gray-700 focus:shadow-outline-red form-input focus:border-red-400 focus:outline-none"
                                     accept="image/*" />
@@ -462,7 +462,7 @@
                             <label class="block text-sm">
                                 <span class="font-semibold text-gray-700 dark:text-gray-400">Logo Kanan</span>
                                 <img id="logoKananPreview" src="{{ asset($lembaga->logo_kanan) }}" alt="Logo Kanan"
-                                    class="dark:text-gray-300 dark:bg-gray-700 {{ $lembaga->logo_kanan ? '' : 'hidden' }} mt-1 block w-full rounded border-gray-300 text-sm" />
+                                    class="dark:text-gray-300 dark:bg-gray-700 {{ $lembaga->logo_kanan ? '' : 'hidden' }} mt-1 block w-52 h-auto rounded border-gray-300 text-sm" />
                                 <input type="file" name="logo_kanan" id="logoKananInput"
                                     class="block w-full mt-1 text-sm border-gray-300 rounded dark:text-gray-300 dark:bg-gray-700 focus:shadow-outline-red form-input focus:border-red-400 focus:outline-none"
                                     accept="image/*" />
