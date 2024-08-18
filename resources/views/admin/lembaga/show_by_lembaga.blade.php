@@ -288,8 +288,7 @@
         </div>
         <div id="hs-tab-to-select-4" class="hidden" role="tabpanel" aria-labelledby="hs-tab-to-select-item-4">
             <div class="p-3 sm:p-0">
-                <form action="{{ route('kamad.update', $lembaga->id) }}" method="POST"
-                    enctype="multipart/form-data">
+                <form action="{{ route('kamad.update', $lembaga->id) }}" method="POST" enctype="multipart/form-data">
                     <div class="space-y-2">
                         @csrf
                         <!-- Nama Kamad -->
@@ -308,7 +307,8 @@
                             <span class="font-semibold text-gray-700 dark:text-gray-400">Status Kamad</span>
                             <select name="status_kamad" id="status_kamad"
                                 class="block w-full mt-1 text-sm border-gray-300 rounded dark:text-gray-300 dark:bg-gray-700 focus:shadow-outline-red form-input focus:border-red-400 focus:outline-none">
-                                <option value="" disabled {{ $lembaga->status_kamad == '' ? 'selected' : '' }}>Pilih Status</option>
+                                <option value="" disabled {{ $lembaga->status_kamad == '' ? 'selected' : '' }}>Pilih
+                                    Status</option>
                                 <option value="PNS" {{ $lembaga->status_kamad == 'PNS' ? 'selected' : '' }}>PNS
                                 </option>
                                 <option value="NON PNS" {{ $lembaga->status_kamad == 'NON PNS' ? 'selected' : '' }}>NON
@@ -323,7 +323,8 @@
                         <label id="nip_kamad_label"
                             class="{{ $lembaga->status_kamad == 'PNS' ? 'block' : 'hidden' }} text-sm">
                             <span class="font-semibold text-gray-700 dark:text-gray-400">NIP Kamad</span>
-                            <input type="number" inputmode="numeric" name="nip_kamad" value="{{ $lembaga->nip_kamad }}"
+                            <input type="number" inputmode="numeric" name="nip_kamad"
+                                value="{{ $lembaga->nip_kamad }}"
                                 class="block w-full mt-1 text-sm border-gray-300 rounded dark:text-gray-300 dark:bg-gray-700 focus:shadow-outline-red form-input focus:border-red-400 focus:outline-none"
                                 placeholder="NIP Kamad" />
                             @error('nip_kamad')
@@ -447,7 +448,7 @@
                             <!-- Logo Kiri -->
                             <label class="block text-sm">
                                 <span class="font-semibold text-gray-700 dark:text-gray-400">Logo Kiri</span>
-                                <img id="logoKiriPreview" src="{{ $lembaga->logo_kiri }}" alt="Logo Kiri"
+                                <img id="logoKiriPreview" src="{{ asset($lembaga->logo_kiri) }}" alt="Logo Kiri"
                                     class="dark:text-gray-300 dark:bg-gray-700 {{ $lembaga->logo_kiri ? '' : 'hidden' }} mt-1 block w-full rounded border-gray-300 text-sm" />
                                 <input type="file" name="logo_kiri" id="logoKiriInput"
                                     class="block w-full mt-1 text-sm border-gray-300 rounded dark:text-gray-300 dark:bg-gray-700 focus:shadow-outline-red form-input focus:border-red-400 focus:outline-none"
@@ -460,7 +461,7 @@
                             <!-- Logo Kanan -->
                             <label class="block text-sm">
                                 <span class="font-semibold text-gray-700 dark:text-gray-400">Logo Kanan</span>
-                                <img id="logoKananPreview" src="{{ $lembaga->logo_kanan }}" alt="Logo Kanan"
+                                <img id="logoKananPreview" src="{{ asset($lembaga->logo_kanan) }}" alt="Logo Kanan"
                                     class="dark:text-gray-300 dark:bg-gray-700 {{ $lembaga->logo_kanan ? '' : 'hidden' }} mt-1 block w-full rounded border-gray-300 text-sm" />
                                 <input type="file" name="logo_kanan" id="logoKananInput"
                                     class="block w-full mt-1 text-sm border-gray-300 rounded dark:text-gray-300 dark:bg-gray-700 focus:shadow-outline-red form-input focus:border-red-400 focus:outline-none"
@@ -489,12 +490,12 @@
             }).trigger('change');
 
             $('input[name="nip_kamad"]').on('input', function() {
-            var value = $(this).val();
-            if (value < 1) {
-                $(this).val('');
-                alert('Hanya menerima input angka.');
-            }
-        });
+                var value = $(this).val();
+                if (value < 1) {
+                    $(this).val('');
+                    alert('Hanya menerima input angka.');
+                }
+            });
         });
     </script>
     <script>

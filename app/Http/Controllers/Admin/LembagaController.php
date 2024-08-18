@@ -300,12 +300,12 @@ class LembagaController extends Controller
                 File::makeDirectory($logoKiriPath, 0755, true);
             }
 
+            $logoKiri = Image::read($logoKiri->getRealPath());
             // Resize and save the image
-            Image::make($logoKiri->getRealPath())
-                ->resize(300, 300, function ($constraint) {
-                    $constraint->aspectRatio();
-                })
-                ->save($logoKiriPath . $logoKiriFilename);
+            $logoKiri->resize(300, 300, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save($logoKiriPath . $logoKiriFilename);
+
 
             // Delete the old logo if requested
             if ($request->input('remove_logo_kiri') == '1' && $lembaga->logo_kiri) {
@@ -326,12 +326,11 @@ class LembagaController extends Controller
                 File::makeDirectory($logoKananPath, 0755, true);
             }
 
+            $logoKanan = Image::read($logoKanan->getRealPath());
             // Resize and save the image
-            Image::make($logoKanan->getRealPath())
-                ->resize(300, 300, function ($constraint) {
-                    $constraint->aspectRatio();
-                })
-                ->save($logoKananPath . $logoKananFilename);
+            $logoKanan->resize(300, 300, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save($logoKananPath . $logoKananFilename);
 
             // Delete the old logo if requested
             if ($request->input('remove_logo_kanan') == '1' && $lembaga->logo_kanan) {
@@ -344,13 +343,13 @@ class LembagaController extends Controller
         // Update general fields
         $lembaga->nama_kamad = $request->nama_kamad;
         if ($request->status_kamad == 'PNS') {
+            $lembaga->status_kamad = $request->status_kamad;
             $lembaga->nip_kamad = $request->nip_kamad;
         }
 
         // Handle password update
         if ($request->password_old != null) {
-            $user = auth('admin')->user();
-            dd($user);
+            $user = Auth::guard('admin')->user();
             if ($user && Hash::check($request->password_old, $user->password)) {
                 $data = [
                     'password' => Hash::make($request->password)
