@@ -276,7 +276,6 @@ class LembagaController extends Controller
 
     public function updateKamad(Request $request, $id)
     {
-        // dd($request);
         $request->validate([
             'nama_kamad' => 'required|string',
             'status_kamad' => 'required|string',
@@ -284,12 +283,13 @@ class LembagaController extends Controller
             'logo_kiri' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'logo_kanan' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'password_old' => 'nullable|string',
-            'password' => $request->input('password-old') != null ? 'required|string|confirmed' : 'nullable|string',
-            'password_confirmation' => $request->input('password-old') != null ? 'required|string' : 'nullable|string',
+            'password' => $request->input('password_old') != null ? 'required|string|confirmed' : 'nullable|string',
+            'password_confirmation' => $request->input('password_old') != null ? 'required|string' : 'nullable|string',
         ]);
 
         $lembaga = Sekolah::findOrFail($id);
 
+        // Handling logo_kiri
         if ($request->hasFile('logo_kiri')) {
             $logoKiri = $request->file('logo_kiri');
             $logoKiriFilename = time() . '_logo_kiri.' . $logoKiri->getClientOriginalExtension();
@@ -301,21 +301,21 @@ class LembagaController extends Controller
             }
 
             // Resize and save the image
-            Image::read($logoKiri->getRealPath())
+            Image::make($logoKiri->getRealPath())
                 ->resize(300, 300, function ($constraint) {
                     $constraint->aspectRatio();
                 })
                 ->save($logoKiriPath . $logoKiriFilename);
 
-            // Delete the old logo if it exists and the user chose to remove it
+            // Delete the old logo if requested
             if ($request->input('remove_logo_kiri') == '1' && $lembaga->logo_kiri) {
                 File::delete(public_path($lembaga->logo_kiri));
             }
 
-            // Update the logo_kiri path in the database
             $lembaga->logo_kiri = 'images/logo_kiri/' . $logoKiriFilename;
         }
 
+        // Handling logo_kanan
         if ($request->hasFile('logo_kanan')) {
             $logoKanan = $request->file('logo_kanan');
             $logoKananFilename = time() . '_logo_kanan.' . $logoKanan->getClientOriginalExtension();
@@ -327,33 +327,40 @@ class LembagaController extends Controller
             }
 
             // Resize and save the image
-            Image::read($logoKanan->getRealPath())
+            Image::make($logoKanan->getRealPath())
                 ->resize(300, 300, function ($constraint) {
                     $constraint->aspectRatio();
                 })
                 ->save($logoKananPath . $logoKananFilename);
 
-            // Delete the old logo if it exists and the user chose to remove it
+            // Delete the old logo if requested
             if ($request->input('remove_logo_kanan') == '1' && $lembaga->logo_kanan) {
                 File::delete(public_path($lembaga->logo_kanan));
             }
 
-            // Update the logo_kanan path in the database
             $lembaga->logo_kanan = 'images/logo_kanan/' . $logoKananFilename;
         }
 
+        // Update general fields
         $lembaga->nama_kamad = $request->nama_kamad;
         if ($request->status_kamad == 'PNS') {
             $lembaga->nip_kamad = $request->nip_kamad;
         }
 
+        // Handle password update
         if ($request->password_old != null) {
-            $authId = Auth::id();
-            $admin = Admin::findOrFail($authId);
+            $user = auth('admin')->user();
+            dd($user);
+            if ($user && Hash::check($request->password_old, $user->password)) {
+                $data = [
+                    'password' => Hash::make($request->password)
+                ];
 
-            if (Hash::check($request->password_old, $admin->password)) {
-                $admin->password = Hash::read($request->password);
-                $admin->save();
+                if ($request->input('status_kamad') == 'PNS') {
+                    $data['username'] = $request->nip_kamad;
+                }
+
+                Admin::whereId($user->id)->update($data);
             } else {
                 return redirect()->back()->withErrors(['password_old' => 'Password lama tidak cocok.']);
             }
@@ -363,8 +370,6 @@ class LembagaController extends Controller
 
         return redirect()->route('lembaga.index')->with('success', 'Data Kepala Sekolah berhasil diperbarui');
     }
-
-
 
     /**
      * Remove the specified resource from storage.
