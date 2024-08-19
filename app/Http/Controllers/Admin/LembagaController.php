@@ -7,6 +7,7 @@ use App\Models\Sekolah;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\JamAbsen;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
@@ -113,7 +114,7 @@ class LembagaController extends Controller
         }
 
         // Create a new Sekolah record
-        Sekolah::create([
+        $sekolah = Sekolah::create([
             'instansi' => $request->instansi,
             'sub_instansi' => $request->sub_instansi,
             'nama' => $request->nama,
@@ -133,6 +134,17 @@ class LembagaController extends Controller
             'logo_kiri' => $request->hasFile('logo_kiri') ? 'images/logo_kiri/' . $logoKiriFilename : null,
             'logo_kanan' => $request->hasFile('logo_kanan') ? 'images/logo_kanan/' . $logoKananFilename : null,
         ]);
+
+        $days = ['SENIN', 'SELASA', 'RABU', 'KAMIS', 'JUMAT', 'SABTU'];
+
+        foreach ($days as $day) {
+            JamAbsen::create([
+                'sekolah_id' => $sekolah->id,
+                'hari' => $day,
+                'jam_masuk' => '07:00:00',
+                'jam_terlambat' => '07:30:00',
+            ]);
+        }
 
         // Create a new Admin record
         Admin::create([

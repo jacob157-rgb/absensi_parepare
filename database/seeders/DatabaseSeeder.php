@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             VillagesSeeder::class,
             AdminSeeder::class,
             SekolahSeeder::class,
+            JamAbsenSeeder::class,
         ]);
     }
 }

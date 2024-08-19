@@ -16,6 +16,11 @@ class Sekolah extends Model
     static function isLembaga()
     {
         $metaData = metaData();
+        // Bypass nsm checking if roles is master
+        if ($metaData['roles'] == 'MASTER') {
+            return true;
+        }
+
         $lembaga = static::where('nsm', $metaData['username'])->first();
         if ($lembaga == null) {
             request()->session()->flush();

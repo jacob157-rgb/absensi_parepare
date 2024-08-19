@@ -11,4 +11,14 @@ class JamAbsen extends Model
     protected $table = 'jam_absen';
     protected $guarded = ['id'];
 
+    public function getJamMasukAttribute($value)
+    {
+        return \Carbon\Carbon::createFromFormat('H:i:s', $value)->format('H:i');
+    }
+
+    // Accessor untuk jam_terlambat
+    public function getJamTerlambatAttribute($value)
+    {
+        return \Carbon\Carbon::createFromFormat('H:i:s', $value)->format('H:i');
+    }
 }
