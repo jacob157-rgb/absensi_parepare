@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-    <div class="flex flex-col bg-white border">
+    <div class="flex flex-col mb-5 bg-white border rounded dark:bg-neutral-600">
         <div class="-m-1.5 overflow-x-auto">
             <div class="inline-block min-w-full p-1.5 align-middle">
                 <div class="overflow-hidden">
@@ -10,13 +10,13 @@
                             <thead>
                                 <tr>
                                     <th scope="col"
-                                        class="px-6 py-3 text-xs font-medium text-center text-gray-500 uppercase dark:text-neutral-500">
+                                        class="px-6 py-3 text-xs font-medium text-center text-gray-500 uppercase dark:text-neutral-200">
                                         Hari</th>
                                     <th scope="col"
-                                        class="px-6 py-3 text-xs font-medium text-gray-500 uppercase dark:text-neutral-500 text-start">
+                                        class="px-6 py-3 text-xs font-medium text-gray-500 uppercase dark:text-neutral-200 text-start">
                                         Jam Masuk</th>
                                     <th scope="col"
-                                        class="px-6 py-3 text-xs font-medium text-gray-500 uppercase dark:text-neutral-500 text-start">
+                                        class="px-6 py-3 text-xs font-medium text-gray-500 uppercase dark:text-neutral-200 text-start">
                                         Batas Terlambat</th>
                                 </tr>
                             </thead>
@@ -62,7 +62,7 @@
                                         <div class="flex justify-end space-x-2" id="actionDiv" style="display: none;">
                                             <div class="flex justify-end mt-4">
                                                 <button type="button" id="cancelBtn"
-                                                    class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-gray-600 border border-transparent rounded shadow-inner focus:shadow-outline-gray hover:bg-gray-700 focus:outline-none active:bg-gray-600">
+                                                    class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-gray-800 border border-transparent rounded shadow-inner focus:shadow-outline-gray hover:bg-gray-900 focus:outline-none active:bg-gray-700">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15"
                                                         viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"

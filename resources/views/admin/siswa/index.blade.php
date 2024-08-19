@@ -76,7 +76,7 @@
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                    @foreach ($guru as $row)
+                    @foreach ($siswa as $row)
                         <tr class="text-gray-700 dark:text-gray-400">
                             <td class="px-4 py-3 text-sm font-medium">
                                 {{ $loop->iteration }}.
@@ -131,7 +131,7 @@
                                             </path>
                                         </svg>
                                     </button>
-                                    <form action="{{ route('guru.destroy', $row->id) }}" method="post"
+                                    <form action="{{ route('siswa.destroy', $row->id) }}" method="post"
                                         id="delete_{{ $row->id }}">
                                         @csrf
                                         @method('DELETE')
@@ -152,7 +152,7 @@
                     @endforeach
                 </tbody>
             </table>
-            {{ $guru->links('vendor.pagination.tailwind') }}
+            {{ $siswa->links('vendor.pagination.tailwind') }}
         </div>
     </div>
 
@@ -165,7 +165,7 @@
                 e.preventDefault();
 
                 let modalLabel = 'Tambah {{ $pages }}';
-                let postUrl = `{{ route('guru.store') }}`;
+                let postUrl = `{{ route('siswa.store') }}`;
                 let modalContent = `
                     <!-- Nama -->
                     <div class="mb-4">
@@ -173,7 +173,7 @@
                             <span class="font-semibold text-gray-700 dark:text-gray-400">Nama</span>
                             <input type="text" name="nama" value="{{ old('nama') }}"
                                 class="block w-full mt-1 text-sm border-gray-300 rounded dark:text-gray-300 dark:bg-gray-700 focus:shadow-outline-red form-input focus:border-red-400 focus:outline-none"
-                                placeholder="Masukkan Nama Guru" required/>
+                                placeholder="Masukkan Nama Siswa" required/>
                             @error('nama')
                                 <span class="text-xs text-red-600 dark:text-red-400">{{ $message }}</span>
                             @enderror
@@ -184,7 +184,7 @@
                             <span class="font-semibold text-gray-700 dark:text-gray-400">NIP/NIK</span>
                             <input type="number" name="nik_nip" value="{{ old('nik_nip') }}"
                                 class="block w-full mt-1 text-sm border-gray-300 rounded dark:text-gray-300 dark:bg-gray-700 focus:shadow-outline-red form-input focus:border-red-400 focus:outline-none"
-                                placeholder="Masukkan NIP/NIK Guru" required/>
+                                placeholder="Masukkan NIP/NIK Siswa" required/>
                             @error('nik_nip')
                                 <span class="text-xs text-red-600 dark:text-red-400">{{ $message }}</span>
                             @enderror
@@ -195,7 +195,7 @@
                             <span class="font-semibold text-gray-700 dark:text-gray-400">Password</span>
                             <input type="text" name="password" value="{{ old('password') }}"
                                 class="block w-full mt-1 text-sm border-gray-300 rounded dark:text-gray-300 dark:bg-gray-700 focus:shadow-outline-red form-input focus:border-red-400 focus:outline-none"
-                                placeholder="Masukkan Password Guru" required/>
+                                placeholder="Masukkan Password Siswa" required/>
                             @error('password')
                                 <span class="text-xs text-red-600 dark:text-red-400">{{ $message }}</span>
                             @enderror
@@ -211,24 +211,24 @@
                 HSOverlay.open('#modal');
             });
 
-            {{--  handle edit guru  --}}
+            // {{--  handle edit siswa  --}}
             $(document).on('click', '.editBtn', function(e) {
                 e.preventDefault();
-                let guru_id = $(this).data('id');
+                let siswa_id = $(this).data('id');
                 $.ajax({
-                    url: `/admin/guru/${guru_id}`,
+                    url: `/admin/siswa/${siswa_id}`,
                     type: "GET",
                     success: function(response) {
                         console.log(response);
                         let modalLabel = 'Edit {{ $pages }}';
-                        let postUrl = `/admin/guru/${guru_id}`;
+                        let postUrl = `/admin/siswa/${siswa_id}`;
                         let modalContent = `
                     <div class="mb-4">
                         <label class="block text-sm">
                             <span class="font-semibold text-gray-700 dark:text-gray-400">Nama</span>
                             <input type="text" id="nama" name="nama" value="{{ old('nama') }}"
                                 class="block w-full mt-1 text-sm border-gray-300 rounded dark:text-gray-300 dark:bg-gray-700 focus:shadow-outline-red form-input focus:border-red-400 focus:outline-none"
-                                placeholder="Masukkan Nama Guru" required/>
+                                placeholder="Masukkan Nama Siswa" required/>
                             @error('nama')
                                 <span class="text-xs text-red-600 dark:text-red-400">{{ $message }}</span>
                             @enderror
@@ -239,7 +239,7 @@
                             <span class="font-semibold text-gray-700 dark:text-gray-400">NIP/NIK</span>
                             <input type="number" id="nik_nip" name="nik_nip" value="{{ old('nik_nip') }}"
                                 class="block w-full mt-1 text-sm border-gray-300 rounded dark:text-gray-300 dark:bg-gray-700 focus:shadow-outline-red form-input focus:border-red-400 focus:outline-none"
-                                placeholder="Masukkan NIP/NIK Guru" required/>
+                                placeholder="Masukkan NIP/NIK Siswa" required/>
                             @error('nik_nip')
                                 <span class="text-xs text-red-600 dark:text-red-400">{{ $message }}</span>
                             @enderror
@@ -250,7 +250,7 @@
                             <span class="font-semibold text-gray-700 dark:text-gray-400">Password</span>
                             <input type="text" id="password_view" name="password" value="{{ old('password') }}"
                                 class="block w-full mt-1 text-sm border-gray-300 rounded dark:text-gray-300 dark:bg-gray-700 focus:shadow-outline-red form-input focus:border-red-400 focus:outline-none"
-                                placeholder="Masukkan Password Guru" required/>
+                                placeholder="Masukkan Password Siswa" required/>
                             @error('password')
                                 <span class="text-xs text-red-600 dark:text-red-400">{{ $message }}</span>
                             @enderror
@@ -261,9 +261,9 @@
                         $('#modal-label').text(modalLabel);
                         $('#modal-form').attr('action', postUrl);
                         $('#modal-content').html(modalContent);
-                        $('#nama').val(response.data.guru.nama);
-                        $('#nik_nip').val(response.data.guru.nik_nip);
-                        $('#password_view').val(response.data.guru.password_view);
+                        $('#nama').val(response.data.siswa.nama);
+                        $('#nik_nip').val(response.data.siswa.nik_nip);
+                        $('#password_view').val(response.data.siswa.password_view);
                         HSOverlay.open('#modal');
                     }
                 });
@@ -274,7 +274,7 @@
                 e.preventDefault();
 
                 let modalLabel = 'Import {{ $pages }}';
-                let postUrl = `{{ route('guru.importExcel') }}`;
+                let postUrl = `{{ route('siswa.importExcel') }}`;
                 let modalContent = `
                     <div class="mb-4">
                         <label class="block text-sm">
@@ -286,7 +286,7 @@
                                 <span class="text-xs text-red-600 dark:text-red-400">{{ $message }}</span>
                             @enderror
                         </label>
-                        <a class="flex items-center font-medium text-sm text-green-500 gap-x-3.5 py-2  " href="{{ asset('import/guru.xls') }}">
+                        <a class="flex items-center font-medium text-sm text-green-500 gap-x-3.5 py-2  " href="{{ asset('import/siswa.xls') }}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                 class="lucide lucide-arrow-down-to-line shrink-0 size-4">

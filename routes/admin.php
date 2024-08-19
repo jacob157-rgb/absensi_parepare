@@ -7,9 +7,9 @@ use App\Http\Controllers\Admin\KalenderAkademikConttroller;
 use App\Http\Controllers\Admin\KelasController;
 use App\Http\Controllers\Admin\LembagaController;
 use App\Http\Controllers\Admin\SemesterController;
+use App\Http\Controllers\Admin\SiswaController;
 use App\Http\Controllers\Admin\TahunAjaranController;
 use App\Http\Middleware\isAdmin;
-use App\Http\Middleware\Permission;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -88,6 +88,14 @@ Route::middleware([isAdmin::class])->group(function () {
             Route::get('/guru/{id}', 'edit')->name('guru.edit')->middleware(['permission:LEMBAGA']);
             Route::post('/guru/{id}', 'update')->name('guru.update')->middleware(['permission:LEMBAGA']);
             Route::delete('/guru/{id}/destroy', 'destroy')->name('guru.destroy')->middleware(['permission:LEMBAGA']);
+        });
+        Route::controller(SiswaController::class)->group(function () {
+            Route::get('/siswa', 'index')->name('siswa.index')->middleware(['permission:LEMBAGA']);
+            Route::post('/siswa/importExcel', 'importExcel')->name('siswa.importExcel')->middleware(['permission:LEMBAGA']);
+            Route::post('/siswa', 'store')->name('siswa.store')->middleware(['permission:LEMBAGA']);
+            Route::get('/siswa/{id}', 'edit')->name('siswa.edit')->middleware(['permission:LEMBAGA']);
+            Route::post('/siswa/{id}', 'update')->name('siswa.update')->middleware(['permission:LEMBAGA']);
+            Route::delete('/siswa/{id}/destroy', 'destroy')->name('siswa.destroy')->middleware(['permission:LEMBAGA']);
         });
     });
 });

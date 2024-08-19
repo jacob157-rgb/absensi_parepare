@@ -491,8 +491,9 @@
 
             $('input[name="nip_kamad"]').on('input', function() {
                 var value = $(this).val();
-                if (value < 1) {
-                    $(this).val('');
+                var numericValue = value.replace(/[^0-9]/g, '');
+                if (value !== numericValue) {
+                    $(this).val(numericValue);
                     alert('Hanya menerima input angka.');
                 }
             });

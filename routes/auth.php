@@ -22,4 +22,8 @@ Route::controller(AuthenticationController::class)->group(function () {
         Route::post('/post', 'postAdmin')->name('admin.post');
         Route::post('/logout', 'logoutAdmin')->name('admin.logout');
     });
+
+    Route::post('/siswa', 'postSiswa')->name('siswa.post');
+    Route::post('/wali', 'postWali')->name('wali.post');
+    Route::post('/guru', 'postGuru')->name('guru.post');
 });

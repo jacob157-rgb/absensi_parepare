@@ -6,6 +6,7 @@ use App\Models\Admin;
 use Jenssegers\Agent\Agent;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Siswa;
 use Illuminate\Support\Facades\Auth;
 
 class AuthenticationController extends Controller
@@ -65,6 +66,69 @@ class AuthenticationController extends Controller
     }
 
     public function logoutAdmin(Request $request)
+    {
+        $request->session()->flush();
+        Auth::guard('admin')->logout();
+        $request->session()->regenerate();
+        return redirect('/admin')->with('seccess', 'Berhasil keluar dari sistem.');
+    }
+
+
+    // User Authentication
+    public function getUser()
+    {
+        if (metaData()) {
+            return redirect('/home');
+        }
+        return view('auth.user.login');
+    }
+
+
+    public function postSiswa(Request $request)
+    {
+        $request->validate([
+            'username' => 'required|string',
+            'password' => 'required|string',
+        ]);
+
+        $credentials = $request->only('username', 'password');
+        $siswa = Siswa::where('nisn', $request->username)->first();
+        if ($siswa && Auth::guard('siswa')->attempt($credentials)) {
+            $agent = new Agent();
+            $agent->setUserAgent($request->userAgent());
+            $meta = [
+                'browser' => $agent->browser(),
+                'browser_version' => $agent->version($agent->browser()),
+                'device' => $agent->device(),
+                'platform' => $agent->platform(),
+                'ip' => $request->ip(),
+                'waktu' => now()->toDateTimeString(),
+                'is_mobile' => $agent->isMobile(),
+                'is_tablet' => $agent->isTablet(),
+                'is_desktop' => $agent->isDesktop(),
+                'is_robot' => $agent->isRobot(),
+                'is_bot' => $agent->isBot(),
+            ];
+            $siswa->update([
+                'meta' => $meta,
+            ]);
+            $session = [
+                'username' => $siswa->username,
+                'roles' => $siswa->roles,
+                'meta' => $meta,
+            ];
+            $request->session()->put('meta_data', $session);
+            return redirect('/siswa/beranda');
+        }
+        return redirect()
+            ->back()
+            ->withErrors([
+                'username' => 'Username atau password salah.',
+            ])
+            ->onlyInput('username');
+    }
+
+    public function logoutUser(Request $request)
     {
         $request->session()->flush();
         Auth::guard('admin')->logout();

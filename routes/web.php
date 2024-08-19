@@ -15,7 +15,7 @@ use App\Http\Controllers\LaravoltController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.user.login');
 });
 
 // component

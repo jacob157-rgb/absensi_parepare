@@ -23,7 +23,7 @@
                         aria-hidden="true"></span>
                 @endif
                 <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 dark:text-gray-100 dark:hover:text-gray-200 hover:text-gray-800"
-                    href="/admin/beranda">
+                    href="{{ route('beranda') }}">
                     <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
                         stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                         <path
@@ -40,7 +40,7 @@
                             aria-hidden="true"></span>
                     @endif
                     <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 dark:text-gray-100 dark:hover:text-gray-200 hover:text-gray-800"
-                        href="/admin/tahun_ajaran">
+                        href="{{ route('tahun_ajaran.index') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round" class="w-5 h-5 lucide lucide-calendar-check">
@@ -59,7 +59,7 @@
                             aria-hidden="true"></span>
                     @endif
                     <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 dark:text-gray-100 dark:hover:text-gray-200 hover:text-gray-800"
-                        href="/admin/semester">
+                        href="{{ route('semester.index') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round" class="w-5 h-5 lucide lucide-graduation-cap">
@@ -78,7 +78,7 @@
                         aria-hidden="true"></span>
                 @endif
                 <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 dark:text-gray-100 dark:hover:text-gray-200 hover:text-gray-800"
-                    href="/admin/lembaga">
+                    href="{{ route('lembaga.index') }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round" class="w-5 h-5 lucide lucide-school">
@@ -100,7 +100,7 @@
                             aria-hidden="true"></span>
                     @endif
                     <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 dark:text-gray-100 dark:hover:text-gray-200 hover:text-gray-800"
-                        href="/admin/jam_kerja">
+                        href="{{ route('jam_kerja.index') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round" class="w-5 h-5 lucide lucide-clock">
@@ -116,7 +116,7 @@
                             aria-hidden="true"></span>
                     @endif
                     <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 dark:text-gray-100 dark:hover:text-gray-200 hover:text-gray-800"
-                        href="/admin/kalender_akademik">
+                        href="{{ route('kalender_akademik.index') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round" class="w-5 h-5 lucide lucide-calendar-x">
@@ -139,7 +139,7 @@
                             aria-hidden="true"></span>
                     @endif
                     <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 dark:text-gray-100 dark:hover:text-gray-200 hover:text-gray-800"
-                        href="/admin/kelas">
+                        href="{{ route('kelas.index') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round" class="w-5 h-5 lucide lucide-shapes">
@@ -158,7 +158,7 @@
                             aria-hidden="true"></span>
                     @endif
                     <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 dark:text-gray-100 dark:hover:text-gray-200 hover:text-gray-800"
-                        href="/admin/jam_absen">
+                        href="{{ route('jam_absen.index') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round" class="w-5 h-5 lucide lucide-calendar-clock">
@@ -207,11 +207,54 @@
                             aria-label="submenu">
                             <li
                                 class="px-2 py-1 transition-colors duration-150 dark:hover:text-gray-200 hover:text-gray-800">
-                                <a class="w-full" href="/admin/guru">Guru</a>
+                                <a class="w-full" href="{{ route('guru.index') }}">Guru</a>
                             </li>
                             <li
                                 class="px-2 py-1 transition-colors duration-150 dark:hover:text-gray-200 hover:text-gray-800">
                                 <a class="w-full" href="/admin/jadwal_piket">Jadwal Piket </a>
+                            </li>
+                        </ul>
+                    </template>
+                </li>
+                <li class="relative px-6 py-3">
+                    @if (request()->routeIs('siswa.*'))
+                        <span class="absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg"
+                            aria-hidden="true"></span>
+                    @endif
+                    <button
+                        class="inline-flex items-center justify-between w-full text-sm font-semibold text-black transition-colors duration-150 dark:hover:text-gray-200 hover:text-gray-800"
+                        @click="togglePagesMenu" aria-haspopup="true">
+                        <span class="inline-flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-round">
+                                <path d="M18 21a8 8 0 0 0-16 0" />
+                                <circle cx="10" cy="8" r="5" />
+                                <path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3" />
+                            </svg>
+                            <span class="ml-4">Data Siswa</span>
+                        </span>
+                        <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                    <template x-if="isPagesMenuOpen">
+                        <ul x-transition:enter="transition-all ease-in-out duration-300"
+                            x-transition:enter-start="opacity-25 max-h-0"
+                            x-transition:enter-end="opacity-100 max-h-xl"
+                            x-transition:leave="transition-all ease-in-out duration-300"
+                            x-transition:leave-start="opacity-100 max-h-xl" x-transition:leave-end="opacity-0 max-h-0"
+                            class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium border-l-2 border-blue-500 dark:text-gray-400 dark:bg-gray-900"
+                            aria-label="submenu">
+                            <li
+                                class="px-2 py-1 transition-colors duration-150 dark:hover:text-gray-200 hover:text-gray-800">
+                                <a class="w-full" href="{{ route('siswa.index') }}">Siswa</a>
+                            </li>
+                            <li
+                                class="px-2 py-1 transition-colors duration-150 dark:hover:text-gray-200 hover:text-gray-800">
+                                <a class="w-full" href="/admin/jadwal_piket"></a>
                             </li>
                         </ul>
                     </template>
