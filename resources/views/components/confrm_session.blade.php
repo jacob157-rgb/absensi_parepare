@@ -56,10 +56,12 @@
 
         @if (session('errorImportExcel'))
             Swal.fire({
-                icon: 'error',
+                icon: 'warning',
                 title: 'Oops... ',
-                text: '{{ session('errorImportExcel') }}',
-                showConfirmButton: true
+                text: 'Cek lagi file excelnya ada beberapa yang masih kosong atau format tanggalnya salah.',
+                showConfirmButton: true,
+                confirmButtonText: 'Oke, Mengerti',
             });
         @endif
+
     </script>

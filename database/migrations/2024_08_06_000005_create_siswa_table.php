@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('sekolah_id');
             $table->unsignedBigInteger('kelas_id');
             $table->string('nisn')->unique();
+            $table->string('nik')->unique();
             $table->string('nama');
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');

@@ -17,7 +17,7 @@ class JamAbsenSeeder extends Seeder
 
         foreach ($days as $day) {
             JamAbsen::create([
-                'sekolah_id' => 1,
+                'sekolah_id' => 3,
                 'hari' => $day,
                 'jam_masuk' => '07:00:00',
                 'jam_terlambat' => '07:30:00',

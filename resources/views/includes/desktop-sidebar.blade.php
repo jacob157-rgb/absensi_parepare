@@ -173,92 +173,98 @@
                     </a>
                 </li>
 
-                <li class="relative px-6 py-3">
-                    @if (request()->routeIs('guru.*'))
-                        <span class="absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg"
-                            aria-hidden="true"></span>
-                    @endif
-                    <button
-                        class="inline-flex items-center justify-between w-full text-sm font-semibold text-black transition-colors duration-150 dark:hover:text-gray-200 hover:text-gray-800"
-                        @click="togglePagesMenu" aria-haspopup="true">
-                        <span class="inline-flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-round">
-                                <path d="M18 21a8 8 0 0 0-16 0" />
-                                <circle cx="10" cy="8" r="5" />
-                                <path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3" />
+                <div x-data="{ isGuruMenuOpen: false, isSiswaMenuOpen: false }">
+                    <!-- Dropdown untuk Data Guru -->
+                    <li class="relative px-6 py-3">
+                        @if (request()->routeIs('guru.*'))
+                            <span class="absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg"
+                                aria-hidden="true"></span>
+                        @endif
+                        <button
+                            class="inline-flex items-center justify-between w-full text-sm font-semibold text-black transition-colors duration-150 dark:hover:text-gray-200 hover:text-gray-800"
+                            @click="isGuruMenuOpen = !isGuruMenuOpen" aria-haspopup="true">
+                            <span class="inline-flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-round">
+                                    <path d="M18 21a8 8 0 0 0-16 0" />
+                                    <circle cx="10" cy="8" r="5" />
+                                    <path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3" />
+                                </svg>
+                                <span class="ml-4">Data Guru</span>
+                            </span>
+                            <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
                             </svg>
-                            <span class="ml-4">Data Guru</span>
-                        </span>
-                        <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd"
-                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                    </button>
-                    <template x-if="isPagesMenuOpen">
-                        <ul x-transition:enter="transition-all ease-in-out duration-300"
-                            x-transition:enter-start="opacity-25 max-h-0"
-                            x-transition:enter-end="opacity-100 max-h-xl"
-                            x-transition:leave="transition-all ease-in-out duration-300"
-                            x-transition:leave-start="opacity-100 max-h-xl" x-transition:leave-end="opacity-0 max-h-0"
-                            class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium border-l-2 border-blue-500 dark:text-gray-400 dark:bg-gray-900"
-                            aria-label="submenu">
-                            <li
-                                class="px-2 py-1 transition-colors duration-150 dark:hover:text-gray-200 hover:text-gray-800">
-                                <a class="w-full" href="{{ route('guru.index') }}">Guru</a>
-                            </li>
-                            <li
-                                class="px-2 py-1 transition-colors duration-150 dark:hover:text-gray-200 hover:text-gray-800">
-                                <a class="w-full" href="/admin/jadwal_piket">Jadwal Piket </a>
-                            </li>
-                        </ul>
-                    </template>
-                </li>
-                <li class="relative px-6 py-3">
-                    @if (request()->routeIs('siswa.*'))
-                        <span class="absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg"
-                            aria-hidden="true"></span>
-                    @endif
-                    <button
-                        class="inline-flex items-center justify-between w-full text-sm font-semibold text-black transition-colors duration-150 dark:hover:text-gray-200 hover:text-gray-800"
-                        @click="togglePagesMenu" aria-haspopup="true">
-                        <span class="inline-flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users-round">
-                                <path d="M18 21a8 8 0 0 0-16 0" />
-                                <circle cx="10" cy="8" r="5" />
-                                <path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3" />
+                        </button>
+                        <template x-if="isGuruMenuOpen">
+                            <ul x-transition:enter="transition-all ease-in-out duration-300"
+                                x-transition:enter-start="opacity-25 max-h-0"
+                                x-transition:enter-end="opacity-100 max-h-xl"
+                                x-transition:leave="transition-all ease-in-out duration-300"
+                                x-transition:leave-start="opacity-100 max-h-xl"
+                                x-transition:leave-end="opacity-0 max-h-0"
+                                class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium border-l-2 border-blue-500 dark:text-gray-400 dark:bg-gray-900"
+                                aria-label="submenu">
+                                <li
+                                    class="px-2 py-1 transition-colors duration-150 dark:hover:text-gray-200 hover:text-gray-800">
+                                    <a class="w-full" href="{{ route('guru.index') }}">Guru</a>
+                                </li>
+                                <li
+                                    class="px-2 py-1 transition-colors duration-150 dark:hover:text-gray-200 hover:text-gray-800">
+                                    <a class="w-full" href="/admin/jadwal_piket">Jadwal Piket </a>
+                                </li>
+                            </ul>
+                        </template>
+                    </li>
+
+                    <!-- Dropdown untuk Data Siswa -->
+                    <li class="relative px-6 py-3">
+                        @if (request()->routeIs('siswa.*'))
+                            <span class="absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg"
+                                aria-hidden="true"></span>
+                        @endif
+                        <button
+                            class="inline-flex items-center justify-between w-full text-sm font-semibold text-black transition-colors duration-150 dark:hover:text-gray-200 hover:text-gray-800"
+                            @click="isSiswaMenuOpen = !isSiswaMenuOpen" aria-haspopup="true">
+                            <span class="inline-flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="lucide lucide-graduation-cap">
+                                    <path
+                                        d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" />
+                                    <path d="M22 10v6" />
+                                    <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" />
+                                </svg>
+                                <span class="ml-4">Data Siswa</span>
+                            </span>
+                            <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
                             </svg>
-                            <span class="ml-4">Data Siswa</span>
-                        </span>
-                        <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd"
-                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                    </button>
-                    <template x-if="isPagesMenuOpen">
-                        <ul x-transition:enter="transition-all ease-in-out duration-300"
-                            x-transition:enter-start="opacity-25 max-h-0"
-                            x-transition:enter-end="opacity-100 max-h-xl"
-                            x-transition:leave="transition-all ease-in-out duration-300"
-                            x-transition:leave-start="opacity-100 max-h-xl" x-transition:leave-end="opacity-0 max-h-0"
-                            class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium border-l-2 border-blue-500 dark:text-gray-400 dark:bg-gray-900"
-                            aria-label="submenu">
-                            <li
-                                class="px-2 py-1 transition-colors duration-150 dark:hover:text-gray-200 hover:text-gray-800">
-                                <a class="w-full" href="{{ route('siswa.index') }}">Siswa</a>
-                            </li>
-                            <li
-                                class="px-2 py-1 transition-colors duration-150 dark:hover:text-gray-200 hover:text-gray-800">
-                                <a class="w-full" href="/admin/jadwal_piket"></a>
-                            </li>
-                        </ul>
-                    </template>
-                </li>
+                        </button>
+                        <template x-if="isSiswaMenuOpen">
+                            <ul x-transition:enter="transition-all ease-in-out duration-300"
+                                x-transition:enter-start="opacity-25 max-h-0"
+                                x-transition:enter-end="opacity-100 max-h-xl"
+                                x-transition:leave="transition-all ease-in-out duration-300"
+                                x-transition:leave-start="opacity-100 max-h-xl"
+                                x-transition:leave-end="opacity-0 max-h-0"
+                                class="p-2 mt-2 space-y-2 overflow-hidden text-sm font-medium border-l-2 border-blue-500 dark:text-gray-400 dark:bg-gray-900"
+                                aria-label="submenu">
+                                <li
+                                    class="px-2 py-1 transition-colors duration-150 dark:hover:text-gray-200 hover:text-gray-800">
+                                    <a class="w-full" href="{{ route('siswa.index') }}">Siswa</a>
+                                </li>
+                            </ul>
+                        </template>
+                    </li>
+                </div>
+
             @endif
         </ul>
     </div>

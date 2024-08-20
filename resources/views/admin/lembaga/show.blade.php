@@ -322,14 +322,14 @@
                         <label class="block text-sm">
                             <span class="dark:text-gray-400 font-semibold text-gray-700">Logo Kiri</span>
                             <img id="logoKiriPreview" src="{{ asset($lembaga->logo_kiri) }}" alt="Logo Kiri"
-                                class="dark:text-gray-300 dark:bg-gray-700 {{ $lembaga->logo_kiri ? '' : 'hidden' }} mt-1 block w-full rounded border-gray-300 text-sm" />
+                                class="dark:text-gray-300 dark:bg-gray-700 {{ $lembaga->logo_kiri ? '' : 'hidden' }} mt-1 block  w-52 h-auto rounded border-gray-300 text-sm" />
                         </label>
 
                         <!-- Logo Kanan -->
                         <label class="block text-sm">
                             <span class="dark:text-gray-400 font-semibold text-gray-700">Logo Kanan</span>
                             <img id="logoKananPreview" src="{{ asset($lembaga->logo_kanan) }}" alt="Logo Kanan"
-                                class="dark:text-gray-300 dark:bg-gray-700 {{ $lembaga->logo_kanan ? '' : 'hidden' }} mt-1 block w-full rounded border-gray-300 text-sm" />
+                                class="dark:text-gray-300 dark:bg-gray-700 {{ $lembaga->logo_kanan ? '' : 'hidden' }} mt-1 block  w-52 h-auto rounded border-gray-300 text-sm" />
 
                         </label>
                     </div>

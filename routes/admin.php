@@ -91,9 +91,11 @@ Route::middleware([isAdmin::class])->group(function () {
         });
         Route::controller(SiswaController::class)->group(function () {
             Route::get('/siswa', 'index')->name('siswa.index')->middleware(['permission:LEMBAGA']);
+            Route::get('/siswa/create', 'create')->name('siswa.create')->middleware(['permission:LEMBAGA']);
             Route::post('/siswa/importExcel', 'importExcel')->name('siswa.importExcel')->middleware(['permission:LEMBAGA']);
             Route::post('/siswa', 'store')->name('siswa.store')->middleware(['permission:LEMBAGA']);
             Route::get('/siswa/{id}', 'edit')->name('siswa.edit')->middleware(['permission:LEMBAGA']);
+            Route::get('/siswa/{id}/show', 'show')->name('siswa.show')->middleware(['permission:LEMBAGA']);
             Route::post('/siswa/{id}', 'update')->name('siswa.update')->middleware(['permission:LEMBAGA']);
             Route::delete('/siswa/{id}/destroy', 'destroy')->name('siswa.destroy')->middleware(['permission:LEMBAGA']);
         });

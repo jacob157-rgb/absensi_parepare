@@ -11,7 +11,10 @@ class Siswa extends Authenticatable
     use HasFactory;
     protected $table = 'siswa';
     protected $guarded = ['id'];
-    protected $hidden = [
-        'password'
-    ];
+
+    public function kelas()
+    {
+        return $this->belongsTo(Kelas::class, 'kelas_id', 'id');
+    }
+    protected $hidden = ['password'];
 }
