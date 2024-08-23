@@ -7,19 +7,18 @@
 </head>
 
 <body>
-    <div class="dark:bg-gray-900 flex h-screen bg-gray-50" :class="{ 'overflow-hidden': isSideMenuOpen }">
+    <div class="dark:bg-gray-900 flex h-screen bg-gray-50 overflow-x-hidden" :class="{ 'overflow-hidden': isSideMenuOpen }">
 
-        {{--  desktop sidebar  --}}
+        {{-- Desktop sidebar --}}
         @include('includes.desktop-sidebar')
 
-        {{--   Mobile sidebar   --}}
+        {{-- Mobile sidebar --}}
         @include('includes.mobile-sidebar')
 
-        <div class="flex w-full flex-1 flex-col">
+        <div class="flex w-full flex-1 flex-col overflow-x-hidden">
             @include('includes.header')
-            <main class="h-full overflow-y-auto">
-                <div class="container mx-auto grid px-6">
-
+            <main class="h-full overflow-x-auto overflow-y-auto">
+                <div class="container mx-auto px-6">
                     <section
                         class="focus:shadow-outline-blue my-6 flex items-center justify-between rounded bg-blue-600 p-4 text-sm font-semibold text-white shadow-md focus:outline-none">
                         <div class="flex items-center">
@@ -41,6 +40,7 @@
             </main>
         </div>
     </div>
+
 
     @stack('addon-script')
     <script>

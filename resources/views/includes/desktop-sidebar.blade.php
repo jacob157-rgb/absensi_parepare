@@ -214,7 +214,7 @@
                                 </li>
                                 <li
                                     class="px-2 py-1 transition-colors duration-150 dark:hover:text-gray-200 hover:text-gray-800">
-                                    <a class="w-full" href="/admin/jadwal_piket">Jadwal Piket </a>
+                                    <a class="w-full" href="{{ route('jadwal_piket_guru.index') }}">Jadwal Piket </a>
                                 </li>
                             </ul>
                         </template>

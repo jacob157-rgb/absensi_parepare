@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\GuruController;
+use App\Http\Controllers\Admin\JadwalPiketGuruController;
 use App\Http\Controllers\Admin\JamAbsenController;
 use App\Http\Controllers\Admin\JamKerjaController;
 use App\Http\Controllers\Admin\KalenderAkademikConttroller;
@@ -98,6 +99,11 @@ Route::middleware([isAdmin::class])->group(function () {
             Route::get('/siswa/{id}/show', 'show')->name('siswa.show')->middleware(['permission:LEMBAGA']);
             Route::post('/siswa/{id}', 'update')->name('siswa.update')->middleware(['permission:LEMBAGA']);
             Route::delete('/siswa/{id}/destroy', 'destroy')->name('siswa.destroy')->middleware(['permission:LEMBAGA']);
+        });
+
+        Route::controller(JadwalPiketGuruController::class)->group(function () {
+            Route::get('/jadwal_piket_guru', 'index')->name('jadwal_piket_guru.index')->middleware(['permission:LEMBAGA']);
+            Route::post('/jadwal_piket_guru', 'store')->name('jadwal_piket_guru.store')->middleware(['permission:LEMBAGA']);
         });
     });
 });

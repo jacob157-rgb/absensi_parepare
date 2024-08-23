@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('jadwal_piket_guru',function(Blueprint $table){
             $table->id();
-            $table->string('guru_id');
+            $table->unsignedBigInteger('guru_id');
             $table->string('hari');
             $table->timestamps();
+            $table->foreign('guru_id')->references('id')->on('guru')->onDelete('cascade');
         });
     }
 

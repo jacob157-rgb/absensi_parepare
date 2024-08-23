@@ -11,4 +11,8 @@ class JadwalPiketGuru extends Model
     protected $table = 'jadwal_piket_guru';
     protected $guarded = ['id'];
 
+    public function guru()
+    {
+        return $this->belongsTo(Guru::class, 'guru_id');
+    }
 }
