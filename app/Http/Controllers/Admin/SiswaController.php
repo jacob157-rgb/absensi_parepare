@@ -130,7 +130,6 @@ class SiswaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-
         $request->validate([
             'nama' => 'required',
             'nisn' => 'required',
@@ -170,24 +169,53 @@ class SiswaController extends Controller
         return redirect()->route('siswa.index')->with('success', 'Siswa dan Wali Siswa berhasil diupdate.');
     }
 
-     // function handle excel
-     public function importExcel(Request $request)
-     {
-         $request->validate([
-             'importExcel' => 'required|mimes:xlsx,xls,csv',
-             'kelas' => 'required',
-         ]);
+    // function handle excel
+    public function importExcel(Request $request)
+    {
+        $request->validate([
+            'importExcel' => 'required|mimes:xlsx,xls,csv',
+            'kelas' => 'required',
+        ]);
 
-         $lembaga = Sekolah::isLembaga();
+        $lembaga = Sekolah::isLembaga();
 
-         try {
-             Excel::import(new SiswaImport($lembaga->id, $request->kelas), $request->file('importExcel'));
-             return redirect('/admin/siswa')->with('success', 'Siswa berhasil diimport.');
-         } catch (\Exception $e) {
-             return redirect('/admin/siswa')->with('errorImportExcel', $e->getMessage());
-         }
+        try {
+            Excel::import(new SiswaImport($lembaga->id, $request->kelas), $request->file('importExcel'));
+            return redirect('/admin/siswa?kelas=' . $request->kelas)->with('success', 'Siswa berhasil diimport.');
+        } catch (\Exception $e) {
+            return redirect('/admin/siswa?kelas=' . $request->kelas)->with('errorImportExcel', $e->getMessage());
+        }
+    }
 
-     }
+    // get Migrasi
+
+    public function getMIgrasi()
+    {
+        $lembaga = Sekolah::isLembaga();
+        $data = [
+            'pages' => 'Data Siswa',
+            'kelas' => Kelas::orderBy('tingkat_kelas', 'asc')->get(),
+            'siswa' => Siswa::orderBy('id', 'desc')
+                ->where('sekolah_id', $lembaga->id)
+                ->where('kelas_id', request('kelasOld'))
+                ->paginate(10),
+        ];
+        return view('admin.siswa.migrasi', $data);
+    }
+    public function postMigrasi(Request $request)
+    {
+        $request->validate([
+            'kelasNew' => 'required',
+        ]);
+
+        foreach ($request->siswa as $siswa) {
+            Siswa::find($siswa)->update([
+                'kelas_id' => $request->kelasNew,
+            ]);
+        }
+
+        return redirect()->back()->with('success', 'Siswa berhasil dipindahkan.');
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -196,7 +224,7 @@ class SiswaController extends Controller
     {
         $siswa = Siswa::find($id);
         $wali = Wali::where('siswa_id', $id)->first();
-        if($wali) {
+        if ($wali) {
             $wali->delete();
         }
         $siswa->delete();

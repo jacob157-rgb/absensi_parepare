@@ -26,7 +26,7 @@ class JadwalPiketGuruController extends Controller
             'guru' => Guru::all(),
             'jadwal_piket_guru' => JadwalPiketGuru::all(),
             'jam_kerja' => $jamKerja,
-            'hari_libur' => $hariLibur, 
+            'hari_libur' => $hariLibur,
         ];
 
         return view('admin.jadwal_piket_guru.index', $data);
@@ -75,10 +75,7 @@ class JadwalPiketGuruController extends Controller
      */
     public function edit(string $id)
     {
-        return response()->json([
-            'success' => true,
-            'edit' => Semester::find($id),
-        ]);
+       //
     }
 
     /**
@@ -87,23 +84,48 @@ class JadwalPiketGuruController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'semester' => 'required',
+            'hari' => 'required',
+            'guru' => 'required',
         ]);
 
-        Semester::whereId($id)->update([
-            'nama' => $request->semester,
-        ]);
+        $lembaga = Sekolah::isLembaga();
+        $jamKerja = JamKerja::where('sekolah_id', $lembaga->id)->get();
+        $hariLibur = $jamKerja->pluck('hari_libur')->toArray();
 
-        return redirect()->back()->with('success', 'Semester berhasil diupdate.');
+        if (in_array($request->hari, $hariLibur)) {
+            return redirect()->back()->with('error', 'Jadwal pada hari libur tidak dapat dibuat.');
+        }
+
+        JadwalPiketGuru::whereIn('guru_id', $request->guru)
+            ->where('id', $id)
+            ->delete();
+
+        foreach ($request->guru as $guruId) {
+            $existingData = JadwalPiketGuru::where('guru_id', $guruId)
+                ->where('hari', $request->hari)
+                ->first();
+
+            if ($existingData) {
+                continue;
+            } else {
+                JadwalPiketGuru::create([
+                    'guru_id' => $guruId,
+                    'hari' => $request->hari,
+                ]);
+            }
+        }
+
+        return redirect()->back()->with('success', 'Jadwal Piket Guru berhasil diupdate.');
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        $semester = Semester::whereId($id);
-        $semester->delete();
-        return redirect()->back()->with('success', 'Semester berhasil dihapus.');
+        $jadwalPiket = JadwalPiketGuru::find($id);
+        $jadwalPiket->delete();
+        return redirect()->back()->with('success', 'Jadwal Piket Guru berhasil dihapus.');
     }
 }

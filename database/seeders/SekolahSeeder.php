@@ -11,6 +11,7 @@ class SekolahSeeder extends Seeder
     {
         DB::table('sekolah')->insert([
             [
+                'id' => '1',
                 'instansi' => 'Instansi A',
                 'sub_instansi' => 'Sub Instansi A',
                 'nama' => 'Sekolah A',
@@ -36,6 +37,7 @@ class SekolahSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'id' => '2',
                 'instansi' => 'Instansi B',
                 'sub_instansi' => 'Sub Instansi B',
                 'nama' => 'Sekolah B',

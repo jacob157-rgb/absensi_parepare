@@ -16,7 +16,7 @@ class isAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        
+
         if (Auth::guard('admin')->check()) {
             $sessionData = $request->session()->get('meta_data');
             if ($sessionData && isset($sessionData['meta']) && isset($sessionData['roles'])) {
@@ -26,6 +26,7 @@ class isAdmin
             }
         }
 
-        return redirect('/')->with('error', 'Unauthorized access.');
+        $request->session()->invalidate();
+        return response()->redirectToRoute('admin.logout')->with('error', 'Session anda habis.');
     }
 }

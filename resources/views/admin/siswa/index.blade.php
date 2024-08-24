@@ -34,8 +34,9 @@
 
     <div class="w-full lg:overflow-visible overflow-hidden rounded shadow-inner">
         <!-- Kelas -->
-        <form id="kelas-form" action="" method="get" class="my-4 mx-4">
-            <label class="block text-sm">
+        <span class="font-semibold text-white dark:text-gray-400">placeholder</span>
+        <form id="kelas-form" action="" method="get" class="my-2 mx-4">
+            <label class="block text-sm mt-2">
                 <span class="font-semibold text-gray-700 dark:text-gray-400">Pilih Kelas</span>
                 <select id="kelas" name="kelas"
                     data-hs-select='{

@@ -260,6 +260,10 @@
                                     class="px-2 py-1 transition-colors duration-150 dark:hover:text-gray-200 hover:text-gray-800">
                                     <a class="w-full" href="{{ route('siswa.index') }}">Siswa</a>
                                 </li>
+                                <li
+                                    class="px-2 py-1 transition-colors duration-150 dark:hover:text-gray-200 hover:text-gray-800">
+                                    <a class="w-full" href="{{ route('siswa.getMigrasi') }}">Migrasi Siswa</a>
+                                </li>
                             </ul>
                         </template>
                     </li>

@@ -98,12 +98,16 @@ Route::middleware([isAdmin::class])->group(function () {
             Route::get('/siswa/{id}', 'edit')->name('siswa.edit')->middleware(['permission:LEMBAGA']);
             Route::get('/siswa/{id}/show', 'show')->name('siswa.show')->middleware(['permission:LEMBAGA']);
             Route::post('/siswa/{id}', 'update')->name('siswa.update')->middleware(['permission:LEMBAGA']);
+            Route::get('/siswa/migrasi/kelas', 'getMigrasi')->name('siswa.getMigrasi')->middleware(['permission:LEMBAGA']);
+            Route::post('/siswa/migrasi/kelas', 'postMigrasi')->name('siswa.postMigrasi')->middleware(['permission:LEMBAGA']);
             Route::delete('/siswa/{id}/destroy', 'destroy')->name('siswa.destroy')->middleware(['permission:LEMBAGA']);
         });
 
         Route::controller(JadwalPiketGuruController::class)->group(function () {
             Route::get('/jadwal_piket_guru', 'index')->name('jadwal_piket_guru.index')->middleware(['permission:LEMBAGA']);
             Route::post('/jadwal_piket_guru', 'store')->name('jadwal_piket_guru.store')->middleware(['permission:LEMBAGA']);
+            Route::post('/jadwal_piket_guru/{id}', 'update')->name('jadwal_piket_guru.update')->middleware(['permission:LEMBAGA']);
+            Route::delete('/jadwal_piket_guru/{id}/destroy', 'destroy')->name('jadwal_piket_guru.destroy')->middleware(['permission:LEMBAGA']);
         });
     });
 });
