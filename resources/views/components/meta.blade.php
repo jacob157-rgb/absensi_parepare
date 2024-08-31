@@ -5,6 +5,7 @@
 <meta name="description" content="Aplikasi Absensi MAN2 Parepare" />
 <meta name="author" content="parepare - Aplikasi Absensi MAN2 Parepare, Tim IT Man 2 Kota Parepare" />
 <meta name="keywords" content="MAN2 Parepare, Absensi Parepare, parepare, absensi, Absensi MAN2 Parepare" />
+
 <meta name="robots" content="index, follow">
 {{-- OpenGraph Meta --}}
 <meta property="og:type" content="website">

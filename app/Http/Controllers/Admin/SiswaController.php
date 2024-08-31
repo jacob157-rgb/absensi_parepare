@@ -208,6 +208,9 @@ class SiswaController extends Controller
             'kelasNew' => 'required',
         ]);
 
+        if($request->siswa == null) {
+            return redirect()->back()->with('error', 'Gagal migrasikan siswa .');
+        }
         foreach ($request->siswa as $siswa) {
             Siswa::find($siswa)->update([
                 'kelas_id' => $request->kelasNew,

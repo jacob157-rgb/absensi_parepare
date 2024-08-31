@@ -44,6 +44,18 @@ return [
             'driver' => 'session',
             'provider' => 'admins',
         ],
+        'siswa' => [
+            'driver' => 'session',
+            'provider' => 'siswas',
+        ],
+        'guru' => [
+            'driver' => 'session',
+            'provider' => 'gurus',
+        ],
+        'wali' => [
+            'driver' => 'session',
+            'provider' => 'walis',
+        ],
     ],
 
     /*
@@ -72,6 +84,18 @@ return [
     'admins' => [
         'driver' => 'eloquent',
         'model' => App\Models\Admin::class,
+    ],
+    'siswas' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\Siswa::class,
+    ],
+    'gurus' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\Guru::class,
+    ],
+    'walis' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\Wali::class,
     ],
 
     ],

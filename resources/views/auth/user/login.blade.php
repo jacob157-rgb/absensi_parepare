@@ -1,13 +1,48 @@
 @extends('layouts.auth')
 
 @section('content')
-    <div class="relative flex items-center justify-center min-h-screen overflow-x-hidden bg-blue-500">
-        <div class="relative z-20 px-12 py-12 bg-white shadow-xl rounded-2xl">
-            <h1 class="mb-4 text-3xl font-bold text-center cursor-pointer">Masuk</h1>
+    <div class="relative lg:flex items-center justify-center min-h-screen overflow-x-hidden bg-white">
+        <div class="w-full sm:w-2/4">
+            <div class="flex flex-row justify-center mt-5 lg:hidden">
+                <div class="flex flex-col justify-center m-2 text-center">
+                    <img alt="" class="self-center object-fill flex-shrink-0 w-24"
+                        src="{{ asset('assets/img/kemenag.png') }}">
+                </div>
+                <div class="flex flex-col justify-center m-2 text-center">
+                    <img alt="" class="self-center object-fill flex-shrink-0 w-28"
+                        src="{{ asset('assets/img/man2pare.png') }}">
+                </div>
+            </div>
 
+            <div class="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
+                <div
+                    class="hidden lg:flex flex-col space-y-4 lg:mb-7 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
+                    <img class="object-fill h-20 sm:h-24" src="{{ asset('assets/img/kemenag.png') }}">
+                    <img class="object-fill h-20 sm:h-24" src="{{ asset('assets/img/man2pare.png') }}">
+                </div>
+
+
+
+                <h1 class="text-xl  font-bold leading-none sm:text-4xl ">
+                    Aplikasi Absensi <br>
+                    <span class="text-blue-600 sm:text-5xl truncate">MAN 2 KOTA PAREPARE</span>
+                </h1>
+                <p class="mt-4 sm:mt-6 mb-6 sm:mb-8 text-base sm:text-lg flex">
+                    <span class="font-medium text-center">
+                        <span class="font-semibold text-xl sm:text-2xl">"</span>
+                        Mewujudkan Generasi Yang Unggul dan berakhlaqul karimah, Trampil dalam Berkarya, dan Amanah dalam
+                        bersikap
+                        <span class="font-semibold text-xl sm:text-2xl">"</span>
+                    </span>
+                </p>
+            </div>
+        </div>
+
+        <div class=" relative z-20 px-12 py-12 bg-white shadow-xl rounded-2xl">
+            <h1 class="mb-4 text-3xl font-bold text-center cursor-pointer">Masuk</h1>
             <div class="flex items-center justify-center w-full">
                 <div
-                class="flex w-full p-1 transition bg-gray-100 rounded-lg dark:bg-neutral-700 dark:hover:bg-neutral-600 hover:bg-gray-200">
+                    class="flex w-full p-1 transition bg-gray-100 rounded-lg dark:bg-neutral-700 dark:hover:bg-neutral-600 hover:bg-gray-200">
                     <nav class="flex w-full gap-x-1" aria-label="Tabs" role="tablist" aria-orientation="horizontal">
                         <button type="button"
                             class="inline-flex items-center justify-center w-full px-4 py-3 text-sm font-medium text-gray-500 bg-transparent rounded-lg hs-tab-active:dark:bg-neutral-800 hs-tab-active:dark:text-neutral-400 active gap-x-2 hover:hover:text-blue-600 hover:text-gray-700 focus:text-gray-700 focus:outline-none disabled:pointer-events-none disabled:opacity-50 hs-tab-active:bg-white hs-tab-active:text-gray-700"
@@ -37,7 +72,7 @@
                         Silahkan Masuk menggunakan NIS/NISN.
                     </p>
 
-                    <form method="POST" action="{{ route('siswa.post') }}">
+                    <form id="loginForm" method="POST" action="{{ route('siswa.post') }}">
                         @csrf
 
                         <input type="text" inputmode="numeric" name="username" placeholder="NIS/NISN"
@@ -54,8 +89,8 @@
                                     placeholder="Password" value="">
                                 <button type="button"
                                     data-hs-toggle-password='{
-                                "target": "#hs-toggle-password-siswa"
-                                }'
+                                    "target": "#hs-toggle-password-siswa"
+                                    }'
                                     class="absolute inset-y-0 z-20 flex items-center px-3 text-gray-400 cursor-pointer dark:text-neutral-600 dark:focus:text-blue-500 end-0 rounded-e-md focus:text-blue-600 focus:outline-none">
                                     <svg class="size-3.5 shrink-0" width="24" height="24" viewBox="0 0 24 24"
                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -67,12 +102,11 @@
                                         <path class="hs-password-active:hidden"
                                             d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61">
                                         </path>
-                                        <line class="hs-password-active:hidden" x1="2" x2="22"
-                                            y1="2" y2="22"></line>
+                                        <line class="hs-password-active:hidden" x1="2" x2="22" y1="2"
+                                            y2="22"></line>
                                         <path class="hidden hs-password-active:block"
                                             d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
-                                        <circle class="hidden hs-password-active:block" cx="12" cy="12"
-                                            r="3">
+                                        <circle class="hidden hs-password-active:block" cx="12" cy="12" r="3">
                                         </circle>
                                     </svg>
                                 </button>
@@ -82,11 +116,13 @@
                             @enderror
                         </div>
 
+                       
                         <div class="mt-6 text-center">
-                            <button type="submit"
+                            <button type="button" id="submitButton"
                                 class="w-full py-2 text-xl text-white transition-all bg-blue-600 rounded-lg hover:bg-blue-700">Masuk</button>
                         </div>
                     </form>
+
                 </div>
                 <div id="segment-2" class="hidden" role="tabpanel" aria-labelledby="segment-item-2">
                     <p class="mb-5 text-sm font-semibold tracking-wide text-center text-gray-700 cursor-pointer w-80">
@@ -196,7 +232,9 @@
 
         </div>
 
+
         <!-- Dekorasi -->
+        <div class="absolute  hidden w-20 h-20 bg-blue-400 rounded-full right-12 md:block"></div>
         <div class="absolute top-0 hidden w-40 h-40 bg-blue-400 rounded-full right-12 md:block"></div>
         <div class="absolute hidden w-20 h-40 transform rotate-45 bg-blue-400 rounded-full bottom-20 left-10 md:block">
         </div>

@@ -21,6 +21,7 @@ Route::controller(AuthenticationController::class)->group(function () {
         Route::get('/', 'getAdmin');
         Route::post('/post', 'postAdmin')->name('admin.post');
         Route::post('/logout', 'logoutAdmin')->name('admin.logout');
+        Route::get('/logout', 'logoutAdmin')->name('admin.logout');
     });
 
     Route::post('/siswa', 'postSiswa')->name('siswa.post');
