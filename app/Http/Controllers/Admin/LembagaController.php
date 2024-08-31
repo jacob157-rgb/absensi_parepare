@@ -395,4 +395,6 @@ class LembagaController extends Controller
         $lembaga->delete();
         return redirect('/admin/lembaga')->with('success', 'Data lembaga berhasil dihapus');
     }
+
+
 }

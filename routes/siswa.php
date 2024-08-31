@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\isSiswa;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/siswa', function () {
-    return 'route siswa';
+Route::middleware([isSiswa::class])->group(function () {
+    Route::prefix('siswa')->group(function () {
+        Route::get('/', function () {
+            $pages = 'Beranda';
+            return view('siswa.beranda', compact('pages'));
+        })->name('siswa.beranda');
+
+    });
 });

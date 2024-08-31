@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\CodeQRController;
 use App\Http\Controllers\Admin\GuruController;
+use App\Http\Controllers\Admin\IzinController;
 use App\Http\Controllers\Admin\JadwalPiketGuruController;
 use App\Http\Controllers\Admin\JamAbsenController;
 use App\Http\Controllers\Admin\JamKerjaController;
@@ -108,6 +110,23 @@ Route::middleware([isAdmin::class])->group(function () {
             Route::post('/jadwal_piket_guru', 'store')->name('jadwal_piket_guru.store')->middleware(['permission:LEMBAGA']);
             Route::post('/jadwal_piket_guru/{id}', 'update')->name('jadwal_piket_guru.update')->middleware(['permission:LEMBAGA']);
             Route::delete('/jadwal_piket_guru/{id}/destroy', 'destroy')->name('jadwal_piket_guru.destroy')->middleware(['permission:LEMBAGA']);
+        });
+
+        Route::controller(IzinController::class)->group(function () {
+            Route::get('/perizinan', 'index')->name('perizinan.index')->middleware(['permission:LEMBAGA']);
+            Route::get('/perizinan/create', 'create')->name('perizinan.create')->middleware(['permission:LEMBAGA']);
+            Route::get('/perizinan/get/{id_kelas}', 'getSiswa')->name('perizinan.getSiswa')->middleware(['permission:LEMBAGA']);
+            Route::post('/perizinan/approved/{id}', 'getApproved')->name('perizinan.getApproved')->middleware(['permission:LEMBAGA']);
+            Route::post('/perizinan/rejected/{id}', 'getRejected')->name('perizinan.getRejected')->middleware(['permission:LEMBAGA']);
+            Route::get('/perizinan/alasan/{id}', 'getAlasan')->name('perizinan.getAlasan')->middleware(['permission:LEMBAGA']);
+            Route::post('/perizinan', 'store')->name('perizinan.store')->middleware(['permission:LEMBAGA']);
+            Route::post('/perizinan/{id}', 'update')->name('perizinan.update')->middleware(['permission:LEMBAGA']);
+            Route::delete('/perizinan/{id}/destroy', 'destroy')->name('perizinan.destroy')->middleware(['permission:LEMBAGA']);
+        });
+
+        Route::prefix('settings')->controller(CodeQRController::class)->group(function () {
+            Route::get('/password_qr', 'index')->name('settings.admin.getQr')->middleware(['permission:LEMBAGA']);
+            Route::post('/password_qr/update', 'update')->name('settings.admin.postQr')->middleware(['permission:LEMBAGA']);
         });
     });
 });

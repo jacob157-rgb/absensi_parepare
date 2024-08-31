@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class,
             SekolahSeeder::class,
             JamAbsenSeeder::class,
+            CodeQrSeeder::class
         ]);
     }
 }
