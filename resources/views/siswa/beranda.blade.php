@@ -93,12 +93,11 @@
         <div class="w-full max-w-md p-8 mt-6 text-gray-800 shadow lg:ms-5 bg-gray-50 sm:flex sm:space-x-6">
             <div class="flex flex-col space-y-4">
                 <div>
-                    <h2 class="text-2xl font-semibold">JAM ABSEN HARI {{ $jam_absen?->hari }}</h2>
+                    <h2 class="text-2xl font-semibold">JAM ABSEN HARI {{ $jam_absen?->hari ?? 'LIBUR' }}</h2>
                 </div>
                 <table class="w-full">
-
                     <tr>
-                        <td class="w-1/4 text-sm font-medium text-gray-600 align-top">
+                        <td class="w-3/4 text-sm font-medium text-gray-600 align-top">
                             <div class="flex items-center space-x-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -112,10 +111,15 @@
                             </div>
                         </td>
                         <td class="text-sm font-medium text-gray-600"> &nbsp; :
-                            {{ \Carbon\Carbon::parse($jam_absen?->jam_masuk)->format('H:i:s') }}</td>
+                            @if ($jam_absen)
+                                {{ \Carbon\Carbon::parse($jam_absen?->jam_masuk)->format('H:i:s') }}
+                            @else
+                                -
+                            @endif
+                        </td>
                     </tr>
                     <tr>
-                        <td class="w-1/4 text-sm font-medium text-gray-600 align-top">
+                        <td class="w-3/4 text-sm font-medium text-gray-600 align-top">
                             <div class="flex items-center space-x-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -129,7 +133,12 @@
                             </div>
                         </td>
                         <td class="text-sm font-medium text-gray-600"> &nbsp; :
-                            {{ \Carbon\Carbon::parse($jam_absen?->jam_terlambat)->format('H:i:s') }}</td>
+                            @if ($jam_absen)
+                                {{ \Carbon\Carbon::parse($jam_absen?->jam_terlambat)->format('H:i:s') }}
+                            @else
+                                -
+                            @endif
+                        </td>
                     </tr>
 
                 </table>
@@ -181,10 +190,11 @@
             </div>
         </div>
     </div>
+
     <div class="flex flex-col my-4">
         <div class="-m-1.5 ">
             <div class="p-1.5 min-w-full inline-block align-middle">
-                <div class="border rounded dark:border-neutral-700">
+                <div class="border rounded dark:border-neutral-700 ">
                     <h2
                         class="flex items-center p-3 m-3 my-6 font-semibold rounded shadow bg-gray-60000 focus:shadow-outline-blue focus:outline-none">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
@@ -197,108 +207,42 @@
                         </svg>
                         <span class="ml-2">MEGA MENU</span>
                     </h2>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-4">
-                        <div
-                            class="flex flex-col items-center justify-center p-4 text-white bg-purple-500 rounded-md shadow">
+                    <div class="grid grid-cols-3 sm:grid-cols-2 lg:grid-cols-8  gap-4 p-4">
+                        <a href="{{ route('siswa.absen') }}"
+                            class="flex flex-col items-center justify-center p-4 hover:border-blue-500 hover:border rounded-md shadow">
                             <div class="flex items-center justify-center w-10 h-10 mb-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layout">
-                                    <rect width="7" height="7" x="3" y="3" rx="1" />
-                                    <rect width="7" height="7" x="14" y="3" rx="1" />
-                                    <rect width="7" height="7" x="14" y="14" rx="1" />
-                                    <rect width="7" height="7" x="3" y="14" rx="1" />
-                                </svg>
+                                <img src="{{ asset('assets/img/absen.png') }}" alt="" class="w-20">
                             </div>
-                            <p class="text-xl font-bold">01</p>
-                        </div>
+                            <p class="text-sm font-medium">ABSEN</p>
+                        </a>
 
                         <!-- Card 2 -->
-                        <div
-                            class="flex flex-col items-center justify-center p-4 text-white bg-purple-500 rounded-md shadow">
+                        <a href="{{ route('siswa.perizinan') }}"
+                            class="flex flex-col items-center justify-center p-4 hover:border-blue-500 hover:border rounded-md shadow">
                             <div class="flex items-center justify-center w-10 h-10 mb-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock">
-                                    <circle cx="12" cy="12" r="10" />
-                                    <polyline points="12 6 12 12 14.5 8" />
-                                </svg>
+                                <img src="{{ asset('assets/img/perizinan.png') }}" alt="" class="w-20">
                             </div>
-                            <p class="text-xl font-bold">02</p>
-                        </div>
+                            <p class="text-sm font-medium">PERIZINAN</p>
+                        </a>
 
                         <!-- Card 3 -->
-                        <div
-                            class="flex flex-col items-center justify-center p-4 text-white bg-purple-500 rounded-md shadow">
+                        <a href="{{ route('siswa.detail_absensi') }}"
+                            class="flex flex-col items-center justify-center p-4 hover:border-blue-500 hover:border rounded-md shadow">
                             <div class="flex items-center justify-center w-10 h-10 mb-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star">
-                                    <polygon
-                                        points="12 2 15 8.09 21 8.09 16.5 12.5 18.18 18.09 12 14.55 5.82 18.09 7.5 12.5 3 8.09 9 8.09 12 2" />
-                                </svg>
+                                <img src="{{ asset('assets/img/detail_absen.png') }}" alt="" class="w-20">
                             </div>
-                            <p class="text-xl font-bold">03</p>
-                        </div>
+                            <p class="text-sm font-medium">ABSENSIKU</p>
+                        </a>
 
                         <!-- Card 4 -->
-                        <div
-                            class="flex flex-col items-center justify-center p-4 text-white bg-purple-500 rounded-md shadow">
+                        <a href="{{ route('siswa.live') }}"
+                            class="flex flex-col items-center justify-center p-4 hover:border-blue-500 hover:border rounded-md shadow">
                             <div class="flex items-center justify-center w-10 h-10 mb-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user">
-                                    <path d="M20 21v-2a4 4 0 0 0-3-3.87" />
-                                    <path d="M4 21v-2a4 4 0 0 1 3-3.87" />
-                                    <circle cx="12" cy="7" r="4" />
-                                </svg>
+                                <img src="{{ asset('assets/img/live.png') }}" alt="" class="w-20">
                             </div>
-                            <p class="text-xl font-bold">04</p>
-                        </div>
+                            <p class="text-sm font-medium">LIVE</p>
+                        </a>
 
-                        <!-- Card 5 -->
-                        <div
-                            class="flex flex-col items-center justify-center p-4 text-white bg-purple-500 rounded-md shadow">
-                            <div class="flex items-center justify-center w-10 h-10 mb-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layout">
-                                    <rect width="7" height="7" x="3" y="3" rx="1" />
-                                    <rect width="7" height="7" x="14" y="3" rx="1" />
-                                    <rect width="7" height="7" x="14" y="14" rx="1" />
-                                    <rect width="7" height="7" x="3" y="14" rx="1" />
-                                </svg>
-                            </div>
-                            <p class="text-xl font-bold">05</p>
-                        </div>
-
-                        <!-- Card 6 -->
-                        <div
-                            class="flex flex-col items-center justify-center p-4 text-white bg-purple-500 rounded-md shadow">
-                            <div class="flex items-center justify-center w-10 h-10 mb-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock">
-                                    <circle cx="12" cy="12" r="10" />
-                                    <polyline points="12 6 12 12 14.5 8" />
-                                </svg>
-                            </div>
-                            <p class="text-xl font-bold">06</p>
-                        </div>
-
-                        <!-- Card 7 -->
-                        <div
-                            class="flex flex-col items-center justify-center p-4 text-white bg-purple-500 rounded-md shadow">
-                            <div class="flex items-center justify-center w-10 h-10 mb-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star">
-                                    <polygon
-                                        points="12 2 15 8.09 21 8.09 16.5 12.5 18.18 18.09 12 14.55 5.82 18.09 7.5 12.5 3 8.09 9 8.09 12 2" />
-                                </svg>
-                            </div>
-                            <p class="text-xl font-bold">07</p>
-                        </div>
 
 
                     </div>

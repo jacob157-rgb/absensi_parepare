@@ -207,6 +207,9 @@ class AuthenticationController extends Controller
     public function logout(Request $request)
     {
         $meta = metaData();
+        if(count($meta) == 0) {
+            return redirect('/')->with('seccess', 'Tidak ada akses masuk untuk anda.');
+        }
         $roles = $meta['roles'];
         if ($roles == 'MASTER') {
             Auth::guard('admin')->logout();
