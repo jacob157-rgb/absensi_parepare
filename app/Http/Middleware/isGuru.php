@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class isSiswa
+class isGuru
 {
     /**
      * Handle an incoming request.
@@ -17,9 +17,9 @@ class isSiswa
     public function handle(Request $request, Closure $next): Response
     {
 
-        if (Auth::guard('siswa')->check()) {
+        if (Auth::guard('guru')->check()) {
             $sessionData = $request->session()->get('meta_data');
-            if ($sessionData && isset($sessionData['meta']) && isset($sessionData['roles'])) {
+            if ($sessionData && isset($sessionData['roles'])) {
                 if ($sessionData['roles']) {
                     return $next($request);
                 }

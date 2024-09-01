@@ -86,7 +86,7 @@
                             </li>
                         @endif
                         <li class="flex">
-                            <form method="POST" action="{{ route('admin.logout') }}" id="logout-form"
+                            <form method="POST" action="{{ route('logout') }}" id="logout-form"
                                 class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:bg-gray-100 hover:text-gray-800">
                                 @csrf
                                 <button type="submit"

@@ -1,44 +1,44 @@
 @extends('layouts.auth')
 
 @section('content')
-    <div class="relative lg:flex items-center justify-center min-h-screen overflow-x-hidden bg-white">
+    <div class="relative items-center justify-center min-h-screen overflow-x-hidden bg-white lg:flex">
         <div class="w-full sm:w-2/4">
             <div class="flex flex-row justify-center mt-5 lg:hidden">
                 <div class="flex flex-col justify-center m-2 text-center">
-                    <img alt="" class="self-center object-fill flex-shrink-0 w-24"
+                    <img alt="" class="self-center flex-shrink-0 object-fill w-24"
                         src="{{ asset('assets/img/kemenag.png') }}">
                 </div>
                 <div class="flex flex-col justify-center m-2 text-center">
-                    <img alt="" class="self-center object-fill flex-shrink-0 w-28"
+                    <img alt="" class="self-center flex-shrink-0 object-fill w-28"
                         src="{{ asset('assets/img/man2pare.png') }}">
                 </div>
             </div>
 
             <div class="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
                 <div
-                    class="hidden lg:flex flex-col space-y-4 lg:mb-7 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
+                    class="flex-col hidden space-y-4 lg:flex lg:mb-7 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
                     <img class="object-fill h-20 sm:h-24" src="{{ asset('assets/img/kemenag.png') }}">
                     <img class="object-fill h-20 sm:h-24" src="{{ asset('assets/img/man2pare.png') }}">
                 </div>
 
 
 
-                <h1 class="text-xl  font-bold leading-none sm:text-4xl ">
+                <h1 class="text-xl font-bold leading-none sm:text-4xl ">
                     Aplikasi Absensi <br>
-                    <span class="text-blue-600 sm:text-5xl truncate">MAN 2 KOTA PAREPARE</span>
+                    <span class="text-blue-600 truncate sm:text-5xl">MAN 2 KOTA PAREPARE</span>
                 </h1>
-                <p class="mt-4 sm:mt-6 mb-6 sm:mb-8 text-base sm:text-lg flex">
+                <p class="flex mt-4 mb-6 text-base sm:mt-6 sm:mb-8 sm:text-lg">
                     <span class="font-medium text-center">
-                        <span class="font-semibold text-xl sm:text-2xl">"</span>
+                        <span class="text-xl font-semibold sm:text-2xl">"</span>
                         Mewujudkan Generasi Yang Unggul dan berakhlaqul karimah, Trampil dalam Berkarya, dan Amanah dalam
                         bersikap
-                        <span class="font-semibold text-xl sm:text-2xl">"</span>
+                        <span class="text-xl font-semibold sm:text-2xl">"</span>
                     </span>
                 </p>
             </div>
         </div>
 
-        <div class=" relative z-20 px-12 py-12 bg-white shadow-xl rounded-2xl">
+        <div class="relative z-20 px-12 py-12 bg-white shadow-xl rounded-2xl">
             <h1 class="mb-4 text-3xl font-bold text-center cursor-pointer">Masuk</h1>
             <div class="flex items-center justify-center w-full">
                 <div
@@ -68,7 +68,7 @@
 
             <div class="mt-3">
                 <div id="segment-1" role="tabpanel" aria-labelledby="segment-item-1">
-                    <p class="mb-5 text-sm font-semibold tracking-wide text-center text-gray-700 cursor-pointer w-80">
+                    <p class="w-full mb-5 text-sm font-semibold tracking-wide text-center text-gray-700 cursor-pointer ">
                         Silahkan Masuk menggunakan NIS/NISN.
                     </p>
 
@@ -116,16 +116,20 @@
                             @enderror
                         </div>
 
-                       
+
                         <div class="mt-6 text-center">
-                            <button type="button" id="submitButton"
+                            <button type="submit" id="submitButton"
                                 class="w-full py-2 text-xl text-white transition-all bg-blue-600 rounded-lg hover:bg-blue-700">Masuk</button>
                         </div>
+                        {{--  <div class="mt-6 text-center">
+                            <button type="button" id="submitButton"
+                                class="w-full py-2 text-xl text-white transition-all bg-blue-600 rounded-lg hover:bg-blue-700">Masuk</button>
+                        </div>  --}}
                     </form>
 
                 </div>
                 <div id="segment-2" class="hidden" role="tabpanel" aria-labelledby="segment-item-2">
-                    <p class="mb-5 text-sm font-semibold tracking-wide text-center text-gray-700 cursor-pointer w-80">
+                    <p class="w-full mb-5 text-sm font-semibold tracking-wide text-center text-gray-700 cursor-pointer">
                         Silahkan Masuk menggunakan No. HP
                     </p>
 
@@ -177,7 +181,7 @@
                     </form>
                 </div>
                 <div id="segment-3" class="hidden" role="tabpanel" aria-labelledby="segment-item-3">
-                    <p class="mb-5 text-sm font-semibold tracking-wide text-center text-gray-700 cursor-pointer w-80">
+                    <p class="w-full mb-5 text-sm font-semibold tracking-wide text-center text-gray-700 cursor-pointer">
                         Silahkan Masuk menggunakan NIP.
                     </p>
 
@@ -234,7 +238,7 @@
 
 
         <!-- Dekorasi -->
-        <div class="absolute  hidden w-20 h-20 bg-blue-400 rounded-full right-12 md:block"></div>
+        <div class="absolute hidden w-20 h-20 bg-blue-400 rounded-full right-12 md:block"></div>
         <div class="absolute top-0 hidden w-40 h-40 bg-blue-400 rounded-full right-12 md:block"></div>
         <div class="absolute hidden w-20 h-40 transform rotate-45 bg-blue-400 rounded-full bottom-20 left-10 md:block">
         </div>

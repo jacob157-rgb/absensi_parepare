@@ -21,7 +21,7 @@
                 <div class="max-w-sm mt-4">
                     <div class="relative">
                         <input id="hs-toggle-password-admin" type="password" name="password"
-                            class="@error('password') border-red-500 @enderror dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 block w-full rounded-lg border py-3 pe-10 ps-4 text-sm focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50"
+                            class="@error('password') border-red-500 @enderror dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 block w-full rounded border py-3 pe-10 ps-4 text-sm focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50"
                             placeholder="Password" value="">
                         <button type="button" data-hs-toggle-password='{"target": "#hs-toggle-password-admin"}'
                             class="absolute inset-y-0 z-20 flex items-center px-3 text-gray-400 cursor-pointer dark:text-neutral-600 dark:focus:text-blue-500 end-0 rounded-e-md focus:text-blue-600 focus:outline-none">

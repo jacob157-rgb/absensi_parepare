@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Siswa\SiswaController;
 use App\Http\Middleware\isSiswa;
 use Illuminate\Support\Facades\Route;
 
@@ -15,11 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware([isSiswa::class])->group(function () {
-    Route::prefix('siswa')->group(function () {
-        Route::get('/', function () {
-            $pages = 'Beranda';
-            return view('siswa.beranda', compact('pages'));
-        })->name('siswa.beranda');
+    Route::prefix('siswa')->controller(SiswaController::class)->group(function () {
+        Route::get('/',  'beranda')->name('siswa.beranda');
 
     });
 });

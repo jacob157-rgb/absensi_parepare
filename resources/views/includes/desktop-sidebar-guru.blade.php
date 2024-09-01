@@ -1,12 +1,12 @@
 <!-- Desktop sidebar -->
 @php
-    $siswa = Auth::guard('siswa')->user();
+    $roles = Auth::guard('guru')->user();
 @endphp
 <aside class="z-20 flex-shrink-0 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block">
     <a class="flex items-center py-4 ml-6 text-lg font-bold text-gray-800 dark:text-gray-200" href="/admin/beranda">
         <img class="h-[36px] w-[36px] rounded-full object-cover" src="{{ asset('assets/img/kemenag.png') }}" alt=""
             aria-hidden="true" />
-        <span class="ps-2">{{ $siswa->nama }}</span>
+        <span class="ps-2">{{ $roles->nama }}</span>
     </a>
     <div class="py-2 text-gray-500 dark:text-gray-400">
         <ul class="space-y-2">

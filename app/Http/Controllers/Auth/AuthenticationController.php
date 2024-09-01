@@ -10,6 +10,7 @@ use Illuminate\Support\Str;
 use Jenssegers\Agent\Agent;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Guru;
 use Illuminate\Support\Facades\Auth;
 
 class AuthenticationController extends Controller
@@ -68,23 +69,7 @@ class AuthenticationController extends Controller
             ->onlyInput('username');
     }
 
-    public function logoutAdmin(Request $request)
-    {
-        $request->session()->flush();
-        Auth::guard('admin')->logout();
-        $request->session()->regenerate();
-        return redirect('/admin')->with('seccess', 'Berhasil keluar dari sistem.');
-    }
-
     // User Authentication
-    public function getUser()
-    {
-        if (metaData()) {
-            return redirect('/home');
-        }
-        return view('auth.user.login');
-    }
-
     public function postSiswa(Request $request)
     {
         $request->validate([
@@ -92,9 +77,9 @@ class AuthenticationController extends Controller
             'password' => 'required|string',
         ]);
 
-        if (!$request->longitude || !$request->latitude) {
-            return redirect()->back()->with('error', 'Izin masuk tidak diperbolehkan, anda melakukan kesalahan sistem');
-        }
+        // if (!$request->longitude || !$request->latitude) {
+        //     return redirect()->back()->with('error', 'Izin masuk tidak diperbolehkan, anda melakukan kesalahan sistem');
+        // }
 
         $siswa = Siswa::where('nisn', $request->username)
             ->orWhere('nik', $request->username)
@@ -136,8 +121,8 @@ class AuthenticationController extends Controller
                 if ($metaSiswa) {
                     $metaSiswa->update([
                         'meta' => json_encode($meta),
-                        'latitude' => $request->latitude,
-                        'longitude' => $request->longitude,
+                        // 'latitude' => $request->latitude,
+                        // 'longitude' => $request->longitude,
                     ]);
                 } else {
                     $metaSiswa = MetaSiswa::create([
@@ -152,8 +137,8 @@ class AuthenticationController extends Controller
                 $lembaga = Sekolah::where('id', $siswa->sekolah_id)->first();
                 // Store session data
                 $session = [
-                    'username' => $siswa->username,
-                    'roles' => "SISWA-{$metaSiswa->lock_device}",
+                    'username' => $siswa->id,
+                    'roles' => "SISWA",
                     'meta' => $meta,
                     'lembaga' => $lembaga->nsm,
                 ];
@@ -174,11 +159,71 @@ class AuthenticationController extends Controller
             ->onlyInput('username');
     }
 
-    public function logoutUser(Request $request)
+    public function postGuru(Request $request)
     {
+        $request->validate([
+            'username' => 'required|string',
+            'password' => 'required|string',
+        ]);
+
+        $guru = Guru::where('nik_nip', $request->username)
+            ->first();
+
+        if ($guru) {
+            $credentials = [
+                'password' => $request->password,
+            ];
+
+            if ($guru->nik_nip === $request->username) {
+                $credentials['nik_nip'] = $request->username;
+            }
+
+            if (Auth::guard('guru')->attempt($credentials)) {
+
+                $lembaga = Sekolah::where('id', $guru->sekolah_id)->first();
+                // Store session data
+                $session = [
+                    'username' => $guru->id,
+                    'roles' => "GURU",
+                    'lembaga' => $lembaga->nsm,
+                ];
+
+                $request->session()->put('meta_data', $session);
+
+                // Redirect to the user dashboard
+                return redirect('/guru');
+            }
+        }
+
+        // Handle authentication failure
+        return redirect()
+            ->back()
+            ->withErrors([
+                'username' => 'Username atau password salah.',
+            ])
+            ->onlyInput('username');
+    }
+
+    public function logout(Request $request)
+    {
+        $meta = metaData();
+        $roles = $meta['roles'];
+        if ($roles == 'MASTER') {
+            Auth::guard('admin')->logout();
+        } elseif ($roles == 'GURU') {
+            Auth::guard('guru')->logout();
+        } elseif ($roles == 'SISWA') {
+            Auth::guard('siswa')->logout();
+        } else {
+            Auth::guard('wali')->logout();
+        }
         $request->session()->flush();
-        Auth::guard('admin')->logout();
         $request->session()->regenerate();
-        return redirect('/admin')->with('seccess', 'Berhasil keluar dari sistem.');
+        if ($roles == 'MASTER') {
+            $path = '/admin';
+        } else {
+            $path = '/';
+        }
+        return redirect($path)->with('seccess', 'Berhasil keluar dari sistem.');
     }
 }

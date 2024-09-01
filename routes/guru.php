@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Guru\GuruController;
+use App\Http\Middleware\isGuru;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/guru', function () {
-    return 'route guru';
+
+Route::middleware([isGuru::class])->group(function () {
+    Route::prefix('guru')->controller(GuruController::class)->group(function () {
+        Route::get('/',  'beranda')->name('guru.beranda');
+    });
 });

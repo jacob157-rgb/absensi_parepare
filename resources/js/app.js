@@ -8,3 +8,4 @@ window.Alpine = Alpine;
 window.data = data;
 
 Alpine.start();
+

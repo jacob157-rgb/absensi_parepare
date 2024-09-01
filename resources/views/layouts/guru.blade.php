@@ -11,7 +11,7 @@
         :class="{ 'overflow-hidden': isSideMenuOpen }">
 
         {{-- Desktop sidebar --}}
-        @include('includes.desktop-sidebar-siswa')
+        @include('includes.desktop-sidebar-guru')
 
         {{-- Mobile sidebar --}}
         {{--  @include('includes.mobile-sidebar')  --}}
