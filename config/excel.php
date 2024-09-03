@@ -218,7 +218,7 @@ return [
     | Possible value binders:
     |
     | [x] Maatwebsite\Excel\DefaultValueBinder::class
-    | [x] PhpOffice\PhpSpreadsheet\Cell\StringValueBinder::class
+    | [x] PhpOffice\Php\Cell\StringValueBinder::class
     | [x] PhpOffice\PhpSpreadsheet\Cell\AdvancedValueBinder::class
     |
     */

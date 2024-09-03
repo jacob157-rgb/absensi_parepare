@@ -116,23 +116,23 @@ class AuthenticationController extends Controller
                     'longitude' => $request->longitude,
                 ];
 
-                $metaSiswa = MetaSiswa::where('siswa_id', $siswa->id)->first();
+                // $metaSiswa = MetaSiswa::where('siswa_id', $siswa->id)->first();
 
-                if ($metaSiswa) {
-                    $metaSiswa->update([
-                        'meta' => json_encode($meta),
-                        // 'latitude' => $request->latitude,
-                        // 'longitude' => $request->longitude,
-                    ]);
-                } else {
-                    $metaSiswa = MetaSiswa::create([
-                        'siswa_id' => $siswa->id,
-                        'meta' => json_encode($meta),
-                        'lock_device' => Str::random(10),
-                        'latitude' => $request->latitude,
-                        'longitude' => $request->longitude,
-                    ]);
-                }
+                // if ($metaSiswa) {
+                //     $metaSiswa->update([
+                //         'meta' => json_encode($meta),
+                //         'latitude' => $request->latitude,
+                //         'longitude' => $request->longitude,
+                //     ]);
+                // } else {
+                //     $metaSiswa = MetaSiswa::create([
+                //         'siswa_id' => $siswa->id,
+                //         'meta' => json_encode($meta),
+                //         'lock_device' => Str::random(10),
+                //         'latitude' => $request->latitude,
+                //         'longitude' => $request->longitude,
+                //     ]);
+                // }
 
                 $lembaga = Sekolah::where('id', $siswa->sekolah_id)->first();
                 // Store session data

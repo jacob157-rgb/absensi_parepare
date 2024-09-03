@@ -26,6 +26,10 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class,
             SekolahSeeder::class,
             JamAbsenSeeder::class,
+            GuruSeeder::class,
+            KelasSeeder::class,
+            SiswaSeeder::class,
+            WaliSeeder::class,
             CodeQrSeeder::class
         ]);
     }
