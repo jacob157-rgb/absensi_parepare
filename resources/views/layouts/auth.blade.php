@@ -18,6 +18,6 @@
 
     @include('components.confrm_session')
 </body>
-{{-- <script src="{{ asset('assets/js/location.js') }}"></script> --}}
+<script src="{{ asset('assets/js/location.js') }}"></script>
 
 </html>

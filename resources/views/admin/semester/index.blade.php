@@ -122,7 +122,6 @@
                     url: `/admin/semester/${semester_id}`,
                     type: "GET",
                     success: function(response) {
-                        console.log(response);
                         let modalLabel = 'Edit {{ $pages }}';
                         let postUrl = `/admin/semester/${semester_id}`;
                         let modalContent = `

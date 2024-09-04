@@ -116,29 +116,29 @@ class AuthenticationController extends Controller
                     'longitude' => $request->longitude,
                 ];
 
-                // $metaSiswa = MetaSiswa::where('siswa_id', $siswa->id)->first();
+                $metaSiswa = MetaSiswa::where('siswa_id', $siswa->id)->first();
 
-                // if ($metaSiswa) {
-                //     $metaSiswa->update([
-                //         'meta' => json_encode($meta),
-                //         'latitude' => $request->latitude,
-                //         'longitude' => $request->longitude,
-                //     ]);
-                // } else {
-                //     $metaSiswa = MetaSiswa::create([
-                //         'siswa_id' => $siswa->id,
-                //         'meta' => json_encode($meta),
-                //         'lock_device' => Str::random(10),
-                //         'latitude' => $request->latitude,
-                //         'longitude' => $request->longitude,
-                //     ]);
-                // }
+                if ($metaSiswa) {
+                    $metaSiswa->update([
+                        'meta' => json_encode($meta),
+                        'latitude' => $request->latitude,
+                        'longitude' => $request->longitude,
+                    ]);
+                } else {
+                    $metaSiswa = MetaSiswa::create([
+                        'siswa_id' => $siswa->id,
+                        'meta' => json_encode($meta),
+                        'lock_device' => Str::random(10),
+                        'latitude' => $request->latitude,
+                        'longitude' => $request->longitude,
+                    ]);
+                }
 
                 $lembaga = Sekolah::where('id', $siswa->sekolah_id)->first();
                 // Store session data
                 $session = [
                     'username' => $siswa->id,
-                    'roles' => "SISWA",
+                    'roles' => 'SISWA',
                     'meta' => $meta,
                     'lembaga' => $lembaga->nsm,
                 ];
@@ -166,8 +166,7 @@ class AuthenticationController extends Controller
             'password' => 'required|string',
         ]);
 
-        $guru = Guru::where('nik_nip', $request->username)
-            ->first();
+        $guru = Guru::where('nik_nip', $request->username)->first();
 
         if ($guru) {
             $credentials = [
@@ -179,12 +178,11 @@ class AuthenticationController extends Controller
             }
 
             if (Auth::guard('guru')->attempt($credentials)) {
-
                 $lembaga = Sekolah::where('id', $guru->sekolah_id)->first();
                 // Store session data
                 $session = [
                     'username' => $guru->id,
-                    'roles' => "GURU",
+                    'roles' => 'GURU',
                     'lembaga' => $lembaga->nsm,
                 ];
 
@@ -207,7 +205,7 @@ class AuthenticationController extends Controller
     public function logout(Request $request)
     {
         $meta = metaData();
-        if(count($meta) == 0) {
+        if (count($meta) == 0) {
             return redirect('/')->with('seccess', 'Tidak ada akses masuk untuk anda.');
         }
         $roles = $meta['roles'];

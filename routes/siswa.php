@@ -19,6 +19,8 @@ Route::middleware([isSiswa::class])->group(function () {
     Route::prefix('siswa')->controller(SiswaController::class)->group(function () {
         Route::get('/',  'beranda')->name('siswa.beranda');
         Route::get('/absen',  'absen')->name('siswa.absen');
+        Route::post('/absen',  'storeAbsen')->name('siswa.storeAbsen');
+        Route::post('/absen/location',  'location')->name('siswa.location');
 
         Route::get('/perizinan',  'perizinan')->name('siswa.perizinan');
         Route::get('/perizinan/create',  'perizinanCreate')->name('siswa.perizinan.create');

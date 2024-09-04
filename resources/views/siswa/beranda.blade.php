@@ -77,15 +77,11 @@
                                     <path d="M22 6V3h-6c-2.2 0-4 1.8-4 4v14c0-1.7 1.3-3 3-3h7v-2.3" />
                                 </svg>
 
-                                <span class="w-1/4 pr-0 mr-0">KET </span>: @if ($jam_absen)
-                                    <span
-                                        class="inline-flex items-center px-3 py-1 text-xs font-medium text-red-800 bg-red-100 rounded-full text-nowrap dark:bg-red-800/30 dark:text-red-500">Belum
-                                        Absen</span><br />
-                                @else
-                                    <span
-                                        class="inline-flex items-center px-3 py-1 text-xs font-medium text-green-800 bg-green-100 rounded-full text-nowrap dark:bg-green-800/30 dark:text-green-500">Sudah
-                                        Absen</span><br />
-                                @endif
+                                <span class="w-1/4 pr-0 mr-0">KET </span>:
+                                <span
+                                    class="inline-flex items-center px-3 py-1 text-xs font-medium {{ $existingAbsensi ? ' text-green-800 bg-green-100 ' : ' text-red-800 bg-red-100 ' }} rounded-full">
+                                    {{ $existingAbsensi ? 'SUDAH ABSEN' : 'BELUM ABSEN' }}
+                                </span>
                             </div>
                         </td>
                     </tr>
@@ -169,12 +165,41 @@
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200 dark:divide-neutral-700">
-                        <tr>
+                        @php
+                            $jamTerlambat = \Carbon\Carbon::parse($jam_absen?->jam_terlambat);
+                            $tanggalAbsen = \Carbon\Carbon::parse($jamAbsen?->tanggal_absen);
 
-                            <td
-                                class="px-6 py-4 text-sm font-medium text-gray-800 dark:text-neutral-200 whitespace-nowrap">
-                                John Brown</td>
-                            <td class="px-6 py-4 text-sm text-gray-800 dark:text-neutral-200 whitespace-nowrap">45</td>
+                            $isLate = $tanggalAbsen->gt($jamTerlambat);
+                            $selisih = $jamTerlambat->diffInMinutes($tanggalAbsen);
+                        @endphp
+                        <tr>
+                            @if ($existingAbsensi)
+                                <td
+                                    class="px-6 py-4 text-sm font-medium text-gray-800 dark:text-neutral-200 whitespace-nowrap">
+                                    {{ \Carbon\Carbon::parse($jamAbsen?->tanggal_absen)->format('H:i:s') }}
+                                </td>
+                                <td class="px-6 py-4 text-sm text-gray-800 dark:text-neutral-200 whitespace-nowrap">
+                                    @if ($isLate)
+                                        <p>Terlambat {{ $selisih }} menit</p>
+                                    @else
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-circle-check-big text-green-500">
+                                            <path d="M21.801 10A10 10 0 1 1 17 3.335" />
+                                            <path d="m9 11 3 3L22 4" />
+                                        </svg>
+                                    @endif
+                                </td>
+                            @else
+                                <td
+                                    class="px-6 py-4 text-sm font-medium text-gray-800 dark:text-neutral-200 whitespace-nowrap">
+                                    -
+                                </td>
+                                <td class="px-6 py-4 text-sm text-gray-800 dark:text-neutral-200 whitespace-nowrap">
+                                    -
+                                </td>
+                            @endif
 
                         </tr>
 

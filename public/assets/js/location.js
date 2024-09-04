@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('#submitButton').click(function(event) {
+    $('#submitButton, #findMaps').click(function(event) {
         event.preventDefault();
         requestLocation();
     });
@@ -24,7 +24,7 @@ $(document).ready(function() {
                 name: 'latitude',
                 id: 'latitude',
                 value: position.coords.latitude
-            }).appendTo('#loginForm');
+            }).appendTo('#loginForm, #searchLocation');
         } else {
             $('#latitude').val(position.coords.latitude);
         }
@@ -35,12 +35,12 @@ $(document).ready(function() {
                 name: 'longitude',
                 id: 'longitude',
                 value: position.coords.longitude
-            }).appendTo('#loginForm');
+            }).appendTo('#loginForm, #searchLocation');
         } else {
             $('#longitude').val(position.coords.longitude);
         }
 
-        $('#loginForm').off('submit').submit();
+        $('#loginForm, #searchLocation').off('submit').submit();
     }
 
     function errorCallback(error) {

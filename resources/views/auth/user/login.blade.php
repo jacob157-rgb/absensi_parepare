@@ -117,14 +117,14 @@
                         </div>
 
 
-                        <div class="mt-6 text-center">
+                        {{--  <div class="mt-6 text-center">
                             <button type="submit" id="submitButton"
                                 class="w-full py-2 text-xl text-white transition-all bg-blue-600 rounded-lg hover:bg-blue-700">Masuk</button>
-                        </div>
-                        {{--  <div class="mt-6 text-center">
+                        </div>  --}}
+                        <div class="mt-6 text-center">
                             <button type="button" id="submitButton"
                                 class="w-full py-2 text-xl text-white transition-all bg-blue-600 rounded-lg hover:bg-blue-700">Masuk</button>
-                        </div>  --}}
+                        </div>
                     </form>
 
                 </div>

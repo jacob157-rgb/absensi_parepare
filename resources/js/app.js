@@ -20,7 +20,22 @@ document.getElementById("openCameraBtn").addEventListener("click", function () {
             });
 
             function onScanSuccess(decodedText, decodedResult) {
+
                 console.log(`Scan result: ${decodedText}`, decodedResult);
+
+                const qrData = JSON.parse(decodedText);
+                
+                // siswa scan qr sekolah
+                if(qrData.code_unique) {
+                    document.getElementById('codeUnique').value = qrData.code_unique;
+                    document.getElementById('guruId').value = qrData.guru_id;
+                    document.getElementById('absenForm').submit();
+                }else {
+                    // guru scan qr siswa
+                    document.getElementById('nik_siswa').value = decodedText;
+                    document.getElementById('absenForm').submit();
+                }
+
                 html5QrcodeScanner.clear();
                 stream.getTracks().forEach((track) => track.stop()); // Stop the camera stream
                 document.getElementById("readerModal").classList.add("hidden");

@@ -30,4 +30,9 @@ class Sekolah extends Model
         }
         return $lembaga;
     }
+    static function lembagaBy($id)
+    {
+
+        return static::find($id);
+    }
 }

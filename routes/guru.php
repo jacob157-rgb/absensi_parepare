@@ -19,5 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware([isGuru::class])->group(function () {
     Route::prefix('guru')->controller(GuruController::class)->group(function () {
         Route::get('/',  'beranda')->name('guru.beranda');
+        Route::post('/absen',  'storeAbsen')->name('guru.storeAbsen');
+        Route::get('/code_qr',  'code_qr')->name('guru.code_qr');
     });
 });

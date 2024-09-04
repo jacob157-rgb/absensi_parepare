@@ -44,6 +44,7 @@
     @stack('addon-script')
 
     @include('components.confrm_session')
+
 </body>
 
 </html>

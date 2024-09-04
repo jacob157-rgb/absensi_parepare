@@ -153,6 +153,14 @@
             </div>
         </div>
     @endif
+
+
+    <form id="absenForm" action="{{ route('guru.storeAbsen') }}" method="POST">
+        @csrf
+        <input type="hidden" name="nik" id="nik_siswa">
+        <input type="hidden" value="{{ $guru->id }}" name="guru_id">
+        <button type="submit" id="submitButton" class="hidden">Submit</button>
+    </form>
 @endsection
 @push('addon-script')
     <script src="{{ asset('assets/js/times.js') }}"></script>

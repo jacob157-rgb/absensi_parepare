@@ -5,18 +5,28 @@ namespace App\Http\Controllers\Siswa;
 use Carbon\Carbon;
 use App\Models\Izin;
 use App\Models\Siswa;
+use App\Models\CodeQR;
+use App\Models\Absensi;
+use App\Models\Sekolah;
 use App\Models\JamAbsen;
+use App\Models\MetaSiswa;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class SiswaController extends Controller
 {
     public function beranda()
     {
         $siswa = Siswa::authSiswa();
+        $tanggalAbsen = now();
+        $existingAbsensi = Absensi::where('siswa_id', $siswa->id)
+            ->whereDate('tanggal_absen', $tanggalAbsen->toDateString())
+            ->first();
+
         $hariIni = strtoupper(Carbon::now()->locale('id')->dayName);
         $jam_absen = JamAbsen::where('sekolah_id', $siswa->sekolah_id)
             ->where('hari', $hariIni)
@@ -26,28 +36,90 @@ class SiswaController extends Controller
             'pages' => 'Beranda',
             'siswa' => $siswa,
             'jam_absen' => $jam_absen,
+            'existingAbsensi' => $existingAbsensi?->exists(),
+            'jamAbsen' => $existingAbsensi,
         ];
 
         return view('siswa.beranda', $data);
     }
+
+    // CONTROLLER ABSENSI
     public function absen()
     {
         $siswa = Siswa::authSiswa();
+        $lembaga = Sekolah::lembagaBy($siswa->sekolah_id);
         $hariIni = strtoupper(Carbon::now()->locale('id')->dayName);
         $jam_absen = JamAbsen::where('sekolah_id', $siswa->sekolah_id)
             ->where('hari', $hariIni)
             ->first();
+        $qrCode = QrCode::size(300)->generate($siswa->nik);
+
+        $tanggalAbsen = now();
+        $existingAbsensi = Absensi::where('siswa_id', $siswa->id)
+            ->whereDate('tanggal_absen', $tanggalAbsen->toDateString())
+            ->exists();
 
         $data = [
             'pages' => 'Absensi',
             'siswa' => $siswa,
+            'meta_siswa' => MetaSiswa::where('siswa_id', $siswa->id)->first(),
             'jam_absen' => $jam_absen,
+            'lembaga' => $lembaga,
+            'qrCode' => $qrCode,
+            'existingAbsensi' => $existingAbsensi,
         ];
-
         return view('siswa.absen', $data);
     }
 
+    public function storeAbsen(Request $request)
+    {
+        $request->validate([
+            'nik' => 'required|string',
+            'code_unique' => 'required',
+            'guru_id' => 'required|exists:guru,id',
+        ]);
+
+        $siswa = Siswa::where('nik', $request->nik)->first();
+        if (!$siswa) {
+            return redirect()->back()->with('error', 'Siswa tidak ditemukan.');
+        }
+
+        $lembaga = CodeQR::where('code_unique', $request->code_unique)->first();
+        if (!$lembaga) {
+            return redirect()->back()->with('error', 'Gagal absen lakukan lagi.');
+        }
+        $tanggalAbsen = now();
+
+        $existingAbsensi = Absensi::where('siswa_id', $siswa->id)
+            ->whereDate('tanggal_absen', $tanggalAbsen->toDateString())
+            ->exists();
+
+        if ($existingAbsensi) {
+            return redirect()->back()->with('error', 'Siswa sudah melakukan absensi hari ini.');
+        }
+
+        Absensi::create([
+            'siswa_id' => $siswa->id,
+            'guru_id' => $request->guru_id,
+            'tanggal_absen' => $tanggalAbsen,
+        ]);
+
+        return redirect()->back()->with('success', 'Siswa berhasil absen.');
+    }
+
+    public function location(Request $request)
+    {
+        $siswa = Siswa::authSiswa();
+        $meta_siswa = MetaSiswa::where('siswa_id', $siswa->id)->first();
+        $meta_siswa->update([
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+        ]);
+
+        return redirect()->back()->with('success', 'Lokasi berhasil diupdate menjadi yang terbaru.');
+    }
     // CONTROLLER PERIZINAN
+
     public function perizinan()
     {
         $siswa = Siswa::authSiswa();

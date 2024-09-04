@@ -26,8 +26,8 @@ return new class extends Migration
             $table->string('kelurahan');
             $table->string('alamat');
             $table->string('no_telp');
-            $table->decimal('latitude', 10, 8);
-            $table->decimal('longitude', 11, 8);
+            $table->string('latitude');
+            $table->string('longitude');
 
             $table->string('logo_kanan')->nullable();
             $table->string('logo_kiri')->nullable();
