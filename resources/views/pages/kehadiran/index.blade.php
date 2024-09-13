@@ -183,6 +183,7 @@
                                         <span
                                             class="inline-flex items-center justify-center rounded-full bg-blue-600 px-3 py-1 text-sm font-semibold text-white">0</span>
                                     </td>
+                                    
                                 </tr>
                                 <tr>
                                     <td class="text-left text-sm font-medium text-gray-500">TIDAK HADIR</td>
