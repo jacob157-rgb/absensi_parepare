@@ -5,19 +5,24 @@
     @include('components.head')
     @stack('addon-style')
 </head>
+<style>
+    html, body {
+    height: 100%;
+    overflow: hidden; /* Hapus scroll di halaman utama */
+}
 
+</style>
 <body>
-    <div class="flex h-screen overflow-x-hidden dark:bg-gray-900 bg-gray-50"
-        :class="{ 'overflow-hidden': isSideMenuOpen }">
+    <div class="flex h-screen overflow-x-hidden dark:bg-gray-900 bg-gray-50" :class="{ 'overflow-hidden': isSideMenuOpen }">
 
         {{-- Desktop sidebar --}}
         @include('includes.desktop-sidebar-guru')
 
         {{-- Mobile sidebar --}}
-        {{--  @include('includes.mobile-sidebar')  --}}
+        {{--  @include('includes.mobile-sidebar-guru')  --}}
 
         <div class="flex flex-col flex-1 w-full overflow-x-hidden">
-            @include('includes.header')
+            @include('includes.header-guru')
             <main class="h-full overflow-x-auto overflow-y-auto">
                 <div class="container px-6 mx-auto">
                     <section

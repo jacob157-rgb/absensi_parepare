@@ -15,8 +15,8 @@ return new class extends Migration {
             $table->unsignedBigInteger('siswa_id');
             $table->text('meta')->nullable();
             $table->text('lock_device');
-            $table->decimal('latitude', 10, 8);
-            $table->decimal('longitude', 11, 8);
+            $table->string('latitude');
+            $table->string('longitude');
             $table->timestamps();
             $table->foreign('siswa_id')->references('id')->on('siswa')->onDelete('cascade');
         });

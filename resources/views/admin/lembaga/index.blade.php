@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-    <div class="w-full overflow-hidden rounded-lg shadow-inner">
+    <div class="w-full overflow-hidden rounded border bg-white shadow">
         <div class="flex flex-col items-start justify-between border-b px-4 py-3 md:flex-row md:items-center">
             <a href="{{ route('lembaga.create') }}"
                 class="tambahBtn mb-2 inline-flex flex-none items-center rounded border border-transparent bg-blue-600 p-2 text-sm font-medium text-white hover:bg-blue-700 focus:bg-blue-700 focus:outline-none disabled:pointer-events-none disabled:opacity-50 md:mb-0">
@@ -31,7 +31,7 @@
             <table class="whitespace-no-wrap search-table w-full">
                 <thead>
                     <tr
-                        class="dark:border-gray-700 dark:text-gray-400 dark:bg-gray-800 border-b bg-gray-50 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">
+                        class="dark:border-gray-700 dark:text-gray-400 dark:bg-gray-800 border-b bg-blue-600 text-left text-xs font-semibold uppercase tracking-wide text-white">
                         <th class="px-4 py-3">No.</th>
                         <th class="px-4 py-3">INSTANSI</th>
                         <th class="px-4 py-3">SUB INSTANSI</th>

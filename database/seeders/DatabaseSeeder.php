@@ -30,7 +30,8 @@ class DatabaseSeeder extends Seeder
             KelasSeeder::class,
             SiswaSeeder::class,
             WaliSeeder::class,
-            CodeQrSeeder::class
+            CodeQrSeeder::class,
+            MesinSeeder::class
         ]);
     }
 }

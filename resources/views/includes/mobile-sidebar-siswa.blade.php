@@ -1,6 +1,6 @@
 <!-- Mobile sidebar -->
 @php
-    $siswa = Auth::guard('siswa')->user();
+    $siswa = App\Models\Siswa::authSiswa();
 @endphp
 <!-- Backdrop -->
 <div x-show="isSideMenuOpen" x-transition:enter="transition ease-in-out duration-150" x-transition:enter-start="opacity-0"

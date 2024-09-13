@@ -1,13 +1,13 @@
 @extends('layouts.admin')
 @section('content')
     {{--  warning  --}}
-    <div class="bg-green-50 border mb-5 border-green-200 text-sm text-green-800 rounded-lg p-4 dark:bg-green-800/10 dark:border-green-900 dark:text-green-500"
+    <div class="mb-5 rounded-lg border border-green-200 bg-green-50 p-4 text-sm text-green-800 dark:border-green-900 dark:bg-green-800/10 dark:text-green-500"
         role="alert" tabindex="-1" aria-labelledby="hs-with-list-label">
         <div class="flex">
             <div class="shrink-0">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="lucide lucide-info shrink-0 size-4 mt-0.5">
+                    class="lucide lucide-info size-4 mt-0.5 shrink-0">
                     <circle cx="12" cy="12" r="10" />
                     <path d="M12 16v-4" />
                     <path d="M12 8h.01" />
@@ -32,11 +32,11 @@
     </div>
 
 
-    <div class="w-full lg:overflow-visible overflow-hidden rounded shadow-inner">
+    <div class="w-full overflow-hidden rounded border bg-white shadow lg:overflow-visible">
         <!-- Kelas -->
         <span class="font-semibold text-white dark:text-gray-400">placeholder</span>
-        <form id="kelas-form" action="" method="get" class="my-2 mx-4">
-            <label class="block text-sm mt-2">
+        <form id="kelas-form" action="" method="get" class="mx-4 my-2">
+            <label class="mt-2 block text-sm">
                 <span class="font-semibold text-gray-700 dark:text-gray-400">Pilih Kelas</span>
                 <select id="kelas" name="kelas"
                     data-hs-select='{
@@ -66,12 +66,15 @@
                 @enderror
             </label>
         </form>
+        @if (!request('kelas'))
+            <br>
+        @endif
 
         @if (request('kelas'))
-            <div class="flex flex-col items-start justify-between px-4 py-3 border-b md:flex-row md:items-center">
-                <div class="relative inline-flex hs-dropdown">
+            <div class="flex flex-col items-start justify-between border-b px-4 py-3 md:flex-row md:items-center">
+                <div class="hs-dropdown relative inline-flex">
                     <button id="hs-dropdown-with-icons" type="button"
-                        class="inline-flex items-center px-4 py-3 text-sm font-medium text-white bg-blue-600 border border-transparent rounded shadow-sm hs-dropdown-toggle dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 gap-x-2 hover:bg-blue-700 focus:bg-blue-700 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                        class="hs-dropdown-toggle inline-flex items-center gap-x-2 rounded border border-transparent bg-blue-600 px-4 py-3 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:bg-blue-700 focus:outline-none disabled:pointer-events-none disabled:opacity-50 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
                         aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
                         Tambah Data
                         <svg class="size-4 hs-dropdown-open:rotate-180" xmlns="http://www.w3.org/2000/svg" width="24"
@@ -81,10 +84,10 @@
                         </svg>
                     </button>
 
-                    <div class="hs-dropdown-menu duration min-w-60 dark:bg-neutral-800 dark:border dark:border-neutral-700 dark:divide-neutral-700 mt-2 hidden space-y-0.5 divide-y divide-gray-200 rounded-lg bg-white p-1 opacity-0 shadow-md transition-[opacity,margin] hs-dropdown-open:opacity-100"
+                    <div class="hs-dropdown-menu duration min-w-60 hs-dropdown-open:opacity-100 mt-2 hidden space-y-0.5 divide-y divide-gray-200 rounded-lg bg-white p-1 opacity-0 shadow-md transition-[opacity,margin] dark:divide-neutral-700 dark:border dark:border-neutral-700 dark:bg-neutral-800"
                         role="menu" aria-orientation="vertical" aria-labelledby="hs-dropdown-with-icons">
                         <div class="py-2 first:pt-0 last:pb-0">
-                            <a class=" dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 flex items-center gap-x-3.5 rounded-lg px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
+                            <a class="flex items-center gap-x-3.5 rounded-lg px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
                                 href="{{ route('siswa.create') }}?kelas={{ request('kelas') }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -96,7 +99,7 @@
                                 </svg>
                                 Manual
                             </a>
-                            <a class="tambahExcel dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 flex items-center gap-x-3.5 rounded-lg px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
+                            <a class="tambahExcel flex items-center gap-x-3.5 rounded-lg px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
                                 href="#">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -112,13 +115,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="relative max-w-xs hidden lg:block">
+                <div class="relative hidden max-w-xs lg:block">
                     <label for="hs-table-search" class="sr-only">Search</label>
                     <input type="text" name="hs-table-search" id="global-search"
-                        class="block w-full px-3 py-2 text-sm border-gray-200 rounded shadow-sm dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 ps-9 focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50"
+                        class="block w-full rounded border-gray-200 px-3 py-2 ps-9 text-sm shadow-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                         placeholder="Search for items">
-                    <div class="absolute inset-y-0 flex items-center pointer-events-none start-0 ps-3">
-                        <svg class="text-gray-400 size-4 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg"
+                    <div class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3">
+                        <svg class="size-4 text-gray-400 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg"
                             width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="11" cy="11" r="8"></circle>
@@ -129,10 +132,10 @@
             </div>
 
             <div class="w-full overflow-x-auto">
-                <table class="w-full whitespace-no-wrap search-table">
+                <table class="whitespace-no-wrap search-table w-full">
                     <thead>
                         <tr
-                            class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 dark:text-gray-400 dark:bg-gray-800 bg-gray-50">
+                            class="border-b bg-blue-600 text-left text-xs font-semibold uppercase tracking-wide text-white dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">
                             <th class="px-4 py-3">No.</th>
                             <th class="px-4 py-3">Nama</th>
                             <th class="px-4 py-3">NISN</th>
@@ -141,7 +144,7 @@
                             <th class="px-4 py-3">Aksi</th>
                         </tr>
                     </thead>
-                    <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+                    <tbody class="divide-y bg-white dark:divide-gray-700 dark:bg-gray-800">
                         @foreach ($siswa as $row)
                             <tr class="text-gray-700 dark:text-gray-400">
                                 <td class="px-4 py-3 text-sm font-medium">
@@ -190,7 +193,7 @@
                                 <td class="px-4 py-3">
                                     <div class="hs-dropdown relative inline-flex">
                                         <button id="hs-dropdown-with-icons" type="button"
-                                            class="hs-dropdown-toggle dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 inline-flex items-center gap-x-2 rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-800 shadow-sm hover:bg-gray-50 focus:bg-gray-50 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                                            class="hs-dropdown-toggle inline-flex items-center gap-x-2 rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-800 shadow-sm hover:bg-gray-50 focus:bg-gray-50 focus:outline-none disabled:pointer-events-none disabled:opacity-50 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
                                             aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
                                             Action
                                             <svg class="size-4 hs-dropdown-open:rotate-180"
@@ -201,11 +204,11 @@
                                             </svg>
                                         </button>
 
-                                        <div class="hs-dropdown-menu duration min-w-60 dark:bg-neutral-800 dark:border dark:border-neutral-700 dark:divide-neutral-700 z-10 mt-2 hidden space-y-0.5 divide-y divide-gray-200 rounded-lg bg-white p-1 opacity-0 shadow-md transition-[opacity,margin] hs-dropdown-open:opacity-100"
+                                        <div class="hs-dropdown-menu duration min-w-60 hs-dropdown-open:opacity-100 z-10 mt-2 hidden space-y-0.5 divide-y divide-gray-200 rounded-lg bg-white p-1 opacity-0 shadow-md transition-[opacity,margin] dark:divide-neutral-700 dark:border dark:border-neutral-700 dark:bg-neutral-800"
                                             role="menu" aria-orientation="vertical"
                                             aria-labelledby="hs-dropdown-with-icons">
                                             <!-- Edit Button -->
-                                            <a class="dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 flex items-center gap-x-3.5 rounded-lg px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
+                                            <a class="flex items-center gap-x-3.5 rounded-lg px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
                                                 href="{{ route('siswa.edit', $row->id) }}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
                                                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -219,7 +222,7 @@
                                             </a>
 
                                             <!-- Show Button -->
-                                            <a class="dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 flex items-center gap-x-3.5 rounded-lg px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
+                                            <a class="flex items-center gap-x-3.5 rounded-lg px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
                                                 href="{{ route('siswa.show', $row->id) }}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
                                                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -238,7 +241,7 @@
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="button"
-                                                    class="show_confirm dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 flex w-full items-center gap-x-3.5 rounded-lg px-3 py-2 text-left text-sm font-medium text-gray-800 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none">
+                                                    class="show_confirm flex w-full items-center gap-x-3.5 rounded-lg px-3 py-2 text-left text-sm font-medium text-gray-800 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
                                                         viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"

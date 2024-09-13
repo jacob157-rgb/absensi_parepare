@@ -287,7 +287,13 @@
                     </label>
                 </div>
 
-                <div id="map" style="height: 320px; width: 100%;" class="z-10 col-span-2 rounded"></div>
+                <div id="map-container" style="width: 100%; height: 400px;">
+                    <iframe id="map1" class="h-full w-full"
+                        src="https://www.google.com/maps?q={{ $edit->latitude }},{{ $edit->longitude }}&z=15&output=embed" frameborder="0"
+                        style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0">
+                    </iframe>
+                </div>
+                {{-- <div id="map" style="height: 320px; width: 100%;" class="z-10 col-span-2 rounded"></div> --}}
             </div>
 
             <!-- Tombol Submit -->
@@ -370,32 +376,22 @@
             window.HSStaticMethods.autoInit();
         }
 
-        {{--  handle maps  --}}
+        // {{--  handle maps  --}}
         let map;
         let marker;
-
-        function initMap() {
-            map = L.map('map').setView([-6.2088, 106.8456], 13);
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; Kuli IT Tecno'
-            }).addTo(map);
-
-            marker = L.marker([-6.2088, 106.8456]).addTo(map);
-        }
 
         function updateMap() {
             const latitude = parseFloat(document.querySelector('input[name="latitude"]').value);
             const longitude = parseFloat(document.querySelector('input[name="longitude"]').value);
 
             if (!isNaN(latitude) && !isNaN(longitude)) {
-                const newPosition = [latitude, longitude];
-                map.setView(newPosition, 13);
-                marker.setLatLng(newPosition);
+                // Update the Google Maps iframe with the new latitude and longitude
+                const googleMapSrc = `https://www.google.com/maps?q=${latitude},${longitude}&z=15&output=embed`;
+                document.getElementById('map1').src = googleMapSrc;
             }
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-            initMap();
 
             updateMap();
 

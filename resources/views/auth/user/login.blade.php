@@ -21,8 +21,6 @@
                     <img class="object-fill h-20 sm:h-24" src="{{ asset('assets/img/man2pare.png') }}">
                 </div>
 
-
-
                 <h1 class="text-xl font-bold leading-none sm:text-4xl ">
                     Aplikasi Absensi <br>
                     <span class="text-blue-600 truncate sm:text-5xl">MAN 2 KOTA PAREPARE</span>
@@ -39,7 +37,7 @@
         </div>
 
         <div class="relative z-20 px-12 py-12 bg-white shadow-xl rounded-2xl">
-            <h1 class="mb-4 text-3xl font-bold text-center cursor-pointer">Masuk</h1>
+            <h1 class="mb-4 text-xl font-semibold text-center cursor-pointer ">Masuk Untuk Melakukan Absensi</h1>
             <div class="flex items-center justify-center w-full">
                 <div
                     class="flex w-full p-1 transition bg-gray-100 rounded-lg dark:bg-neutral-700 dark:hover:bg-neutral-600 hover:bg-gray-200">
@@ -115,6 +113,7 @@
                                 <p class="mt-2 text-xs text-red-500">{{ $message }}</p>
                             @enderror
                         </div>
+                        <input type="hidden" name="unique_meta" id="fingerprint">
 
 
                         {{--  <div class="mt-6 text-center">
@@ -254,6 +253,16 @@
                     alert('Hanya menerima input angka.');
                 }
             });
+            setTimeout(function () {
+                Fingerprint2.get(function(components) {
+                    const values = components.map(function(component) { return component.value });
+                    const fingerprint = Fingerprint2.x64hash128(values.join(''), 31);
+                    console.log(fingerprint);
+
+                    document.getElementById('fingerprint').value = fingerprint;
+                });
+            }, 500);
+
         });
     </script>
 @endsection

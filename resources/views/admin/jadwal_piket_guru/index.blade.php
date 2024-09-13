@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-    <div class="flex flex-col mb-5 bg-white  rounded dark:bg-neutral-600">
+    <div class="flex flex-col mb-5 rounded shadow bg-white border">
         <div class="-m-1.5 overflow-x-auto shadow-inner">
             <div class="flex flex-col items-start justify-between px-4 py-3 md:flex-row md:items-center">
                 <button type="button"
@@ -18,10 +18,10 @@
                 <div class="overflow-hidden">
                     <table class="min-w-full border divide-y divide-gray-200 dark:divide-neutral-700">
                         <thead>
-                            <tr>
+                            <tr class="dark:border-gray-700 dark:text-gray-400 dark:bg-gray-800 border-b bg-blue-600 text-left text-xs font-semibold uppercase tracking-wide text-white">
                                 @foreach (['SENIN', 'SELASA', 'RABU', 'KAMIS', 'JUMAT', 'SABTU', 'MINGGU'] as $day)
                                     <th scope="col"
-                                        class="px-6 py-3 text-xs font-medium text-center uppercase dark:text-neutral-200 {{ in_array($day, $hari_libur) ? 'bg-red-500 text-white' : 'text-gray-500' }}">
+                                        class="px-6 py-3 text-xs font-medium text-center text-white uppercase dark:text-neutral-200 {{ in_array($day, $hari_libur) ? 'bg-red-500 text-white' : 'text-gray-500' }}">
                                         {{ $day }}
                                     </th>
                                 @endforeach

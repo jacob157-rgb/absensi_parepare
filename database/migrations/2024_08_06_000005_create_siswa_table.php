@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('siswa', function (Blueprint $table) {
             $table->id();
-            $table->rememberToken();
             $table->unsignedBigInteger('sekolah_id');
             $table->unsignedBigInteger('kelas_id');
             $table->string('nisn')->unique();
@@ -24,6 +23,7 @@ return new class extends Migration
             $table->enum('jenis_kelamin', ['LAKI-LAKI', 'PEREMPUAN']);
             $table->string('password');
             $table->string('password_view');
+            $table->rememberToken();
             $table->timestamps();
 
             $table->foreign('sekolah_id')->references('id')->on('sekolah')->onDelete('cascade');

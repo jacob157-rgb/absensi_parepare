@@ -4,7 +4,7 @@
     <h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">
         Tambah {{ $pages }}
     </h4>
-    <div class="px-4 py-3 mb-8 bg-white rounded shadow-md dark:bg-gray-800">
+    <div class="mb-8 rounded bg-white px-4 py-3 shadow-md dark:bg-gray-800">
         <form action="{{ route('lembaga.store') }}" method="POST">
             @csrf
             <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -13,7 +13,7 @@
                     <label class="block text-sm">
                         <span class="font-semibold text-gray-700 dark:text-gray-400">Instansi</span>
                         <input type="text" name="instansi" value="{{ old('instansi') }}"
-                            class="block w-full mt-1 text-sm border-gray-300 rounded dark:text-gray-300 dark:bg-gray-700 focus:shadow-outline-red form-input focus:border-red-400 focus:outline-none"
+                            class="focus:shadow-outline-red form-input mt-1 block w-full rounded border-gray-300 text-sm focus:border-red-400 focus:outline-none dark:bg-gray-700 dark:text-gray-300"
                             placeholder="Instansi" />
                         @error('instansi')
                             <span class="text-xs text-red-600 dark:text-red-400">{{ $message }}</span>
@@ -26,7 +26,7 @@
                     <label class="block text-sm">
                         <span class="font-semibold text-gray-700 dark:text-gray-400">Sub Instansi</span>
                         <input type="text" name="sub_instansi" value="{{ old('sub_instansi') }}"
-                            class="block w-full mt-1 text-sm border-gray-300 rounded dark:text-gray-300 dark:bg-gray-700 focus:shadow-outline-red form-input focus:border-red-400 focus:outline-none"
+                            class="focus:shadow-outline-red form-input mt-1 block w-full rounded border-gray-300 text-sm focus:border-red-400 focus:outline-none dark:bg-gray-700 dark:text-gray-300"
                             placeholder="Sub Instansi" />
                         @error('sub_instansi')
                             <span class="text-xs text-red-600 dark:text-red-400">{{ $message }}</span>
@@ -39,7 +39,7 @@
                     <label class="block text-sm">
                         <span class="font-semibold text-gray-700 dark:text-gray-400">Nama Lembaga</span>
                         <input type="text" name="nama" value="{{ old('nama') }}"
-                            class="block w-full mt-1 text-sm border-gray-300 rounded dark:text-gray-300 dark:bg-gray-700 focus:shadow-outline-red form-input focus:border-red-400 focus:outline-none"
+                            class="focus:shadow-outline-red form-input mt-1 block w-full rounded border-gray-300 text-sm focus:border-red-400 focus:outline-none dark:bg-gray-700 dark:text-gray-300"
                             placeholder="Nama Sekolah" />
                         @error('nama')
                             <span class="text-xs text-red-600 dark:text-red-400">{{ $message }}</span>
@@ -52,7 +52,7 @@
                     <label class="block text-sm">
                         <span class="font-semibold text-gray-700 dark:text-gray-400">Level/Tingkat</span>
                         <select name="level" data-placeholder="Level/Tingkat"
-                            class="block w-full mt-1 text-sm border-gray-200 rounded dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50">
+                            class="mt-1 block w-full rounded border-gray-200 text-sm focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
                             <option value="">Pilih Level</option>
                             <option value="TK/RA" {{ old('level') == 'TK/RA' ? 'selected' : '' }}>TK/RA</option>
                             <option value="SD/MI" {{ old('level') == 'SD/MI' ? 'selected' : '' }}>SD/MI</option>
@@ -72,7 +72,7 @@
                     <label class="block text-sm">
                         <span class="font-semibold text-gray-700 dark:text-gray-400">NSM</span>
                         <input type="number" name="nsm" value="{{ old('nsm') }}"
-                            class="block w-full mt-1 text-sm border-gray-300 rounded dark:text-gray-300 dark:bg-gray-700 focus:shadow-outline-red form-input focus:border-red-400 focus:outline-none"
+                            class="focus:shadow-outline-red form-input mt-1 block w-full rounded border-gray-300 text-sm focus:border-red-400 focus:outline-none dark:bg-gray-700 dark:text-gray-300"
                             placeholder="NSM" />
                         @error('nsm')
                             <span class="text-xs text-red-600 dark:text-red-400">{{ $message }}</span>
@@ -85,7 +85,7 @@
                     <label class="block text-sm">
                         <span class="font-semibold text-gray-700 dark:text-gray-400">NPSN</span>
                         <input type="number" name="npsn" value="{{ old('npsn') }}"
-                            class="block w-full mt-1 text-sm border-gray-300 rounded dark:text-gray-300 dark:bg-gray-700 focus:shadow-outline-red form-input focus:border-red-400 focus:outline-none"
+                            class="focus:shadow-outline-red form-input mt-1 block w-full rounded border-gray-300 text-sm focus:border-red-400 focus:outline-none dark:bg-gray-700 dark:text-gray-300"
                             placeholder="NPSN" />
                         @error('npsn')
                             <span class="text-xs text-red-600 dark:text-red-400">{{ $message }}</span>
@@ -211,7 +211,7 @@
                     <label class="block text-sm">
                         <span class="font-semibold text-gray-700 dark:text-gray-400">Alamat</span>
                         <input type="text" name="alamat" value="{{ old('alamat') }}"
-                            class="block w-full mt-1 text-sm border-gray-300 rounded dark:text-gray-300 dark:bg-gray-700 focus:shadow-outline-red form-input focus:border-red-400 focus:outline-none"
+                            class="focus:shadow-outline-red form-input mt-1 block w-full rounded border-gray-300 text-sm focus:border-red-400 focus:outline-none dark:bg-gray-700 dark:text-gray-300"
                             placeholder="Alamat" />
                         @error('alamat')
                             <span class="text-xs text-red-600 dark:text-red-400">{{ $message }}</span>
@@ -224,7 +224,7 @@
                     <label class="block text-sm">
                         <span class="font-semibold text-gray-700 dark:text-gray-400">No Telp</span>
                         <input type="number" name="no_telp" value="{{ old('no_telp') }}"
-                            class="block w-full mt-1 text-sm border-gray-300 rounded dark:text-gray-300 dark:bg-gray-700 focus:shadow-outline-red form-input focus:border-red-400 focus:outline-none"
+                            class="focus:shadow-outline-red form-input mt-1 block w-full rounded border-gray-300 text-sm focus:border-red-400 focus:outline-none dark:bg-gray-700 dark:text-gray-300"
                             placeholder="No Telp" />
                         @error('no_telp')
                             <span class="text-xs text-red-600 dark:text-red-400">{{ $message }}</span>
@@ -237,7 +237,7 @@
                     <label class="block text-sm">
                         <span class="font-semibold text-gray-700 dark:text-gray-400">Tempat Cetak</span>
                         <input type="text" name="tempat_cetak" value="{{ old('tempat_cetak') }}"
-                            class="block w-full mt-1 text-sm border-gray-300 rounded dark:text-gray-300 dark:bg-gray-700 focus:shadow-outline-red form-input focus:border-red-400 focus:outline-none"
+                            class="focus:shadow-outline-red form-input mt-1 block w-full rounded border-gray-300 text-sm focus:border-red-400 focus:outline-none dark:bg-gray-700 dark:text-gray-300"
                             placeholder="Tempat cetak" />
                         @error('tempat_cetak')
                             <span class="text-xs text-red-600 dark:text-red-400">{{ $message }}</span>
@@ -250,7 +250,7 @@
                     <label class="block text-sm">
                         <span class="font-semibold text-gray-700 dark:text-gray-400">Status</span>
                         <select name="status" data-placeholder="Status"
-                            class="block w-full mt-1 text-sm border-gray-200 rounded dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600 focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50">
+                            class="mt-1 block w-full rounded border-gray-200 text-sm focus:border-blue-500 focus:ring-blue-500 disabled:pointer-events-none disabled:opacity-50 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
                             <option value="">Pilih Status</option>
                             <option value="ACTIVE" {{ old('status') == 'ACTIVE' ? 'selected' : '' }}>ACTIVE</option>
                             <option value="NON ACTIVE" {{ old('status') == 'NON ACTIVE' ? 'selected' : '' }}>NON ACTIVE
@@ -268,7 +268,7 @@
                     <label class="block text-sm">
                         <span class="font-semibold text-gray-700 dark:text-gray-400">Latitude</span>
                         <input type="text" name="latitude" value="{{ old('latitude') }}"
-                            class="block w-full mt-1 text-sm border-gray-300 rounded dark:text-gray-300 dark:bg-gray-700 focus:shadow-outline-red form-input focus:border-red-400 focus:outline-none"
+                            class="focus:shadow-outline-red form-input mt-1 block w-full rounded border-gray-300 text-sm focus:border-red-400 focus:outline-none dark:bg-gray-700 dark:text-gray-300"
                             placeholder="Latitude" />
                         @error('latitude')
                             <span class="text-xs text-red-600 dark:text-red-400">{{ $message }}</span>
@@ -281,7 +281,7 @@
                     <label class="block text-sm">
                         <span class="font-semibold text-gray-700 dark:text-gray-400">Longitude</span>
                         <input type="text" name="longitude" value="{{ old('longitude') }}"
-                            class="block w-full mt-1 text-sm border-gray-300 rounded dark:text-gray-300 dark:bg-gray-700 focus:shadow-outline-red form-input focus:border-red-400 focus:outline-none"
+                            class="focus:shadow-outline-red form-input mt-1 block w-full rounded border-gray-300 text-sm focus:border-red-400 focus:outline-none dark:bg-gray-700 dark:text-gray-300"
                             placeholder="longitude" />
                         @error('longitude')
                             <span class="text-xs text-red-600 dark:text-red-400">{{ $message }}</span>
@@ -289,7 +289,12 @@
                     </label>
                 </div>
 
-                <div id="map" style="height: 320px; width: 100%;" class="z-10 col-span-2 rounded"></div>
+                <div id="map-container" style="width: 100%; height: 400px;">
+                    <iframe id="map1" class="h-full w-full"
+                        src="https://www.google.com/maps?q=-6.2088,106.8456&z=15&output=embed" frameborder="0"
+                        style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0">
+                    </iframe>
+                </div>
             </div>
 
             <!-- Tombol Submit -->
@@ -362,11 +367,7 @@
         "outputLoaderTemplate": "<div class=\\"flex items-center justify-center px-4 py-2 text-sm text-gray-800 bg-white rounded dark:bg-neutral-900 dark:text-neutral-200\\"><div class=\\"size-6 dark:text-blue-500 inline-block animate-spin rounded-full border-[3px] border-current border-t-transparent text-blue-600\\" role=\\"status\\" aria-label=\\"loading\\"><span class=\\"sr-only\\">Memuat...</span></div></div>"
     }`;
 
-            // Debugging Logs
-            console.log('ComboBox:', comboBox);
-            console.log('Query:', query);
-            console.log('API URL:', apiUrl);
-            console.log('Config:', configString);
+  
 
             document.querySelectorAll(comboBox).forEach(node => {
                 node.setAttribute("data-hs-combo-box", configString);
@@ -380,32 +381,19 @@
 
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
-        let map;
-        let marker;
-
-        function initMap() {
-            map = L.map('map').setView([-6.2088, 106.8456], 13);
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; Kuli IT Tecno'
-            }).addTo(map);
-
-            marker = L.marker([-6.2088, 106.8456]).addTo(map);
-        }
-
         function updateMap() {
             const latitude = parseFloat(document.querySelector('input[name="latitude"]').value);
             const longitude = parseFloat(document.querySelector('input[name="longitude"]').value);
 
             if (!isNaN(latitude) && !isNaN(longitude)) {
-                const newPosition = [latitude, longitude];
-                map.setView(newPosition, 13);
-                marker.setLatLng(newPosition);
+                // Update the Google Maps iframe with the new latitude and longitude
+                const googleMapSrc = `https://www.google.com/maps?q=${latitude},${longitude}&z=15&output=embed`;
+                document.getElementById('map1').src = googleMapSrc;
             }
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-            initMap();
-
+            // Set up event listeners for input fields
             document.querySelector('input[name="latitude"]').addEventListener('input', updateMap);
             document.querySelector('input[name="longitude"]').addEventListener('input', updateMap);
         });

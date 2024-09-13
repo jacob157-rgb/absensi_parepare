@@ -2,6 +2,12 @@
 
 use Carbon\Carbon;
 
+if (!function_exists('formatDate')) {
+    function formatDate($date)
+    {
+        return Carbon::parse($date)->translatedFormat('d F Y');
+    }
+}
 if (!function_exists('formatTanggalLengkap')) {
     function formatTanggalLengkap($date)
     {

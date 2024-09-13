@@ -264,6 +264,10 @@
                                     class="px-2 py-1 transition-colors duration-150 dark:hover:text-gray-200 hover:text-gray-800">
                                     <a class="w-full" href="{{ route('siswa.getMigrasi') }}">Migrasi Siswa</a>
                                 </li>
+                                <li
+                                    class="px-2 py-1 transition-colors duration-150 dark:hover:text-gray-200 hover:text-gray-800">
+                                    <a class="w-full" href="{{ route('siswa.lockDevice') }}">Device Siswa</a>
+                                </li>
                             </ul>
                         </template>
                     </li>
@@ -299,7 +303,7 @@
 
 
                     <li class="relative px-6 py-3">
-                        @if (request()->routeIs('report.*'))
+                        @if (request()->segment(3) == 'absensi')
                             <span class="absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg"
                                 aria-hidden="true"></span>
                         @endif
@@ -323,6 +327,7 @@
                                     clip-rule="evenodd"></path>
                             </svg>
                         </button>
+
                         <template x-if="isReportMenuOpen">
                             <ul x-transition:enter="transition-all ease-in-out duration-300"
                                 x-transition:enter-start="opacity-25 max-h-0"
@@ -334,7 +339,11 @@
                                 aria-label="submenu">
                                 <li
                                     class="px-2 py-1 transition-colors duration-150 dark:hover:text-gray-200 hover:text-gray-800">
-                                    <a class="w-full" href="">Laporan</a>
+                                    <a class="w-full" href="{{ route('laporan.absensi') }}">Cetak Laporan</a>
+                                </li>
+                                <li
+                                    class="px-2 py-1 transition-colors duration-150 dark:hover:text-gray-200 hover:text-gray-800">
+                                    <a class="w-full" href="{{ route('laporan.peringkat') }}">Peringkat Kehadiran</a>
                                 </li>
                             </ul>
                         </template>
@@ -377,6 +386,10 @@
                                 <li
                                     class="px-2 py-1 transition-colors duration-150 dark:hover:text-gray-200 hover:text-gray-800">
                                     <a class="w-full" href="{{ route('settings.admin.getQr') }}">Code QR</a>
+                                </li>
+                                <li
+                                    class="px-2 py-1 transition-colors duration-150 dark:hover:text-gray-200 hover:text-gray-800">
+                                    <a class="w-full" href="{{ route('settings.admin.getMesin') }}">Mesin</a>
                                 </li>
 
                             </ul>

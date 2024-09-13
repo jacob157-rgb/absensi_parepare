@@ -13,15 +13,24 @@ class JamAbsenSeeder extends Seeder
      */
     public function run(): void
     {
-        $days = ['SENIN', 'SELASA', 'RABU', 'KAMIS', 'JUMAT', 'SABTU'];
+        $days = ['SENIN', 'SELASA', 'RABU', 'KAMIS', 'JUMAT', 'SABTU', 'MINGGU'];
 
         foreach ($days as $day) {
-            JamAbsen::create([
-                'sekolah_id' => 1,
-                'hari' => $day,
-                'jam_masuk' => '07:00:00',
-                'jam_terlambat' => '07:30:00',
-            ]);
+            if ($day == 'MINGGU') {
+                JamAbsen::create([
+                    'sekolah_id' => 1,
+                    'hari' => $day,
+                    'jam_masuk' => '00:00:00',
+                    'jam_terlambat' => '00:00:00',
+                ]);
+            } else {
+                JamAbsen::create([
+                    'sekolah_id' => 1,
+                    'hari' => $day,
+                    'jam_masuk' => '07:00:00',
+                    'jam_terlambat' => '07:30:00',
+                ]);
+            }
         }
     }
 }

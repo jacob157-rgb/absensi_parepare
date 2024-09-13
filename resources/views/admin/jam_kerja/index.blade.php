@@ -29,7 +29,7 @@
     </div>
 
 
-    <div class="w-full overflow-hidden rounded shadow-inner">
+    <div class="w-full overflow-hidden rounded shadow bg-white border">
         <div class="flex flex-col items-start justify-between px-4 py-3 border-b md:flex-row md:items-center">
             <button {{-- href="{{ route('jam_kerja.create') }}" --}}
                 class="inline-flex items-center flex-none p-2 mb-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded tambahBtn hover:bg-blue-700 focus:bg-blue-700 focus:outline-none disabled:pointer-events-none disabled:opacity-50 md:mb-0">
@@ -80,7 +80,7 @@
             <table class="w-full whitespace-no-wrap search-table">
                 <thead>
                     <tr
-                        class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 dark:text-gray-400 dark:bg-gray-800 bg-gray-50">
+                        class="dark:border-gray-700 dark:text-gray-400 dark:bg-gray-800 border-b bg-blue-600 text-left text-xs font-semibold uppercase tracking-wide text-white">
                         <th class="px-4 py-3">No.</th>
                         <th class="px-4 py-3">Nama</th>
                         <th class="px-4 py-3">Hari</th>

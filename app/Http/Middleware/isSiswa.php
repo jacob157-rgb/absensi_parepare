@@ -17,7 +17,8 @@ class isSiswa
     public function handle(Request $request, Closure $next): Response
     {
 
-        if (Auth::guard('siswa')->check()) {
+
+        if (Auth::guard('wali')->check() || Auth::guard('siswa')->check()) {
             $sessionData = $request->session()->get('meta_data');
             if ($sessionData && isset($sessionData['meta']) && isset($sessionData['roles'])) {
                 if ($sessionData['roles']) {

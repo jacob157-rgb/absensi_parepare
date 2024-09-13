@@ -43,7 +43,7 @@
     </div>
 
 
-    <div class="w-full lg:overflow-visible overflow-hidden rounded shadow-inner">
+    <div class="w-full lg:overflow-visible overflow-hidden rounded shadow bg-white border">
         <!-- Kelas -->
         <span class="font-semibold text-white dark:text-gray-400">placeholder</span>
         <form id="kelas-form" action="" method="get" class="my-2 mx-4 lg:flex  lg:space-x-6">
@@ -145,7 +145,7 @@
                 <table class="w-full whitespace-no-wrap search-table">
                     <thead>
                         <tr
-                            class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 dark:text-gray-400 dark:bg-gray-800 bg-gray-50">
+                            class="dark:border-gray-700 dark:text-gray-400 dark:bg-gray-800 border-b bg-blue-600 text-left text-xs font-semibold uppercase tracking-wide text-white">
                             <th class="px-4 py-3">
                                 <input type="checkbox" id="select-all"
                                     class="form-checkbox w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />

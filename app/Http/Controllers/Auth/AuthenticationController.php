@@ -11,6 +11,7 @@ use Jenssegers\Agent\Agent;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Guru;
+use App\Models\Wali;
 use Illuminate\Support\Facades\Auth;
 
 class AuthenticationController extends Controller
@@ -77,15 +78,22 @@ class AuthenticationController extends Controller
             'password' => 'required|string',
         ]);
 
-        // if (!$request->longitude || !$request->latitude) {
-        //     return redirect()->back()->with('error', 'Izin masuk tidak diperbolehkan, anda melakukan kesalahan sistem');
-        // }
+        if (!$request->longitude || !$request->latitude) {
+            return redirect()->back()->with('error', 'Izin masuk tidak diperbolehkan, anda melakukan kesalahan sistem');
+        }
+        if (!$request->unique_meta) {
+            return redirect()->back()->with('error', 'Browser tidak dapat menditeksi device anda.');
+        }
 
         $siswa = Siswa::where('nisn', $request->username)
             ->orWhere('nik', $request->username)
             ->first();
 
         if ($siswa) {
+            $sekolah = Sekolah::lembagaBy($siswa->sekolah_id);
+            if ($sekolah->status == 'NON ACTIVE') {
+                return redirect()->back()->with('info', 'Sekolah sedang dinonaktifkan !!.');
+            }
             $credentials = [
                 'password' => $request->password,
             ];
@@ -119,6 +127,9 @@ class AuthenticationController extends Controller
                 $metaSiswa = MetaSiswa::where('siswa_id', $siswa->id)->first();
 
                 if ($metaSiswa) {
+                    if ($metaSiswa->lock_device != $request->unique_meta) {
+                        return redirect()->back()->with('error', 'Gunakan device yang pertama kali digunakan login.');
+                    }
                     $metaSiswa->update([
                         'meta' => json_encode($meta),
                         'latitude' => $request->latitude,
@@ -128,7 +139,7 @@ class AuthenticationController extends Controller
                     $metaSiswa = MetaSiswa::create([
                         'siswa_id' => $siswa->id,
                         'meta' => json_encode($meta),
-                        'lock_device' => Str::random(10),
+                        'lock_device' => $request->unique_meta,
                         'latitude' => $request->latitude,
                         'longitude' => $request->longitude,
                     ]);
@@ -139,6 +150,73 @@ class AuthenticationController extends Controller
                 $session = [
                     'username' => $siswa->id,
                     'roles' => 'SISWA',
+                    'meta' => $meta,
+                    'lembaga' => $lembaga->nsm,
+                ];
+
+                $request->session()->put('meta_data', $session);
+
+                // Redirect to the user dashboard
+                return redirect('/siswa');
+            }
+        }
+
+        // Handle authentication failure
+        return redirect()
+            ->back()
+            ->withErrors([
+                'username' => 'Username atau password salah.',
+            ])
+            ->onlyInput('username');
+    }
+
+    public function postWali(Request $request)
+    {
+        $request->validate([
+            'username' => 'required|string',
+            'password' => 'required|string',
+        ]);
+
+        $wali = Wali::where('no_hp', $request->username)->first();
+        if (!$wali) {
+            return redirect()
+                ->back()
+                ->withErrors([
+                    'username' => 'Username tidak ditemukan.',
+                ])
+                ->onlyInput('username');
+        }
+        $siswa = Siswa::find($wali->siswa_id);
+
+        if ($siswa && $wali) {
+            $sekolah = Sekolah::lembagaBy($siswa->sekolah_id);
+            if ($sekolah->status == 'NON ACTIVE') {
+                return redirect()->back()->with('info', 'Sekolah sedang dinonaktifkan !!.');
+            }
+            if (Auth::guard('wali')->attempt(['no_hp' => $request->username, 'password' => $request->password])) {
+                $agent = new Agent();
+                $agent->setUserAgent($request->userAgent());
+
+                $meta = [
+                    'browser' => $agent->browser(),
+                    'browser_version' => $agent->version($agent->browser()),
+                    'device' => $agent->device(),
+                    'platform' => $agent->platform(),
+                    'ip' => $request->ip(),
+                    'waktu' => now()->toDateTimeString(),
+                    'is_mobile' => $agent->isMobile(),
+                    'is_tablet' => $agent->isTablet(),
+                    'is_desktop' => $agent->isDesktop(),
+                    'is_robot' => $agent->isRobot(),
+                    'is_bot' => $agent->isBot(),
+                ];
+
+                $lembaga = Sekolah::where('id', $siswa->sekolah_id)->first();
+                // Store session data
+                $session = [
+                    'username' => $siswa->id,
+                    'roles' => 'SISWA',
+                    'wali' => true,
                     'meta' => $meta,
                     'lembaga' => $lembaga->nsm,
                 ];

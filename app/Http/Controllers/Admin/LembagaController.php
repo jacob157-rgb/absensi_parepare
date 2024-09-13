@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Admin;
 use App\Models\Sekolah;
+use App\Models\JamAbsen;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\JamAbsen;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
@@ -154,6 +155,22 @@ class LembagaController extends Controller
             'roles' => 'LEMBAGA',
         ]);
 
+        //mesin
+        DB::table('mesins')->insert([
+            [
+                'password' => bcrypt('1234'),
+                'sekolah_id' => $sekolah->id,
+            ],
+        ]);
+
+        DB::table('code_qr')->insert([
+            [
+                'code_unique' => '3BAh8NI2u32nJmKoP02',
+                'password' => bcrypt('1234'),
+                'sekolah_id' => $sekolah->id,
+            ],
+
+        ]);
         return redirect('/admin/lembaga')->with('success', 'Data lembaga berhasil didaftarkan');
     }
 

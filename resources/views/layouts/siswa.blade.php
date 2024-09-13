@@ -14,10 +14,10 @@
         @include('includes.desktop-sidebar-siswa')
 
         {{-- Mobile sidebar --}}
-        @include('includes.mobile-sidebar-siswa')
+        {{--  @include('includes.mobile-sidebar-siswa')  --}}
 
         <div class="flex flex-col flex-1 w-full overflow-x-hidden">
-            @include('includes.header')
+            @include('includes.header-siswa')
             <main class="h-full overflow-x-auto overflow-y-auto">
                 <div class="container px-6 mx-auto">
                     <section

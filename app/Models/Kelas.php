@@ -11,4 +11,7 @@ class Kelas extends Model
     protected $table = 'kelas';
     protected $guarded = ['id'];
 
+    static function getById($id) {
+        return static::find($id);
+    }
 }

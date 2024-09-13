@@ -70,6 +70,38 @@ class SiswaController extends Controller
         ];
         return view('siswa.absen', $data);
     }
+    public function detail_absensi(Request $request)
+    {
+        $startDate = $request->query('sd') ? Carbon::parse($request->query('sd')) : now()->startOfMonth();
+        $endDate = $request->query('ed') ? Carbon::parse($request->query('ed')) : now()->endOfMonth();
+
+        $siswa = Siswa::authSiswa();
+        $jam_absen = JamAbsen::where('sekolah_id', $siswa->sekolah_id)->get()->keyBy('hari');
+
+        $existingAbsensi = Absensi::where('siswa_id', $siswa->id)
+            ->whereBetween('tanggal_absen', [$startDate, $endDate])
+            ->get()
+            ->keyBy(function ($item) {
+                return Carbon::parse($item->tanggal_absen)->format('Y-m-d');
+            });
+
+        // Generate an array of dates
+        $dates = [];
+        for ($date = $startDate->copy(); $date->lte($endDate); $date->addDay()) {
+            $dates[] = $date->toDateString();
+        }
+
+        $data = [
+            'pages' => 'Detail Absensi',
+            'siswa' => $siswa,
+            'existingAbsensi' => $existingAbsensi,
+            'dates' => $dates,
+            'jam_absen' => $jam_absen,
+        ];
+
+        return view('siswa.detail_absensi', $data);
+    }
+
 
     public function storeAbsen(Request $request)
     {

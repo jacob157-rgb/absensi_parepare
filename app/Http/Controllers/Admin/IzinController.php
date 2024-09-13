@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Izin;
 use App\Models\Kelas;
 use App\Models\Siswa;
-use App\Models\Izin;
+use App\Models\Sekolah;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -40,9 +41,11 @@ class IzinController extends Controller
 
     public function create()
     {
+        $lembaga = Sekolah::isLembaga();
         $data = [
             'pages' => 'Data Perizinan',
             'kelas' => Kelas::orderBy('tingkat_kelas', 'asc')->get(),
+            'siswa' => Siswa::where('sekolah_id', $lembaga->id)->get()
         ];
         return view('admin.perizinan.create', $data);
     }

@@ -14,12 +14,15 @@ return new class extends Migration
         Schema::create('absensi', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('siswa_id');
-            $table->unsignedBigInteger('guru_id');
+            $table->unsignedBigInteger('guru_id')->nullable();
+            $table->enum('pengabsen', ['GURU','UMUM'])->nullable()->default('GURU');
+            $table->unsignedBigInteger('sekolah_id');
             $table->dateTime('tanggal_absen');
             $table->timestamps();
 
             $table->foreign('siswa_id')->references('id')->on('siswa')->onDelete('cascade');
             $table->foreign('guru_id')->references('id')->on('guru')->onDelete('cascade');
+            $table->foreign('sekolah_id')->references('id')->on('sekolah')->onDelete('cascade');
         });
     }
 

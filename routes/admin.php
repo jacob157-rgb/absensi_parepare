@@ -1,19 +1,28 @@
 <?php
 
-use App\Http\Controllers\Admin\CodeQRController;
-use App\Http\Controllers\Admin\GuruController;
-use App\Http\Controllers\Admin\IzinController;
-use App\Http\Controllers\Admin\JadwalPiketGuruController;
-use App\Http\Controllers\Admin\JamAbsenController;
-use App\Http\Controllers\Admin\JamKerjaController;
-use App\Http\Controllers\Admin\KalenderAkademikConttroller;
-use App\Http\Controllers\Admin\KelasController;
-use App\Http\Controllers\Admin\LembagaController;
-use App\Http\Controllers\Admin\SemesterController;
-use App\Http\Controllers\Admin\SiswaController;
-use App\Http\Controllers\Admin\TahunAjaranController;
+use App\Models\Guru;
+use App\Models\Admin;
+use App\Models\Siswa;
+use App\Models\Sekolah;
+use Illuminate\Support\Carbon;
 use App\Http\Middleware\isAdmin;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\GuruController;
+use App\Http\Controllers\Admin\IzinController;
+use App\Http\Controllers\Admin\KelasController;
+use App\Http\Controllers\Admin\MesinController;
+use App\Http\Controllers\Admin\SiswaController;
+use App\Http\Controllers\Admin\CodeQRController;
+use App\Http\Controllers\Admin\ProfilController;
+use App\Http\Controllers\Admin\AbsensiController;
+use App\Http\Controllers\Admin\LembagaController;
+use App\Http\Controllers\Admin\JamAbsenController;
+use App\Http\Controllers\Admin\JamKerjaController;
+use App\Http\Controllers\Admin\SemesterController;
+use App\Http\Controllers\Admin\TahunAjaranController;
+use App\Http\Controllers\Admin\JadwalPiketGuruController;
+use App\Http\Controllers\Admin\KalenderAkademikConttroller;
+use App\Models\JadwalPiketGuru;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,8 +38,27 @@ use Illuminate\Support\Facades\Route;
 Route::middleware([isAdmin::class])->group(function () {
     Route::prefix('admin')->group(function () {
         Route::get('/beranda', function () {
-            $pages = 'Beranda';
-            return view('admin.beranda', compact('pages'));
+            $roles = metaData();
+            if($roles['roles'] == 'MASTER') {
+                $data = [
+                    'pages' => 'Beranda',
+                    'siswa' => Siswa::count(),
+                    'guru' => Guru::count(),
+                    'admin' => Admin::count(),
+                    'sekolah' => Sekolah::all(),
+                ];
+            } else {
+                $lembaga = Sekolah::isLembaga();
+                $hari = strtoupper(Carbon::now()->locale('id')->dayName);
+                $jadwalGuru = JadwalPiketGuru::where('hari', $hari)->get();
+                $data = [
+                    'pages' => 'Beranda',
+                    'jadwal_guru' => $jadwalGuru,
+                    'siswa' => Siswa::where('sekolah_id', $lembaga->id)->count(),
+                    'guru' => Guru::where('sekolah_id', $lembaga->id)->count(),
+                ];
+            }
+            return view('admin.beranda', $data);
         })->name('beranda')->middleware(['permission:MASTER,LEMBAGA']);
         Route::controller(TahunAjaranController::class)->group(function () {
             Route::get('/tahun_ajaran', 'index')->name('tahun_ajaran.index')->middleware(['permission:MASTER']);
@@ -102,6 +130,11 @@ Route::middleware([isAdmin::class])->group(function () {
             Route::post('/siswa/{id}', 'update')->name('siswa.update')->middleware(['permission:LEMBAGA']);
             Route::get('/siswa/migrasi/kelas', 'getMigrasi')->name('siswa.getMigrasi')->middleware(['permission:LEMBAGA']);
             Route::post('/siswa/migrasi/kelas', 'postMigrasi')->name('siswa.postMigrasi')->middleware(['permission:LEMBAGA']);
+
+            Route::get('/siswa/migrasi/lock_device', 'lockDevice')->name('siswa.lockDevice')->middleware(['permission:LEMBAGA']);
+            Route::delete('/siswa/migrasi/lock_device/{id}', 'destroyLockDevice')->name('siswa.destroyLockDevice')->middleware(['permission:LEMBAGA']);
+
+
             Route::delete('/siswa/{id}/destroy', 'destroy')->name('siswa.destroy')->middleware(['permission:LEMBAGA']);
         });
 
@@ -124,9 +157,31 @@ Route::middleware([isAdmin::class])->group(function () {
             Route::delete('/perizinan/{id}/destroy', 'destroy')->name('perizinan.destroy')->middleware(['permission:LEMBAGA']);
         });
 
+        Route::controller(AbsensiController::class)->group(function () {
+            Route::prefix('laporan/absensi')->group(function () {
+                Route::get('/', 'absensi')->name('laporan.absensi')->middleware(['permission:LEMBAGA']);
+                Route::get('/peringkat', 'peringkat')->name('laporan.peringkat')->middleware(['permission:LEMBAGA']);
+                    Route::prefix('cetak')->group(function () {
+                        Route::get('/pertanggal', 'pertanggal')->name('cetak.pertanggal')->middleware(['permission:LEMBAGA']);
+                        Route::get('/persiswa', 'persiswa')->name('cetak.persiswa')->middleware(['permission:LEMBAGA']);
+                        Route::get('/perhari', 'perhari')->name('cetak.perhari')->middleware(['permission:LEMBAGA']);
+                    });
+            });
+        });
+
         Route::prefix('settings')->controller(CodeQRController::class)->group(function () {
-            Route::get('/password_qr', 'index')->name('settings.admin.getQr')->middleware(['permission:LEMBAGA']);
-            Route::post('/password_qr/update', 'update')->name('settings.admin.postQr')->middleware(['permission:LEMBAGA']);
+            Route::controller(ProfilController::class)->group(function () {
+                Route::get('/profil', 'index')->name('settings.admin.getProfil')->middleware(['permission:MASTER']);
+                Route::post('/profil/update', 'update')->name('settings.admin.postProfil')->middleware(['permission:MASTER']);
+            });
+            Route::controller(CodeQRController::class)->group(function () {
+                Route::get('/password_qr', 'index')->name('settings.admin.getQr')->middleware(['permission:LEMBAGA']);
+                Route::post('/password_qr/update', 'update')->name('settings.admin.postQr')->middleware(['permission:LEMBAGA']);
+            });
+            Route::controller(MesinController::class)->group(function () {
+                Route::get('/password_mesin', 'index')->name('settings.admin.getMesin')->middleware(['permission:LEMBAGA']);
+                Route::post('/password_mesin/update', 'update')->name('settings.admin.postMesin')->middleware(['permission:LEMBAGA']);
+            });
         });
     });
 });

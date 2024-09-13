@@ -9,6 +9,7 @@ use App\Models\Sekolah;
 use App\Imports\SiswaImport;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\MetaSiswa;
 use Maatwebsite\Excel\Facades\Excel;
 
 class SiswaController extends Controller
@@ -220,6 +221,31 @@ class SiswaController extends Controller
         return redirect()->back()->with('success', 'Siswa berhasil dipindahkan.');
     }
 
+
+    //
+
+    public function lockDevice()
+    {
+        $lembaga = Sekolah::isLembaga();
+        $data = [
+            'pages' => 'Data Siswa',
+            'kelas' => Kelas::orderBy('tingkat_kelas', 'asc')->get(),
+            'siswa' => Siswa::orderBy('id', 'desc')
+                ->with('metaSiswa')
+                ->where('sekolah_id', $lembaga->id)
+                ->where('kelas_id', request('kelas'))
+                ->paginate(20),
+        ];
+        return view('admin.siswa.lock_device', $data);
+    }
+    public function destroyLockDevice($id)
+    {
+        $meta = MetaSiswa::where('siswa_id', $id)->first();
+        if ($meta) {
+            $meta->delete();
+        }
+        return redirect()->back()->with('success', 'Identitas login siswa berhasil direset.');
+    }
     /**
      * Remove the specified resource from storage.
      */

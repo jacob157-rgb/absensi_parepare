@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-    <div class="w-full overflow-hidden rounded shadow-inner">
+    <div class="w-full overflow-hidden  rounded shadow bg-white border">
         <div class="flex flex-col items-start justify-between px-4 py-3 border-b md:flex-row md:items-center">
             <div class="relative inline-flex hs-dropdown">
                 <button id="hs-dropdown-with-icons" type="button"
@@ -67,7 +67,7 @@
             <table class="w-full whitespace-no-wrap search-table">
                 <thead>
                     <tr
-                        class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 dark:text-gray-400 dark:bg-gray-800 bg-gray-50">
+                    class="dark:border-gray-700 dark:text-gray-400 dark:bg-gray-800 border-b bg-blue-600 text-left text-xs font-semibold uppercase tracking-wide text-white">
                         <th class="px-4 py-3">No.</th>
                         <th class="px-4 py-3">Nama</th>
                         <th class="px-4 py-3">NIK/NIP</th>
